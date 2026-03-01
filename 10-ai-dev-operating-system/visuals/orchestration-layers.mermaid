@@ -1,0 +1,95 @@
+graph TB
+    subgraph Layer1["Layer 1: Agent Catalog"]
+        direction LR
+        subgraph Build["Build Lane"]
+            direction TB
+            explore["explore"]
+            analyst["analyst"]
+            planner["planner"]
+            architect["architect"]
+            debugger["debugger"]
+            executor["executor"]
+            deep_executor["deep-executor"]
+            verifier["verifier"]
+        end
+        subgraph Review["Review Lane"]
+            direction TB
+            quality_reviewer["quality-reviewer"]
+            security_reviewer["security-reviewer"]
+            code_reviewer["code-reviewer"]
+        end
+        subgraph Domain["Domain Specialists"]
+            direction TB
+            test_engineer["test-engineer"]
+            build_fixer["build-fixer"]
+            designer["designer"]
+            writer["writer"]
+            qa_tester["qa-tester"]
+            scientist["scientist"]
+            doc_specialist["document-specialist"]
+        end
+        subgraph Coord["Coordination"]
+            critic["critic"]
+        end
+    end
+
+    subgraph Layer2["Layer 2: Model Routing"]
+        direction LR
+        haiku["Haiku: explore, writer"]
+        sonnet["Sonnet: executor, debugger, verifier, reviewers, specialists"]
+        opus["Opus: architect, analyst, planner, code-reviewer, critic, deep-executor"]
+    end
+
+    subgraph Layer3["Layer 3: Execution Skills"]
+        direction LR
+        sk_autopilot["autopilot"]
+        sk_ralph["ralph"]
+        sk_ultrawork["ultrawork"]
+        sk_team["team"]
+        sk_pipeline["pipeline"]
+        sk_plan["plan / ralplan"]
+        sk_ultraqa["ultraqa"]
+    end
+
+    subgraph Layer4["Layer 4: Ralph Loop Persistence"]
+        direction LR
+        loop_iterate["Iteration N/100"]
+        loop_track["Track Progress"]
+        loop_persist["Write State to Disk"]
+        loop_continue["Continue or Reset"]
+        loop_stop["Stop Hook Gate"]
+        loop_iterate --> loop_track --> loop_persist --> loop_continue --> loop_stop
+        loop_stop -->|"tasks remain"| loop_iterate
+    end
+
+    subgraph Layer5["Layer 5: Spec Pipeline"]
+        direction LR
+        pipe_new["New"]
+        pipe_reqs["Requirements"]
+        pipe_design["Design"]
+        pipe_tasks["Tasks"]
+        pipe_impl["Implement"]
+        pipe_verify["Verify"]
+        pipe_new --> pipe_reqs --> pipe_design --> pipe_tasks --> pipe_impl --> pipe_verify
+    end
+
+    subgraph Layer6["Layer 6: State and Memory"]
+        direction LR
+        mem_notepad["Session Notepad"]
+        mem_project["Project Memory"]
+        mem_claudemem["claude-mem Index"]
+        mem_state["Mode State Files"]
+        mem_notepad --- mem_project --- mem_claudemem --- mem_state
+    end
+
+    %% Layer connections (top to bottom)
+    Layer1 -->|"agents assigned via"| Layer2
+    Layer2 -->|"invoked through"| Layer3
+    Layer3 -->|"sustained by"| Layer4
+    Layer4 -->|"structured through"| Layer5
+    Layer5 -->|"state stored in"| Layer6
+
+    %% Cross-layer feedback
+    Layer6 -.->|"context loaded into"| Layer1
+    pipe_verify -.->|"failures loop to"| pipe_tasks
+    loop_stop -.->|"completion evidence"| pipe_verify

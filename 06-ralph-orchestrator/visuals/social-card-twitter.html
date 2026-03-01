@@ -10,7 +10,7 @@ body { background: #0a0a0f; display: flex; align-items: center; justify-content:
 .card {
   width: 1200px;
   height: 628px;
-  background: linear-gradient(145deg, #0d0b1a 0%, #1a1035 40%, #241852 70%, #1a1035 100%);
+  background: linear-gradient(145deg, #0c0a12 0%, #1a1210 40%, #261a0c 70%, #1a1210 100%);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -21,15 +21,15 @@ body { background: #0a0a0f; display: flex; align-items: center; justify-content:
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background:
-    radial-gradient(ellipse 500px 500px at 75% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+    radial-gradient(ellipse 500px 500px at 75% 50%, rgba(251, 146, 60, 0.1) 0%, transparent 70%);
   pointer-events: none;
 }
 .grid {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image:
-    linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(251, 146, 60, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 146, 60, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
 }
@@ -47,13 +47,13 @@ body { background: #0a0a0f; display: flex; align-items: center; justify-content:
   align-items: center;
   gap: 8px;
   padding: 5px 14px;
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  border: 1px solid rgba(251, 146, 60, 0.3);
   border-radius: 16px;
-  background: rgba(139, 92, 246, 0.06);
-  color: rgba(167, 139, 250, 0.8);
+  background: rgba(251, 146, 60, 0.06);
+  color: rgba(251, 146, 60, 0.85);
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.8px;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 28px;
   width: fit-content;
@@ -62,27 +62,27 @@ body { background: #0a0a0f; display: flex; align-items: center; justify-content:
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #a78bfa;
+  background: #fb923c;
 }
 h1 {
   font-size: 44px;
   font-weight: 700;
-  color: #f5f3ff;
+  color: #fef3e2;
   line-height: 1.12;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   letter-spacing: -0.5px;
 }
-h1 span {
-  background: linear-gradient(135deg, #c4b5fd, #8b5cf6);
+h1 .accent {
+  background: linear-gradient(135deg, #fdba74, #fb923c, #ea580c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .desc {
   font-size: 16px;
-  color: rgba(196, 181, 253, 0.5);
+  color: rgba(253, 186, 116, 0.45);
   line-height: 1.5;
-  max-width: 420px;
+  max-width: 440px;
 }
 .right {
   width: 420px;
@@ -92,68 +92,68 @@ h1 span {
   position: relative;
   z-index: 2;
 }
-.metric-panel {
+.metric_panel {
   text-align: center;
 }
-.metric-number {
-  font-size: 160px;
+.metric_number {
+  font-size: 180px;
   font-weight: 800;
-  background: linear-gradient(180deg, #c4b5fd 0%, #7c3aed 100%);
+  background: linear-gradient(180deg, #fdba74 0%, #fb923c 50%, #ea580c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
-.metric-label {
-  font-size: 20px;
-  color: rgba(167, 139, 250, 0.6);
+.metric_label {
+  font-size: 22px;
+  color: rgba(251, 146, 60, 0.55);
   text-transform: uppercase;
-  letter-spacing: 6px;
+  letter-spacing: 8px;
   margin-top: 8px;
   font-weight: 500;
 }
-.metric-sub {
+.metric_sub {
   font-size: 13px;
-  color: rgba(167, 139, 250, 0.3);
-  margin-top: 12px;
+  color: rgba(251, 146, 60, 0.28);
+  margin-top: 14px;
 }
-.bottom-bar {
+.bottom_bar {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #8b5cf6, #a78bfa, #8b5cf6, transparent);
+  background: linear-gradient(90deg, transparent, #ea580c, #fb923c, #ea580c, transparent);
 }
-.corner-accent {
+.corner_accent {
   position: absolute;
   width: 60px;
   height: 60px;
-  border: 1px solid rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.1);
 }
-.corner-accent.tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
-.corner-accent.br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+.corner_accent.tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+.corner_accent.br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="grid"></div>
-  <div class="corner-accent tl"></div>
-  <div class="corner-accent br"></div>
+  <div class="corner_accent tl"></div>
+  <div class="corner_accent br"></div>
   <div class="left">
-    <div class="badge"><span class="dot"></span>Rust Orchestrator</div>
-    <h1><span>Ralph</span><br>Orchestrator</h1>
-    <p class="desc">A Rust platform for coordinating AI coding agent fleets. Hat-based context, merge queues, Telegram control plane.</p>
+    <div class="badge"><span class="dot"></span>Rust Engineering</div>
+    <h1><span class="accent">Rust Platform</span> for<br>AI Agent Armies</h1>
+    <p class="desc">Hat-based context management, event-sourced merge queues, and a Telegram control plane for coordinating fleets of coding agents.</p>
   </div>
   <div class="right">
-    <div class="metric-panel">
-      <div class="metric-number">410</div>
-      <div class="metric-label">Sessions</div>
-      <div class="metric-sub">1.05 GB orchestration data</div>
+    <div class="metric_panel">
+      <div class="metric_number">10</div>
+      <div class="metric_label">Crates</div>
+      <div class="metric_sub">410 sessions &middot; 1.05 GB data</div>
     </div>
   </div>
-  <div class="bottom-bar"></div>
+  <div class="bottom_bar"></div>
 </div>
 </body>
 </html>

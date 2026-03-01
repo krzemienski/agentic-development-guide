@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c0a12"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <!-- Core crates: indigo -->
+    <linearGradient id="core_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <!-- CLI crate: blue -->
+    <linearGradient id="cli_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <!-- Adapter crates: green -->
+    <linearGradient id="adapter_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <!-- Telegram: orange -->
+    <linearGradient id="telegram_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <!-- TUI: cyan -->
+    <linearGradient id="tui_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <!-- Mobile server: pink -->
+    <linearGradient id="mobile_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <!-- API: amber -->
+    <linearGradient id="api_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <!-- Proto: violet -->
+    <linearGradient id="proto_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <!-- E2E: rose -->
+    <linearGradient id="e2e_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <!-- Bench: slate -->
+    <linearGradient id="bench_grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="540" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" fill="#fef3e2" font-size="18" font-weight="700" letter-spacing="0.5">Ralph Orchestrator -- Crate Metrics</text>
+  <text x="450" y="58" text-anchor="middle" fill="rgba(253,186,116,0.45)" font-size="12" font-weight="400">Estimated lines of code per crate (Rust 2024, unsafe_code = forbid)</text>
+
+  <!-- Grid lines -->
+  <line x1="100" y1="90" x2="100" y2="430" stroke="rgba(251,146,60,0.08)" stroke-width="1"/>
+  <line x1="100" y1="430" x2="860" y2="430" stroke="rgba(251,146,60,0.15)" stroke-width="1"/>
+
+  <!-- Y-axis labels and horizontal grid -->
+  <text x="90" y="434" text-anchor="end" fill="rgba(253,186,116,0.35)" font-size="10">0</text>
+
+  <line x1="100" y1="362" x2="860" y2="362" stroke="rgba(251,146,60,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="366" text-anchor="end" fill="rgba(253,186,116,0.35)" font-size="10">2K</text>
+
+  <line x1="100" y1="294" x2="860" y2="294" stroke="rgba(251,146,60,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="298" text-anchor="end" fill="rgba(253,186,116,0.35)" font-size="10">4K</text>
+
+  <line x1="100" y1="226" x2="860" y2="226" stroke="rgba(251,146,60,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="230" text-anchor="end" fill="rgba(253,186,116,0.35)" font-size="10">6K</text>
+
+  <line x1="100" y1="158" x2="860" y2="158" stroke="rgba(251,146,60,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="162" text-anchor="end" fill="rgba(253,186,116,0.35)" font-size="10">8K</text>
+
+  <line x1="100" y1="90" x2="860" y2="90" stroke="rgba(251,146,60,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="94" text-anchor="end" fill="rgba(253,186,116,0.35)" font-size="10">10K</text>
+
+  <!-- Bars: 10 crates, each 56px wide with 20px gap, starting at x=112 -->
+  <!-- Scale: 340px height = 10,000 LOC. 1 LOC = 0.034px -->
+
+  <!-- 1. ralph-core: ~9,200 LOC (tallest) -->
+  <rect x="112" y="117.2" width="56" height="312.8" fill="url(#core_grad)" rx="4" opacity="0.9"/>
+  <text x="140" y="111" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="600">9.2K</text>
+  <text x="140" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">core</text>
+
+  <!-- 2. ralph-cli: ~3,400 LOC -->
+  <rect x="188" y="314.4" width="56" height="115.6" fill="url(#cli_grad)" rx="4" opacity="0.9"/>
+  <text x="216" y="308" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="600">3.4K</text>
+  <text x="216" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">cli</text>
+
+  <!-- 3. ralph-adapters: ~4,800 LOC -->
+  <rect x="264" y="266.8" width="56" height="163.2" fill="url(#adapter_grad)" rx="4" opacity="0.9"/>
+  <text x="292" y="260" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="600">4.8K</text>
+  <text x="292" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">adapters</text>
+
+  <!-- 4. ralph-telegram: ~2,600 LOC -->
+  <rect x="340" y="341.6" width="56" height="88.4" fill="url(#telegram_grad)" rx="4" opacity="0.9"/>
+  <text x="368" y="335" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="600">2.6K</text>
+  <text x="368" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">telegram</text>
+
+  <!-- 5. ralph-tui: ~2,100 LOC -->
+  <rect x="416" y="358.6" width="56" height="71.4" fill="url(#tui_grad)" rx="4" opacity="0.9"/>
+  <text x="444" y="352" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="600">2.1K</text>
+  <text x="444" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">tui</text>
+
+  <!-- 6. ralph-mobile-server: ~1,800 LOC -->
+  <rect x="492" y="368.8" width="56" height="61.2" fill="url(#mobile_grad)" rx="4" opacity="0.9"/>
+  <text x="520" y="362" text-anchor="middle" fill="#f472b6" font-size="11" font-weight="600">1.8K</text>
+  <text x="520" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">mobile</text>
+
+  <!-- 7. ralph-api: ~1,500 LOC -->
+  <rect x="568" y="379" width="56" height="51" fill="url(#api_grad)" rx="4" opacity="0.9"/>
+  <text x="596" y="372" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="600">1.5K</text>
+  <text x="596" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">api</text>
+
+  <!-- 8. ralph-proto: ~2,900 LOC -->
+  <rect x="644" y="331.4" width="56" height="98.6" fill="url(#proto_grad)" rx="4" opacity="0.9"/>
+  <text x="672" y="325" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="600">2.9K</text>
+  <text x="672" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">proto</text>
+
+  <!-- 9. ralph-e2e: ~1,200 LOC -->
+  <rect x="720" y="389.2" width="56" height="40.8" fill="url(#e2e_grad)" rx="4" opacity="0.9"/>
+  <text x="748" y="383" text-anchor="middle" fill="#fb7185" font-size="11" font-weight="600">1.2K</text>
+  <text x="748" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">e2e</text>
+
+  <!-- 10. ralph-bench: ~800 LOC -->
+  <rect x="796" y="402.8" width="56" height="27.2" fill="url(#bench_grad)" rx="4" opacity="0.9"/>
+  <text x="824" y="396" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600">0.8K</text>
+  <text x="824" y="448" text-anchor="middle" fill="rgba(253,186,116,0.5)" font-size="9" font-weight="500">bench</text>
+
+  <!-- Legend -->
+  <g transform="translate(112, 475)">
+    <rect x="0" y="0" width="10" height="10" fill="#6366f1" rx="2"/>
+    <text x="14" y="9" fill="rgba(253,186,116,0.45)" font-size="9">Core</text>
+
+    <rect x="60" y="0" width="10" height="10" fill="#3b82f6" rx="2"/>
+    <text x="74" y="9" fill="rgba(253,186,116,0.45)" font-size="9">CLI</text>
+
+    <rect x="108" y="0" width="10" height="10" fill="#22c55e" rx="2"/>
+    <text x="122" y="9" fill="rgba(253,186,116,0.45)" font-size="9">Adapters</text>
+
+    <rect x="186" y="0" width="10" height="10" fill="#ea580c" rx="2"/>
+    <text x="200" y="9" fill="rgba(253,186,116,0.45)" font-size="9">Telegram</text>
+
+    <rect x="270" y="0" width="10" height="10" fill="#06b6d4" rx="2"/>
+    <text x="284" y="9" fill="rgba(253,186,116,0.45)" font-size="9">TUI</text>
+
+    <rect x="320" y="0" width="10" height="10" fill="#ec4899" rx="2"/>
+    <text x="334" y="9" fill="rgba(253,186,116,0.45)" font-size="9">Mobile</text>
+
+    <rect x="390" y="0" width="10" height="10" fill="#f59e0b" rx="2"/>
+    <text x="404" y="9" fill="rgba(253,186,116,0.45)" font-size="9">API</text>
+
+    <rect x="436" y="0" width="10" height="10" fill="#8b5cf6" rx="2"/>
+    <text x="450" y="9" fill="rgba(253,186,116,0.45)" font-size="9">Proto</text>
+
+    <rect x="498" y="0" width="10" height="10" fill="#e11d48" rx="2"/>
+    <text x="512" y="9" fill="rgba(253,186,116,0.45)" font-size="9">E2E</text>
+
+    <rect x="546" y="0" width="10" height="10" fill="#64748b" rx="2"/>
+    <text x="560" y="9" fill="rgba(253,186,116,0.45)" font-size="9">Bench</text>
+  </g>
+
+  <!-- Total annotation -->
+  <text x="450" y="518" text-anchor="middle" fill="rgba(253,186,116,0.3)" font-size="11">Total: ~30,300 lines of Rust across 10 crates</text>
+</svg>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
-<title>Auto-Claude LinkedIn Card</title>
+<title>LinkedIn Card: Auto-Claude Worktrees</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -11,34 +11,34 @@
     height: 627px;
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-    background: #0f0a2e;
+    background: #0f172a;
     position: relative;
   }
   .bg-grid {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(rgba(5, 150, 105, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(5, 150, 105, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
-  .glow-left {
+  .bg-glow-left {
     position: absolute;
-    top: 50%;
-    left: -100px;
-    transform: translateY(-50%);
+    top: -100px;
+    left: -50px;
     width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
-  }
-  .glow-right {
-    position: absolute;
-    top: 50%;
-    right: -80px;
-    transform: translateY(-50%);
-    width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+    background: radial-gradient(ellipse, rgba(5, 150, 105, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .bg-glow-right {
+    position: absolute;
+    bottom: -80px;
+    right: 100px;
+    width: 400px;
+    height: 350px;
+    background: radial-gradient(ellipse, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+    pointer-events: none;
   }
   .content {
     position: relative;
@@ -46,52 +46,94 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 60px 80px;
+    padding: 52px 72px 48px;
   }
-  .top-row {
+  .top-section {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
+    justify-content: space-between;
+    align-items: flex-start;
   }
   .badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 6px 16px;
-    background: rgba(99, 102, 241, 0.1);
-    border: 1px solid rgba(99, 102, 241, 0.25);
+    background: rgba(5, 150, 105, 0.1);
+    border: 1px solid rgba(5, 150, 105, 0.25);
     border-radius: 100px;
   }
   .badge-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #22d3ee;
-    box-shadow: 0 0 6px rgba(34, 211, 238, 0.5);
+    background: #10b981;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
   }
   .badge-text {
     font-size: 12px;
     font-weight: 600;
-    color: rgba(199, 210, 254, 0.8);
-    letter-spacing: 1.5px;
+    color: rgba(167, 243, 208, 0.85);
+    letter-spacing: 1.8px;
     text-transform: uppercase;
   }
-  h1 {
-    font-size: 36px;
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
+  .author-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  .desc {
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #059669, #10b981);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .author-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(241, 245, 249, 0.75);
+  }
+  .author-date {
+    font-size: 12px;
+    color: rgba(148, 163, 184, 0.45);
+    margin-top: 1px;
+  }
+  .main-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -20px;
+  }
+  h1 {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #f1f5f9;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, #10b981, #34d399, #6ee7b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    font-size: 19px;
     font-weight: 400;
-    color: rgba(199, 210, 254, 0.5);
+    color: rgba(148, 163, 184, 0.6);
     line-height: 1.5;
-    max-width: 550px;
-    margin-bottom: auto;
+    max-width: 700px;
   }
   .stats-row {
     display: flex;
@@ -100,55 +142,51 @@
   }
   .stat-card {
     flex: 1;
-    padding: 32px 0;
-    text-align: center;
+    padding: 24px 32px;
+    border-top: 1px solid rgba(5, 150, 105, 0.12);
     position: relative;
   }
-  .stat-card:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 20%;
-    height: 60%;
-    width: 1px;
-    background: rgba(99, 102, 241, 0.2);
+  .stat-card:not(:last-child) {
+    border-right: 1px solid rgba(5, 150, 105, 0.08);
+  }
+  .stat-card:first-child {
+    padding-left: 0;
   }
   .stat-value {
-    font-size: 64px;
-    font-weight: 900;
+    font-size: 36px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
     line-height: 1;
-    letter-spacing: -2px;
   }
-  .stat-card:nth-child(1) .stat-value {
-    background: linear-gradient(135deg, #818cf8, #a78bfa);
+  .stat-value-green {
+    background: linear-gradient(135deg, #10b981, #34d399);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .stat-card:nth-child(2) .stat-value {
-    background: linear-gradient(135deg, #a78bfa, #c084fc);
+  .stat-value-blue {
+    background: linear-gradient(135deg, #0ea5e9, #38bdf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .stat-card:nth-child(3) .stat-value {
-    background: linear-gradient(135deg, #c084fc, #22d3ee);
+  .stat-value-purple {
+    background: linear-gradient(135deg, #8b5cf6, #a78bfa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .stat-label {
     font-size: 13px;
-    font-weight: 600;
-    color: rgba(199, 210, 254, 0.4);
+    font-weight: 500;
+    color: rgba(148, 163, 184, 0.4);
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    margin-top: 10px;
+    margin-top: 6px;
   }
   .stat-sub {
     font-size: 12px;
-    font-weight: 400;
-    color: rgba(199, 210, 254, 0.25);
+    color: rgba(148, 163, 184, 0.3);
     margin-top: 4px;
   }
   .bottom-line {
@@ -157,40 +195,50 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #6366f1, #818cf8, #c084fc, #22d3ee);
+    background: linear-gradient(90deg, #059669, #10b981, #34d399, #6ee7b7, #34d399, #059669);
   }
 </style>
 </head>
 <body>
   <div class="bg-grid"></div>
-  <div class="glow-left"></div>
-  <div class="glow-right"></div>
+  <div class="bg-glow-left"></div>
+  <div class="bg-glow-right"></div>
 
   <div class="content">
-    <div class="top-row">
+    <div class="top-section">
       <div class="badge">
         <div class="badge-dot"></div>
-        <span class="badge-text">Auto-Claude</span>
+        <span class="badge-text">Scale Engineering</span>
+      </div>
+      <div class="author-block">
+        <div class="author-avatar">N</div>
+        <div class="author-info">
+          <span class="author-name">Nick Krzemienski</span>
+          <span class="author-date">March 2026</span>
+        </div>
       </div>
     </div>
-    <h1>Spawning 194 Parallel AI Worktrees<br>to Build a Codebase</h1>
-    <p class="desc">Industrial-scale autonomous development with isolated Claude agents, automated spec generation, and a QA pipeline that catches what self-review misses.</p>
+
+    <div class="main-section">
+      <h1>Spawning <span class="accent">194 Parallel</span><br>AI Worktrees</h1>
+      <p class="subtitle">How Auto-Claude builds an entire codebase using isolated git worktrees, independent agents, and automated QA -- with zero merge conflicts.</p>
+    </div>
 
     <div class="stats-row">
       <div class="stat-card">
-        <div class="stat-value">194</div>
+        <div class="stat-value stat-value-green">194</div>
         <div class="stat-label">Worktrees</div>
-        <div class="stat-sub">Isolated git environments</div>
+        <div class="stat-sub">Parallel isolated environments</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">91</div>
-        <div class="stat-label">Specs</div>
-        <div class="stat-sub">Implementation blueprints</div>
+        <div class="stat-value stat-value-blue">3,066</div>
+        <div class="stat-label">Sessions</div>
+        <div class="stat-sub">Agent conversations total</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">71</div>
-        <div class="stat-label">QA Reports</div>
-        <div class="stat-sub">Automated quality gates</div>
+        <div class="stat-value stat-value-purple">470 MB</div>
+        <div class="stat-label">Data</div>
+        <div class="stat-sub">JSONL conversation logs</div>
       </div>
     </div>
   </div>

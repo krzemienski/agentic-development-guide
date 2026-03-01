@@ -1,53 +1,62 @@
 sequenceDiagram
     actor User as Developer<br>(Phone)
     participant TG as Telegram API
-    participant BOT as ralph-telegram<br>Bot + Handler
+    participant BOT as ralph-telegram<br>(teloxide)
     participant STATE as Bot State<br>telegram-state.json
     participant BUS as Event Bus
-    participant EL as Event Loop
+    participant EL as Event Loop<br>(Primary Loop)
     participant AGENT as AI Agent<br>(Claude/Kiro/Gemini)
 
-    Note over User,AGENT: Command: /build feature-auth
+    Note over User,AGENT: Human-to-Agent: /build command
 
     User->>TG: /build feature-auth
     TG->>BOT: Update received
     BOT->>STATE: Store chat_id, command
     BOT->>BUS: Publish human.guidance
-    BUS->>EL: Guidance event
+    BUS->>EL: Guidance event queued
 
-    EL->>EL: Inject ROBOT GUIDANCE<br>into next prompt
-    EL->>AGENT: Execute with hat + guidance
+    EL->>EL: Squash guidance into<br>numbered ROBOT GUIDANCE list
+    EL->>AGENT: Execute with hat + guidance injected
 
-    AGENT->>AGENT: Plan and implement
+    AGENT->>AGENT: Plan, implement, iterate
 
-    Note over AGENT,User: Agent needs clarification
+    Note over AGENT,User: Agent-to-Human: human.interact (blocks loop)
 
-    AGENT->>BUS: Emit human.interact
+    AGENT->>BUS: Emit human.interact<br>("Auth strategy: JWT or session cookies?")
     BUS->>EL: Interaction event
-    EL->>EL: Block loop
-    EL->>BOT: Send question
+    EL->>EL: Block event loop
+    EL->>BOT: Forward question to human
     BOT->>TG: sendMessage(chat_id, question)
-    TG->>User: Display question
+    TG->>User: Display question on phone
 
-    User->>TG: Reply with answer
+    Note over User: Developer considers and replies
+
+    User->>TG: "Use JWT with refresh tokens"
     TG->>BOT: Update received
-    BOT->>STATE: Match to pending question
+    BOT->>STATE: Match reply to pending interaction
     BOT->>BUS: Publish human.response
     BUS->>EL: Response event
-    EL->>EL: Unblock loop
+    EL->>EL: Unblock event loop (timeout was 300s)
 
-    EL->>AGENT: Continue with response
+    EL->>AGENT: Continue with human response
 
     AGENT->>AGENT: Complete implementation
     AGENT->>BUS: Emit code.complete
 
-    Note over User,AGENT: Command: /status
+    Note over User,AGENT: Status Check: /status command
 
     User->>TG: /status
     TG->>BOT: Update received
-    BOT->>EL: Query current state
-    EL-->>BOT: Iteration 7, hat: reviewer
-    BOT->>TG: sendMessage(chat_id, status)
-    TG->>User: Display status report
+    BOT->>EL: Query loop state
+    EL-->>BOT: iteration: 12, hat: reviewer,<br>tasks: 3/5 complete
+    BOT->>TG: sendMessage(chat_id, status report)
+    TG->>User: Display formatted status
 
-    Note over BOT: Retry: 3 attempts<br>exponential backoff<br>on send failure
+    Note over User,AGENT: Approval: /approve command
+
+    User->>TG: /approve merge loop-007
+    TG->>BOT: Update received
+    BOT->>BUS: Publish human.guidance<br>("approve merge loop-007")
+    BUS->>EL: Process merge approval
+
+    Note over BOT: Send failures: 3 retries<br>with exponential backoff.<br>Timeout (300s) resumes loop<br>if human does not respond.

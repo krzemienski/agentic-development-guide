@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
-<title>Auto-Claude Twitter Card</title>
+<title>Twitter Card: Auto-Claude Worktrees</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -11,121 +11,209 @@
     height: 628px;
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-    background: #0f0a2e;
+    background: #0f172a;
     position: relative;
+    display: flex;
   }
   .bg-grid {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(rgba(5, 150, 105, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(5, 150, 105, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
-  .glow {
+  .bg-glow {
     position: absolute;
     top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
+    left: 200px;
+    width: 600px;
     height: 500px;
-    background: radial-gradient(ellipse, rgba(99, 102, 241, 0.2) 0%, transparent 65%);
+    background: radial-gradient(ellipse, rgba(5, 150, 105, 0.12) 0%, transparent 70%);
+    pointer-events: none;
   }
-  .content {
+  .left-panel {
     position: relative;
     z-index: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100%;
-    text-align: center;
-    padding: 0 100px;
+    padding: 60px 50px 60px 72px;
   }
-  .label {
-    font-size: 14px;
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(5, 150, 105, 0.1);
+    border: 1px solid rgba(5, 150, 105, 0.25);
+    border-radius: 100px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+  }
+  .badge-text {
+    font-size: 12px;
     font-weight: 600;
-    color: rgba(199, 210, 254, 0.5);
-    letter-spacing: 2px;
+    color: rgba(167, 243, 208, 0.85);
+    letter-spacing: 1.8px;
     text-transform: uppercase;
-    margin-bottom: 24px;
   }
-  .big-number {
-    font-size: 160px;
-    font-weight: 900;
-    line-height: 1;
-    background: linear-gradient(135deg, #818cf8, #c084fc, #22d3ee);
+  h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #f1f5f9;
+    letter-spacing: -1.5px;
+    margin-bottom: 18px;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, #10b981, #34d399, #6ee7b7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -4px;
-  }
-  .unit {
-    font-size: 28px;
-    font-weight: 700;
-    color: #e0e7ff;
-    margin-top: 12px;
-    letter-spacing: 1px;
   }
   .subtitle {
     font-size: 18px;
     font-weight: 400;
-    color: rgba(199, 210, 254, 0.45);
-    margin-top: 16px;
+    color: rgba(148, 163, 184, 0.6);
     line-height: 1.5;
-    max-width: 600px;
+    max-width: 500px;
+  }
+  .author-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #059669, #10b981);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .author-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(148, 163, 184, 0.6);
+  }
+  .right-panel {
+    position: relative;
+    z-index: 2;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(5, 150, 105, 0.12);
+  }
+  .metric-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(5, 150, 105, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .big-number {
+    font-size: 120px;
+    font-weight: 900;
+    background: linear-gradient(180deg, #10b981, #059669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .big-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(167, 243, 208, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .sub-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .sub-stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgba(167, 243, 208, 0.7);
+    text-align: center;
+  }
+  .sub-stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(148, 163, 184, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+    text-align: center;
   }
   .bottom-bar {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #6366f1, #818cf8, #c084fc, #22d3ee, #818cf8, #6366f1);
-  }
-  .corner {
-    position: absolute;
-    bottom: 24px;
-    right: 40px;
-    font-size: 13px;
-    font-weight: 600;
-    color: rgba(199, 210, 254, 0.2);
-    letter-spacing: 1px;
-  }
-  .dots {
-    position: absolute;
-    top: 24px;
-    left: 40px;
-    display: flex;
-    gap: 6px;
-  }
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(99, 102, 241, 0.4);
-  }
-  .dot.active {
-    background: #22d3ee;
-    box-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
+    height: 3px;
+    background: linear-gradient(90deg, #059669, #10b981, #34d399, #6ee7b7, #34d399, #059669);
   }
 </style>
 </head>
 <body>
   <div class="bg-grid"></div>
-  <div class="glow"></div>
-  <div class="dots">
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+  <div class="bg-glow"></div>
+
+  <div class="left-panel">
+    <div class="badge">
+      <div class="badge-dot"></div>
+      <span class="badge-text">Scale Engineering</span>
+    </div>
+    <h1><span class="accent">194 Parallel</span><br>Git Worktrees</h1>
+    <p class="subtitle">Factory-scale AI development with isolated agents, automated QA, and zero merge conflicts.</p>
+    <div class="author-row">
+      <div class="author-avatar">N</div>
+      <span class="author-name">Nick Krzemienski &middot; March 2026</span>
+    </div>
   </div>
-  <div class="content">
-    <div class="label">Auto-Claude</div>
+
+  <div class="right-panel">
+    <div class="metric-glow"></div>
     <div class="big-number">194</div>
-    <div class="unit">Parallel AI Worktrees</div>
-    <div class="subtitle">Isolated Claude agents building an entire codebase simultaneously. 3,066 sessions. 470 MB of conversation. Zero conflicts.</div>
+    <div class="big-label">Worktrees</div>
+    <div class="sub-stats">
+      <div>
+        <div class="sub-stat-value">3,066</div>
+        <div class="sub-stat-label">Sessions</div>
+      </div>
+      <div>
+        <div class="sub-stat-value">470MB</div>
+        <div class="sub-stat-label">Data</div>
+      </div>
+    </div>
   </div>
-  <div class="corner">auto-claude</div>
+
   <div class="bottom-bar"></div>
 </body>
 </html>

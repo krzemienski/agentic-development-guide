@@ -17,51 +17,85 @@
     width: 1200px;
     height: 628px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     background:
-      radial-gradient(ellipse 800px 500px at 50% 50%, rgba(220, 38, 38, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 800px 500px at 35% 50%, rgba(220, 38, 38, 0.06) 0%, transparent 70%),
       linear-gradient(180deg, #0a0a0f 0%, #0f0f18 50%, #0a0a0f 100%);
   }
-  .content {
-    text-align: center;
+  .left-panel {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
-  .metric {
-    font-size: 180px;
-    font-weight: 900;
-    letter-spacing: -8px;
-    color: #dc2626;
-    line-height: 1;
-    margin-bottom: 8px;
-    text-shadow: 0 0 80px rgba(220, 38, 38, 0.3);
-  }
-  .label {
-    font-size: 32px;
-    font-weight: 600;
-    color: #e8e8ed;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
-  }
-  .sublabel {
-    font-size: 18px;
-    font-weight: 400;
-    color: #6b6b80;
-    max-width: 550px;
-    line-height: 1.4;
+    justify-content: center;
+    padding: 0 80px;
   }
   .category {
-    position: absolute;
-    top: 32px;
-    left: 40px;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: #dc2626;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .category::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: #dc2626;
+  }
+  .title {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: #f0f0f5;
+    margin-bottom: 20px;
+    max-width: 540px;
+  }
+  .title em {
+    font-style: normal;
+    color: #dc2626;
+  }
+  .subtitle {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6b6b80;
+    max-width: 480px;
+  }
+  .right-panel {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-left: 1px solid rgba(220, 38, 38, 0.1);
+  }
+  .metric {
+    font-size: 200px;
+    font-weight: 900;
+    letter-spacing: -10px;
+    color: #dc2626;
+    line-height: 1;
+    text-shadow: 0 0 100px rgba(220, 38, 38, 0.3);
+  }
+  .metric-label {
+    font-size: 22px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+  .metric-sublabel {
+    font-size: 14px;
+    font-weight: 400;
+    color: #555;
+    margin-top: 6px;
   }
   .bottom-line {
     position: absolute;
@@ -75,11 +109,15 @@
 </head>
 <body>
 <div class="container">
-  <div class="category">Debugging War Story</div>
-  <div class="content">
-    <div class="metric">4</div>
-    <div class="label">failed attempts before it worked</div>
-    <div class="sublabel">The journey from "just call the API" to a 5-layer bridge because every simpler approach had a fatal flaw</div>
+  <div class="left-panel">
+    <div class="category">Architecture</div>
+    <div class="title">The <em>5-Layer Bridge</em>: Connecting iOS to Claude Code</div>
+    <div class="subtitle">4 failed attempts and the architecture of necessity that finally connected SwiftUI to Claude's API</div>
+  </div>
+  <div class="right-panel">
+    <div class="metric">5</div>
+    <div class="metric-label">layers deep</div>
+    <div class="metric-sublabel">iOS to Anthropic API</div>
   </div>
   <div class="bottom-line"></div>
 </div>

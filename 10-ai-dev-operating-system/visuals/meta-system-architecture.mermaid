@@ -1,0 +1,95 @@
+graph TB
+    subgraph OMC_System["OMC -- Orchestration Layer"]
+        direction TB
+        OMC_Router["Agent Router"]
+        OMC_State["State Manager"]
+        OMC_Memory["Project Memory + Notepad"]
+        OMC_Skills["150+ Skills"]
+        OMC_Hooks["Lifecycle Hooks"]
+        OMC_Router --> OMC_State
+        OMC_Router --> OMC_Memory
+        OMC_Router --> OMC_Skills
+        OMC_State --> OMC_Hooks
+    end
+
+    subgraph Ralph_System["Ralph -- Persistence Engine"]
+        direction TB
+        Ralph_Loop["Ralph Loop"]
+        Ralph_StopHook["Stop Hook Enforcement"]
+        Ralph_TaskState["Task State on Disk"]
+        Ralph_Continuations["Context Continuations"]
+        Ralph_Loop --> Ralph_StopHook
+        Ralph_Loop --> Ralph_TaskState
+        Ralph_StopHook -->|"incomplete tasks"| Ralph_Continuations
+        Ralph_Continuations -->|"reload state"| Ralph_Loop
+    end
+
+    subgraph Spec_System["ralph-specum -- Specification Pipeline"]
+        direction TB
+        Spec_New["New: Capture Intent"]
+        Spec_Reqs["Requirements: Product Manager"]
+        Spec_Design["Design: Architect Reviewer"]
+        Spec_Tasks["Tasks: Task Planner"]
+        Spec_Impl["Implement: Executor"]
+        Spec_Verify["Verify: QA Engineer"]
+        Spec_New --> Spec_Reqs
+        Spec_Reqs --> Spec_Design
+        Spec_Design --> Spec_Tasks
+        Spec_Tasks --> Spec_Impl
+        Spec_Impl --> Spec_Verify
+        Spec_Verify -->|"gaps found"| Spec_Tasks
+    end
+
+    subgraph GSD_System["GSD -- Project Execution"]
+        direction TB
+        GSD_Roadmap["Roadmapper"]
+        GSD_Plan["Planner"]
+        GSD_Execute["Executor"]
+        GSD_Verify["Verifier"]
+        GSD_IntCheck["Integration Checker"]
+        GSD_Assumptions["Assumption Tracker"]
+        GSD_Roadmap --> GSD_Plan
+        GSD_Plan --> GSD_Execute
+        GSD_Execute --> GSD_Verify
+        GSD_Verify --> GSD_IntCheck
+        GSD_Assumptions -.->|"validates before"| GSD_Execute
+    end
+
+    subgraph RALPLAN_System["RALPLAN -- Adversarial Deliberation"]
+        direction LR
+        RP_Planner["Planner"]
+        RP_Critic["Critic"]
+        RP_Approved["Approved Plan"]
+        RP_Planner -->|"submit"| RP_Critic
+        RP_Critic -->|"reject"| RP_Planner
+        RP_Critic -->|"approve"| RP_Approved
+    end
+
+    %% Cross-system connections: OMC as the kernel
+    OMC_Router ==>|"routes agents to"| Spec_System
+    OMC_Router ==>|"routes agents to"| GSD_System
+    OMC_Router ==>|"routes agents to"| RALPLAN_System
+    OMC_Hooks ==>|"enforces persistence via"| Ralph_System
+
+    %% Inter-system composition
+    Ralph_Loop -.->|"sustains implementation"| Spec_Impl
+    Ralph_Loop -.->|"sustains execution"| GSD_Execute
+    RALPLAN_System -.->|"approved plans feed"| Spec_Reqs
+    RALPLAN_System -.->|"approved plans feed"| GSD_Plan
+    Spec_Verify -.->|"evidence flows to"| GSD_Verify
+
+    %% Self-hosting feedback loop
+    GSD_Verify -->|"friction points become"| Spec_New
+
+    %% Team Pipeline composition
+    subgraph Team_Compose["Team Pipeline Composition"]
+        direction LR
+        Team_Ralph["team ralph"]
+        Team_Multi["Multi-Agent Parallel"]
+        Team_Linked["Linked State Files"]
+        Team_Ralph --> Team_Multi
+        Team_Multi --> Team_Linked
+    end
+
+    OMC_Skills -->|"team skill"| Team_Compose
+    Ralph_Loop -.->|"persistence envelope"| Team_Ralph

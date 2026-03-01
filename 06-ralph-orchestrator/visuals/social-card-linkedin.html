@@ -10,7 +10,7 @@ body { background: #0a0a0f; display: flex; align-items: center; justify-content:
 .card {
   width: 1200px;
   height: 627px;
-  background: linear-gradient(160deg, #0d0b1a 0%, #161230 30%, #1e1545 60%, #161230 100%);
+  background: linear-gradient(160deg, #0c0a12 0%, #1a1210 30%, #221808 60%, #1a1210 100%);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -22,19 +22,19 @@ body { background: #0a0a0f; display: flex; align-items: center; justify-content:
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background:
-    radial-gradient(ellipse 700px 400px at 50% 40%, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    radial-gradient(ellipse 700px 400px at 50% 40%, rgba(251, 146, 60, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 .grid {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image:
-    linear-gradient(rgba(139, 92, 246, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(251, 146, 60, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 146, 60, 0.025) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
 }
-.top-section {
+.top_section {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -49,13 +49,13 @@ body { background: #0a0a0f; display: flex; align-items: center; justify-content:
   align-items: center;
   gap: 8px;
   padding: 5px 16px;
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(251, 146, 60, 0.25);
   border-radius: 16px;
-  background: rgba(139, 92, 246, 0.06);
-  color: rgba(167, 139, 250, 0.7);
+  background: rgba(251, 146, 60, 0.06);
+  color: rgba(251, 146, 60, 0.8);
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   margin-bottom: 24px;
 }
@@ -63,31 +63,31 @@ body { background: #0a0a0f; display: flex; align-items: center; justify-content:
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #a78bfa;
+  background: #fb923c;
 }
 h1 {
   font-size: 46px;
   font-weight: 700;
-  color: #f5f3ff;
+  color: #fef3e2;
   text-align: center;
   line-height: 1.15;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   letter-spacing: -0.5px;
 }
-h1 span {
-  background: linear-gradient(135deg, #c4b5fd, #8b5cf6);
+h1 .accent {
+  background: linear-gradient(135deg, #fdba74, #fb923c, #ea580c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .subtitle {
   font-size: 16px;
-  color: rgba(196, 181, 253, 0.45);
+  color: rgba(253, 186, 116, 0.4);
   text-align: center;
-  max-width: 600px;
+  max-width: 620px;
   line-height: 1.5;
 }
-.metrics-section {
+.metrics_section {
   position: relative;
   z-index: 2;
   padding: 0 80px 50px;
@@ -96,94 +96,94 @@ h1 span {
   justify-content: center;
   gap: 0;
 }
-.metric-card {
+.metric_card {
   flex: 1;
   max-width: 320px;
   text-align: center;
   padding: 32px 24px;
   position: relative;
 }
-.metric-card::after {
+.metric_card::after {
   content: '';
   position: absolute;
   right: 0;
   top: 20%;
   height: 60%;
   width: 1px;
-  background: rgba(139, 92, 246, 0.12);
+  background: rgba(251, 146, 60, 0.1);
 }
-.metric-card:last-child::after {
+.metric_card:last-child::after {
   display: none;
 }
-.metric-value {
+.metric_value {
   font-size: 56px;
   font-weight: 800;
-  background: linear-gradient(180deg, #ddd6fe 0%, #a78bfa 50%, #7c3aed 100%);
+  background: linear-gradient(180deg, #fdba74 0%, #fb923c 50%, #ea580c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
-.metric-label {
+.metric_label {
   font-size: 13px;
-  color: rgba(167, 139, 250, 0.55);
+  color: rgba(251, 146, 60, 0.5);
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-top: 10px;
   font-weight: 500;
 }
-.metric-detail {
+.metric_detail {
   font-size: 11px;
-  color: rgba(167, 139, 250, 0.3);
+  color: rgba(253, 186, 116, 0.25);
   margin-top: 8px;
   line-height: 1.4;
 }
-.bottom-bar {
+.bottom_bar {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent 5%, #7c3aed 25%, #a78bfa 50%, #7c3aed 75%, transparent 95%);
+  background: linear-gradient(90deg, transparent 5%, #ea580c 25%, #fb923c 50%, #ea580c 75%, transparent 95%);
 }
-.top-line {
+.top_line {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(251, 146, 60, 0.25), transparent);
 }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="grid"></div>
-  <div class="top-line"></div>
-  <div class="top-section">
-    <div class="badge"><span class="dot"></span>Rust v2.6.0 &middot; 10 Crates</div>
-    <h1><span>Ralph Orchestrator</span></h1>
+  <div class="top_line"></div>
+  <div class="top_section">
+    <div class="badge"><span class="dot"></span>Rust Engineering &middot; v2.6.0</div>
+    <h1><span class="accent">Ralph Orchestrator</span></h1>
     <p class="subtitle">A Rust platform for orchestrating AI coding agent fleets with hat-based context, event-sourced merge queues, and a Telegram control plane.</p>
   </div>
-  <div class="metrics-section">
-    <div class="metric-card">
-      <div class="metric-value">30</div>
-      <div class="metric-label">Worktrees</div>
-      <div class="metric-detail">Simultaneous parallel agents<br>with git-isolated filesystems</div>
+  <div class="metrics_section">
+    <div class="metric_card">
+      <div class="metric_value">10</div>
+      <div class="metric_label">Crates</div>
+      <div class="metric_detail">Focused Rust workspace<br>with pedantic Clippy lints</div>
     </div>
-    <div class="metric-card">
-      <div class="metric-value">41</div>
-      <div class="metric-label">Continuations</div>
-      <div class="metric-detail">Longest sustained context arc<br>with memory-backed handoff</div>
+    <div class="metric_card">
+      <div class="metric_value">410</div>
+      <div class="metric_label">Sessions</div>
+      <div class="metric_detail">Orchestration loops with<br>up to 41 continuations</div>
     </div>
-    <div class="metric-card">
-      <div class="metric-value">1,705</div>
-      <div class="metric-label">Screenshots</div>
-      <div class="metric-detail">RalphMobile iOS companion<br>validated through 5 gates</div>
+    <div class="metric_card">
+      <div class="metric_value">1.05<span style="font-size:36px"> GB</span></div>
+      <div class="metric_label">Data</div>
+      <div class="metric_detail">Interaction data across<br>agent coordination sessions</div>
     </div>
   </div>
-  <div class="bottom-bar"></div>
+  <div class="bottom_bar"></div>
 </div>
 </body>
 </html>

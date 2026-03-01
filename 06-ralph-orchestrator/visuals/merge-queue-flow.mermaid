@@ -1,50 +1,79 @@
 sequenceDiagram
-    participant WT1 as Worktree Agent 1
-    participant WT2 as Worktree Agent 2
-    participant MQ as Merge Queue<br>merge-queue.jsonl
-    participant PL as Primary Loop
+    participant WT1 as Worktree Agent 1<br>.worktrees/loop_001/
+    participant WT2 as Worktree Agent 2<br>.worktrees/loop_002/
+    participant WT3 as Worktree Agent 3<br>.worktrees/loop_003/
+    participant MQ as Merge Queue<br>.ralph/merge-queue.jsonl
+    participant PL as Primary Loop<br>(holds loop.lock)
     participant GIT as Git Repository
 
-    Note over WT1,WT2: Parallel execution in isolated worktrees
+    Note over WT1,GIT: Phase 1 -- Isolation (git worktrees, shared .git, symlinked specs)
 
-    WT1->>WT1: Execute hat iterations
-    WT2->>WT2: Execute hat iterations
-
-    WT1->>MQ: enqueue(loop-id-1, prompt)
-    Note over MQ: Event: Queued { prompt }
-
-    WT2->>WT2: Still working...
-
-    PL->>MQ: next_pending()
-    MQ-->>PL: Entry: loop-id-1
-
-    PL->>MQ: mark_merging(loop-id-1, pid)
-    Note over MQ: Event: Merging { pid }
-
-    PL->>GIT: git merge worktree branch
-    alt No Conflicts
-        GIT-->>PL: Merge successful
-        PL->>MQ: mark_merged(loop-id-1, commit-sha)
-        Note over MQ: Event: Merged { commit }
-        PL->>GIT: remove_worktree(loop-id-1)
-    else Conflicts Detected
-        GIT-->>PL: Merge conflict
-        PL->>PL: Spawn merge-ralph agent
-        PL->>GIT: Resolve conflicts
-        PL->>MQ: mark_merged(loop-id-1, commit-sha)
-        PL->>GIT: remove_worktree(loop-id-1)
+    par Parallel Execution
+        WT1->>WT1: Hat iterations (plan, code, review)
+        WT2->>WT2: Hat iterations (plan, code, review)
+        WT3->>WT3: Hat iterations (plan, code, review)
     end
 
-    WT2->>MQ: enqueue(loop-id-2, prompt)
-    Note over MQ: Event: Queued { prompt }
+    Note over WT1,GIT: Phase 2 -- Completion and Enqueue
+
+    WT1->>MQ: enqueue(loop_001, prompt)
+    Note over MQ: Event: Queued { loop_id, prompt, timestamp }
+
+    WT3->>MQ: enqueue(loop_003, prompt)
+    Note over MQ: Event: Queued { loop_id, prompt, timestamp }
+
+    Note over WT2: Still executing...
+
+    Note over PL,GIT: Phase 3 -- Merge Processing (FIFO from queue)
 
     PL->>MQ: next_pending()
-    MQ-->>PL: Entry: loop-id-2
+    MQ-->>PL: Entry: loop_001
 
-    PL->>MQ: mark_merging(loop-id-2, pid)
-    PL->>GIT: git merge worktree branch
-    GIT-->>PL: Merge successful
-    PL->>MQ: mark_merged(loop-id-2, commit-sha)
-    PL->>GIT: remove_worktree(loop-id-2)
+    PL->>MQ: flock() acquire
+    PL->>MQ: mark_merging(loop_001, pid)
+    Note over MQ: Event: Merging { loop_id, pid }
 
-    Note over MQ: Full event history preserved<br>in append-only JSONL
+    PL->>GIT: git merge loop_001 branch
+
+    alt Success -- No Conflicts
+        GIT-->>PL: Merge clean
+        PL->>MQ: mark_merged(loop_001, commit_sha)
+        Note over MQ: Event: Merged { loop_id, commit_sha }
+        PL->>GIT: remove_worktree(loop_001)
+    else Conflict -- Spawn Merge Ralph
+        GIT-->>PL: Conflict detected
+        PL->>PL: Spawn merge-ralph agent
+        PL->>GIT: Agent resolves conflicts
+        PL->>GIT: git add + git commit
+        PL->>MQ: mark_merged(loop_001, commit_sha)
+        Note over MQ: Event: Merged { loop_id, commit_sha }
+        PL->>GIT: remove_worktree(loop_001)
+    else Failure -- Unresolvable
+        GIT-->>PL: Merge failed
+        PL->>GIT: git merge --abort
+        PL->>MQ: mark_failed(loop_001, error_msg)
+        Note over MQ: Event: Failed { loop_id, error }
+    end
+
+    PL->>MQ: flock() release
+
+    PL->>MQ: next_pending()
+    MQ-->>PL: Entry: loop_003
+
+    PL->>MQ: mark_merging(loop_003, pid)
+    PL->>GIT: git merge loop_003 branch
+    GIT-->>PL: Merge clean
+    PL->>MQ: mark_merged(loop_003, commit_sha)
+    PL->>GIT: remove_worktree(loop_003)
+
+    WT2->>MQ: enqueue(loop_002, prompt)
+    Note over MQ: Event: Queued { loop_id, prompt, timestamp }
+
+    PL->>MQ: next_pending()
+    MQ-->>PL: Entry: loop_002
+    PL->>GIT: git merge loop_002 branch
+    GIT-->>PL: Merge clean
+    PL->>MQ: mark_merged(loop_002, commit_sha)
+    PL->>GIT: remove_worktree(loop_002)
+
+    Note over MQ: Append-only JSONL preserves full<br>event history for replay and debugging
