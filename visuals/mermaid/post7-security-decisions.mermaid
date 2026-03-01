@@ -1,0 +1,61 @@
+flowchart TD
+    START["Staged File\nReady for Commit"] --> BINARY{"Is file\nbinary?"}
+    BINARY -->|Yes| SKIP["Skip file\n(no scan)"]
+    BINARY -->|No| EXISTS{"File\nexists?"}
+    EXISTS -->|"No (deleted)"| SKIP
+    EXISTS -->|Yes| FILETYPE{"Check\nfile extension"}
+
+    FILETYPE -->|".sqlite .db"| BLOCK_DB["BLOCKED\nDatabase file"]
+    FILETYPE -->|".env .env.*"| BLOCK_ENV["BLOCKED\nEnvironment file"]
+    FILETYPE -->|".pem .key .p12 .pfx"| BLOCK_CERT["BLOCKED\nCertificate/key file"]
+    FILETYPE -->|"Source file"| CONTENT["Scan file\ncontent"]
+
+    CONTENT --> API{"Match:\nsk-[a-zA-Z0-9]{'{'}20,{'}'}"}
+    API -->|Yes| BLOCK_API["BLOCKED\nAPI key (OpenAI/Anthropic)"]
+    API -->|No| AWS{"Match:\nAKIA[A-Z0-9]{'{'}16{'}'}"}
+
+    AWS -->|Yes| BLOCK_AWS["BLOCKED\nAWS access key"]
+    AWS -->|No| GH{"Match:\n(ghp_|ghu_|ghs_|gho_|ghr_)*"}
+
+    GH -->|Yes| BLOCK_GH["BLOCKED\nGitHub token"]
+    GH -->|No| GL{"Match:\nglpat-[a-zA-Z0-9-]{'{'}20,{'}'}"}
+
+    GL -->|Yes| BLOCK_GL["BLOCKED\nGitLab token"]
+    GL -->|No| BEARER{"Match:\nBearer [a-zA-Z0-9_-.]{'{'}20,{'}'}"}
+
+    BEARER -->|Yes| BLOCK_BEARER["BLOCKED\nHardcoded Bearer token"]
+    BEARER -->|No| PRIVKEY{"Match:\n-----BEGIN PRIVATE KEY-----"}
+
+    PRIVKEY -->|Yes| BLOCK_KEY["BLOCKED\nPrivate key"]
+    PRIVKEY -->|No| WARN_CHECKS["Warning Checks"]
+
+    WARN_CHECKS --> PATH{"/Users/ or\n/home/ path?"}
+    PATH -->|Yes| WARN_PATH["WARNING\nHardcoded absolute path"]
+    PATH -->|No| PASS_CHECK{"password=\nor passwd=?"}
+
+    PASS_CHECK -->|Yes| WARN_PASS["WARNING\nPossible hardcoded password"]
+    PASS_CHECK -->|No| TODO{"TODO/FIXME/\nHACK markers?"}
+
+    TODO -->|Yes| INFO_TODO["INFO\nN markers found"]
+    TODO -->|No| CLEAN["CLEAN\nNo issues found"]
+
+    BLOCK_DB & BLOCK_ENV & BLOCK_CERT & BLOCK_API & BLOCK_AWS & BLOCK_GH & BLOCK_GL & BLOCK_BEARER & BLOCK_KEY --> REJECT["COMMIT REJECTED\nRemove flagged content"]
+    WARN_PATH & WARN_PASS & INFO_TODO --> ALLOW_WARN["COMMIT ALLOWED\nWith warnings"]
+    CLEAN --> ALLOW["COMMIT ALLOWED\nNo issues"]
+
+    style REJECT fill:#ff4444,color:#fff
+    style ALLOW_WARN fill:#ffaa00,color:#000
+    style ALLOW fill:#44bb44,color:#fff
+    style BLOCK_DB fill:#ff6666,color:#fff
+    style BLOCK_ENV fill:#ff6666,color:#fff
+    style BLOCK_CERT fill:#ff6666,color:#fff
+    style BLOCK_API fill:#ff6666,color:#fff
+    style BLOCK_AWS fill:#ff6666,color:#fff
+    style BLOCK_GH fill:#ff6666,color:#fff
+    style BLOCK_GL fill:#ff6666,color:#fff
+    style BLOCK_BEARER fill:#ff6666,color:#fff
+    style BLOCK_KEY fill:#ff6666,color:#fff
+    style WARN_PATH fill:#ffcc00,color:#000
+    style WARN_PASS fill:#ffcc00,color:#000
+    style INFO_TODO fill:#66aaff,color:#000
+    style CLEAN fill:#44bb44,color:#fff

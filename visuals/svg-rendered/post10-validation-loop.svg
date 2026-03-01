@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7332.695 2363.85" width="7332.695" height="2363.85" style="--bg:#0d1117;--fg:#e6edf3;--line:#3d444d;--accent:#4493f8;--muted:#9198a1;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 30%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="var(--_arrow)" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="var(--_arrow)" />
+  </marker>
+</defs>
+<rect x="2285.8025000000002" y="40" width="836.2" height="336" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<rect x="2285.8025000000002" y="40" width="836.2" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="2297.8025000000002" y="54" dy="0.35em" font-size="12" font-weight="600" fill="var(--_text-sec)">&quot;Check Distribution (107 actions)&quot;</text>
+<polyline points="2056.3275,244 2056.3275,416" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1961.3859014822385,684.5084014822388 1961.3859014822385,807.95 1826.34,807.95 1826.34,836.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2222.8963887605046,612.8811112394955 2222.8963887605046,807.95 4366.745000000001,807.95 4366.745000000001,836.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="4366.745000000001,872.45 4366.745000000001,912.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="4366.745000000001,948.45 4366.745000000001,1052.075" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="4366.745000000001,1088.075 4366.745000000001,1180.2 3953.9700000000003,1180.2 3953.9700000000003,1226.7 4093.3450000000007,1226.7" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="4366.745000000001,1244.7 4366.745000000001,1284.7000000000003" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="4486.982122923231,1420.6628770767702 4486.982122923231,1569.4 6761.4325,1569.4 6761.4325,1597.9" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="4366.745000000001,1540.9 4366.745000000001,1597.9" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="4366.745000000001,1597.9 4366.745000000001,1569.4 6586.2975,1569.4 6586.2975,1072.2339519877462 2612.316048012254,1072.2339519877462" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2455.065940531129,1073.9159405311284 2455.065940531129,1180.2 302.67499999999995,1180.2 302.67499999999995,1208.7" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2456.3152236080246,1075.1652236080242 2456.3152236080246,1180.2 877.05,1180.2 877.05,1208.7" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2459.682405207697,1078.5324052076962 2459.682405207697,1180.2 1580.125,1180.2 1580.125,1208.7" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2474.370035403927,1093.2200354039267 2474.370035403927,1180.2 2254.6000000000004,1180.2 2254.6000000000004,1208.7" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2591.3299645960738,1093.2200354039267 2591.3299645960738,1180.2 2811.1000000000004,1180.2 2811.1000000000004,1208.7" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2605.5682119943526,1078.981788005648 2605.5682119943526,1180.2 3431.9500000000007,1180.2 3431.9500000000007,1208.7" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="302.67499999999995,1244.7 302.67499999999995,1406.3550235018752 2033.642476498125,1406.3550235018752" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="877.05,1244.7 877.05,1403.6792202089348 2036.3182797910654,1403.6792202089348" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1580.125,1244.7 1580.125,1394.2541005111173 2045.743399488883,1394.2541005111173" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2254.6000000000004,1244.7 2254.6000000000004,1369.3345803084715 2154.1320803084714,1369.3345803084715" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2811.1000000000004,1244.7 2811.1000000000004,1397.899099258682 2182.696599258682,1397.899099258682" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="3431.9500000000007,1244.7 3431.9500000000007,1404.2025152411761 2189.000015241176,1404.2025152411761" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2190.6860463381504,1405.8885463381505 2190.6860463381504,1264.7 3789.9800000000005,1264.7 3789.9800000000005,1076.6494525527426 2607.900547447258,1076.6494525527426" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2112.3975,1498.0000000000002 2112.3975,1597.9" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2112.3975,1633.9 2112.3975,1753.1561848372698 5433.32631516273,1753.1561848372698" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="6761.4325,1633.9 6761.4325,1749.3826125992707 5588.06511259927,1749.3826125992707" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5589.015793055779,1750.3332930557794 5589.015793055779,1653.9 7008.725,1653.9 7008.725,1070.075 4597.245000000001,1070.075" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5512.5824999999995,1837.15 5512.5824999999995,1894.15" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5512.5824999999995,1930.15 5512.5824999999995,1970.15" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5512.5824999999995,2006.15 5512.5824999999995,2132.1754383157704 6954.719561684229,2132.1754383157704" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="7040.745,2230.85 7040.745,2287.85" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="7097.150006062706,2102.5550060627056 7097.150006062706,2026.15 7217.045,2026.15 7217.045,854.45 5900.445000000001,854.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5809.370000000001,872.45 5809.370000000001,892.45 4976.870000000001,892.45 4976.870000000001,912.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5809.370000000001,872.45 5809.370000000001,892.45 5612.02,892.45 5612.02,912.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5809.370000000001,872.45 5809.370000000001,892.45 6222.145,892.45 6222.145,912.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5809.370000000001,872.45 5809.370000000001,892.45 6868.02,892.45 6868.02,912.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="4976.870000000001,948.45 4976.870000000001,1070.075 5589.595000000001,1070.075" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5612.02,948.45 5612.02,1070.075 5589.595000000001,1070.075" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="6222.145,948.45 6222.145,1070.075 6064.895,1070.075" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="6868.02,948.45 6868.02,1070.075 6064.895,1070.075" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="5827.245000000001,1088.075 5827.245000000001,1180.2 5294.445000000001,1180.2 5294.445000000001,1226.7 4640.145,1226.7" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="1812.62" y="794.45" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1826.34" y="807.95" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="4350.165000000001" y="794.45" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="4366.745000000001" y="807.95" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="6747.7125" y="1555.9" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="6761.4325" y="1569.4" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="4350.165000000001" y="1555.9" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="4366.745000000001" y="1569.4" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="251.77499999999995" y="1166.7" width="101.8" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="302.67499999999995" y="1180.2" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">waitForSelector</text>
+<rect x="851.89" y="1166.7" width="50.32" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="877.05" y="1180.2" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">assert</text>
+<rect x="1549.245" y="1166.7" width="61.760000000000005" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1580.125" y="1180.2" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">evaluate</text>
+<rect x="2218.0000000000005" y="1166.7" width="73.2" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2254.6000000000004" y="1180.2" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">screenshot</text>
+<rect x="2788.8" y="1166.7" width="44.6" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2811.1000000000004" y="1180.2" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">click</text>
+<rect x="3412.5100000000007" y="1166.7" width="38.88" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="3431.9500000000007" y="1180.2" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">fill</text>
+<rect x="3773.4000000000005" y="1213.2" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="3789.9800000000005" y="1226.7" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="2098.6775000000002" y="1555.9" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2112.3975" y="1569.4" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="6992.145" y="1399.3000000000002" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="7008.725" y="1412.8000000000002" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="5498.862499999999" y="1852.15" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="5512.5824999999995" y="1865.65" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="7004.1449999999995" y="2245.85" width="73.2" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="7040.745" y="2259.35" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">0 failures</text>
+<rect x="7169.005" y="1555.9" width="96.08" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="7217.045" y="1569.4" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Failures found</text>
+<rect x="1850.8525" y="208" width="410.95000000000005" height="36" rx="0" ry="0" fill="#1a1a2e" stroke="#e050b0" stroke-width="0.75" />
+<polygon points="2056.3275,416 2238.0525,597.725 2056.3275,779.45 1874.6025,597.725" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1620.8649999999998" y="836.45" width="410.95000000000005" height="36" rx="0" ry="0" fill="#111" stroke="#ef4444" stroke-width="0.75" />
+<rect x="4136.245000000001" y="836.45" width="461.00000000000006" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="4100.495000000001" y="912.45" width="532.5" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="4136.245000000001" y="1052.075" width="461.00000000000006" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="4093.3450000000007" y="1208.7" width="546.8000000000001" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="4366.745000000001,1284.7000000000003 4494.845000000001,1412.8000000000002 4366.745000000001,1540.9 4238.645,1412.8000000000002" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="6577.4075" y="1597.9" width="368.05" height="36" rx="0" ry="0" fill="#111" stroke="#ef4444" stroke-width="0.75" />
+<rect x="4254.220000000001" y="1597.9" width="225.05" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="2532.8500000000004,988.45 2614.4750000000004,1070.075 2532.8500000000004,1151.7 2451.2250000000004,1070.075" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="39.99999999999994" y="1208.7" width="525.35" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="589.3499999999999" y="1208.7" width="575.4000000000001" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1188.75" y="1208.7" width="782.7500000000001" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1995.5000000000005" y="1208.7" width="518.2" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2537.7000000000003" y="1208.7" width="546.8000000000001" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="3108.500000000001" y="1208.7" width="646.9000000000001" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="2112.3975,1327.6000000000001 2197.5975,1412.8000000000002 2112.3975,1498.0000000000002 2027.1975,1412.8000000000002" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2021.3225" y="1597.9" width="182.15" height="36" rx="0" ry="0" fill="#111" stroke="#22c55e" stroke-width="0.75" />
+<polygon points="5512.5824999999995,1673.9 5594.2074999999995,1755.525 5512.5824999999995,1837.15 5430.9574999999995,1755.525" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="5439.3825" y="1894.15" width="146.4" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="5181.982499999999" y="1970.15" width="661.2" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="7040.745,2046.15 7133.095,2138.5 7040.745,2230.85 6948.3949999999995,2138.5" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="6788.795" y="2287.85" width="503.90000000000003" height="36" rx="0" ry="0" fill="#111" stroke="#22c55e" stroke-width="0.75" />
+<rect x="5718.295000000001" y="836.45" width="182.15" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="4656.995000000001" y="912.45" width="639.75" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="5320.745000000001" y="912.45" width="582.5500000000001" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="5927.295" y="912.45" width="589.7" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="6540.995000000001" y="912.45" width="654.0500000000001" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="5589.595000000001" y="1052.075" width="475.3" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2301.8025000000002" y="88" width="804.2" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2523.4525000000003" y="148" width="360.90000000000003" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2455.5275" y="208" width="496.75000000000006" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2534.1775000000002" y="268" width="339.45000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2569.9275000000002" y="328" width="267.95000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<text x="2056.3275" y="226" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;Start Validation\nnode validation/run-validation.js&quot;</text>
+<text x="2056.3275" y="597.725" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Dev server\nreachable at\nlocalhost:3000?&quot;</text>
+<text x="1826.3399999999997" y="854.45" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#ef4444">&quot;Exit 1:\nCannot reach server\nRun npm run dev first&quot;</text>
+<text x="4366.745000000001" y="854.45" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Launch headless Chromium\npuppeteer.launch()\n--no-sandbox&quot;</text>
+<text x="4366.745000000001" y="930.45" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Load 107 actions\nfrom puppeteer-checks.js\nOptional: --check filter&quot;</text>
+<text x="4366.745000000001" y="1070.075" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;For each check\n(sequential for deterministic screenshots)&quot;</text>
+<text x="4366.745000000001" y="1226.7" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;page.goto(BASE_URL + route)\nwaitUntil: networkidle2\ntimeout: 10000ms&quot;</text>
+<text x="4366.745000000001" y="1412.8000000000002" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;HTTP status\n=== expected?&quot;</text>
+<text x="6761.4325" y="1615.9" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#ef4444">&quot;FAIL: Expected HTTP 200,\ngot {actual status}&quot;</text>
+<text x="4366.745000000001" y="1615.9" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Execute remaining actions&quot;</text>
+<text x="2532.8500000000004" y="1070.075" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Action\ntype?&quot;</text>
+<text x="302.67499999999995" y="1226.7" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;page.waitForSelector(selector)\ntimeout: 10s\nWaits for DOM element&quot;</text>
+<text x="877.05" y="1226.7" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;page.$(selector)\nelement.isIntersectingViewport()\nVerify element visible&quot;</text>
+<text x="1580.125" y="1226.7" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;page.evaluate(fn)\nRun arbitrary JS in browser\ne.g., getComputedStyle check\nor querySelectorAll count&quot;</text>
+<text x="2254.6000000000004" y="1226.7" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;page.screenshot()\nSave to screenshots/ dir\nFull viewport capture&quot;</text>
+<text x="2811.1000000000004" y="1226.7" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;page.waitForSelector()\npage.click(selector)\nsetTimeout(300ms settle)&quot;</text>
+<text x="3431.9500000000007" y="1226.7" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;page.click(selector, clickCount:3)\npage.type(selector, value)\nSelect-all then type&quot;</text>
+<text x="2112.3975" y="1412.8000000000002" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;More\nactions?&quot;</text>
+<text x="2112.3975" y="1615.9" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#22c55e">&quot;PASS ({duration}ms)&quot;</text>
+<text x="5512.5824999999995" y="1755.525" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;More\nchecks?&quot;</text>
+<text x="5512.5824999999995" y="1912.15" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Summary Report&quot;</text>
+<text x="5512.5824999999995" y="1988.15" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;validation-report.json\ntimestamp, baseUrl,\ntotal, passed, failed,\nper-check results&quot;</text>
+<text x="7040.745" y="2138.5" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Failures\nfound?&quot;</text>
+<text x="7040.745" y="2305.85" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#22c55e">&quot;All 107 actions PASS\n21 screens validated\nScreenshots captured&quot;</text>
+<text x="5809.370000000001" y="854.45" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Categorize Failures&quot;</text>
+<text x="4976.870000000001" y="930.45" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Token Violation\ne.g., bg !== rgb(0,0,0)\nFix: Check tokens.json\nmapping in preset&quot;</text>
+<text x="5612.02" y="930.45" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Missing Selector\ne.g., data-testid not found\nFix: Add testid to component&quot;</text>
+<text x="6222.145" y="930.45" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Branding Drift\ne.g., title !== Awesome Lists\nFix: Re-state brand in prompt&quot;</text>
+<text x="6868.02" y="930.45" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Layout Break\ne.g., element not visible\nFix: Regenerate screen\nwith full token spec&quot;</text>
+<text x="5827.245000000001" y="1070.075" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Regenerate affected screen\nwith corrected tokens\nin prompt&quot;</text>
+<text x="2703.9025" y="106" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Public: 36\nHome(7), Resources(5),\nSearch(5), About(4),\nCategories(5),\nCatDetail(5),\nResourceDetail(5)&quot;</text>
+<text x="2703.9025" y="166" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Auth: 14\nLogin(5),\nRegister(5),\nForgot(4)&quot;</text>
+<text x="2703.9025" y="226" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;User: 18\nProfile(5),\nBookmarks(5),\nFavorites(4),\nHistory(4)&quot;</text>
+<text x="2703.9025" y="286" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Admin: 29\nDashboard(25),\nSuggestEdit(4)&quot;</text>
+<text x="2703.9025" y="346" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Legal: 8\nPrivacy(4),\nTerms(4)&quot;</text>
+</svg>

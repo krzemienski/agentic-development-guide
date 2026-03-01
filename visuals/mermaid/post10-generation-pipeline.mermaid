@@ -1,0 +1,65 @@
+flowchart TD
+    subgraph DESIGN["Design System Definition"]
+        TOKENS["tokens.json\n47 tokens: colors, typography,\nspacing, borderRadius, shadows,\nbreakpoints, transitions, zIndex"]
+        PRESET["tailwind-preset.js\nMaps tokens to Tailwind utilities\nOverrides font-sans with monospace\nCustom gradients + grid patterns"]
+        BRAND["brand tokens\nname: Awesome Lists\ntagline, domain, copyright"]
+        TOKENS --> PRESET
+        BRAND --> PROMPTS
+    end
+
+    subgraph PROMPT_ENG["Prompt Engineering"]
+        TEMPLATE["Prompt Template\n1. Product name (first sentence)\n2. Full DESIGN SYSTEM spec\n3. LAYOUT description\n4. KEY ELEMENTS list\n5. INTERACTIVE STATES"]
+        PROMPTS["21 Screen Prompts\npublic-screens.md (7)\nauth-screens.md (3)\nuser-screens.md (4)\nadmin-screens.md (2)\nlegal-screens.md (2)\n+ category-detail (2)\n+ resource-detail (1)"]
+        TOKENS -.->|"Inline every time\n(prevents context drift)"| PROMPTS
+        TEMPLATE --> PROMPTS
+    end
+
+    subgraph GENERATION["Stitch MCP Generation"]
+        PROMPTS --> S1["Screen 1: Home\nHero + categories grid\n+ stats bar"]
+        PROMPTS --> S2["Screen 2: Resources\nFilter sidebar + card grid\n+ pagination"]
+        PROMPTS --> S3["Screen 3-7\nSearch, About, Categories\nCategory Detail, Resource Detail"]
+        PROMPTS --> S4["Screen 8-10\nLogin, Register,\nForgot Password"]
+        PROMPTS --> S5["Screen 11-14\nProfile, Bookmarks,\nFavorites, History"]
+        PROMPTS --> S6["Screen 15-16\nAdmin Dashboard (20 tabs)\nSuggest Edit"]
+        PROMPTS --> S7["Screen 17-21\nPrivacy, Terms,\n+ 3 remaining screens"]
+
+        S1 --> REVIEW1{"Visual review:\nColors correct?\nFont = monospace?\nBorder radius = 0px?\nBrand name correct?"}
+        S2 --> REVIEW1
+        S3 --> REVIEW1
+        S4 --> REVIEW1
+        S5 --> REVIEW1
+        S6 --> REVIEW1
+        S7 --> REVIEW1
+    end
+
+    subgraph CONVERT["React Conversion"]
+        REVIEW1 -->|Pass| PRIMITIVES["5 Component Primitives\nButton (CVA, 8 variants)\nCard (accent, hoverable)\nInput (label, error, icons)\nTabs (3 variants + scrollable)\nBadge (16 variants)"]
+        PRIMITIVES --> COMPOSITIONS["4 Example Compositions\nHomeHero (hero + stats)\nResourceCard (thumbnail + meta)\nAuthForm (login/register/forgot)\nAdminTabs (20-tab dashboard)"]
+        COMPOSITIONS --> SCREENS["21 Screen Components\nAll with data-testid attributes\nAll using design token classes\nAll importing from primitives"]
+        SCREENS --> TESTIDS["data-testid Architecture\nPlanned before generation:\nhero, hero-headline,\ncta-explore, category-grid,\nresource-card, admin-tabs,\ntab-overview ... tab-reports"]
+    end
+
+    subgraph VALIDATE["Puppeteer Validation"]
+        TESTIDS --> CHECKS["107 Validation Actions\n7 action types:\nnavigate, screenshot,\nwaitForSelector, assert,\nevaluate, click, fill"]
+        CHECKS --> RUNNER["run-validation.js\nSequential execution\nHeadless Chromium\n1440x900 viewport"]
+        RUNNER --> RESULTS{"All 107\nactions pass?"}
+        RESULTS -->|Yes| SHIP["Ship\n21 validated screens\n+ JSON report\n+ screenshots/"]
+        RESULTS -->|No| REPORT["Failure Report\nCheck name, route,\nerror message, duration"]
+        REPORT --> FIX["Fix: Identify which\ntoken/component/selector\nfailed and regenerate"]
+        FIX --> PROMPTS
+    end
+
+    subgraph BRAND_CHECK["Branding Safeguard"]
+        SCREENS --> GREP["grep -rn scan\nForbidden: Video Dashboard,\nPlaceholder, lorem ipsum"]
+        GREP --> BRAND_OK{"Clean?"}
+        BRAND_OK -->|Yes| VALIDATE
+        BRAND_OK -->|No| FIX_BRAND["Replace incorrect names\nwith tokens.brand.name"]
+        FIX_BRAND --> GREP
+    end
+
+    style DESIGN fill:#1a1a2e,stroke:#e050b0,color:#fff
+    style PROMPT_ENG fill:#1a1a2e,stroke:#4dacde,color:#fff
+    style GENERATION fill:#1a1a2e,stroke:#f59e0b,color:#fff
+    style CONVERT fill:#1a1a2e,stroke:#e050b0,color:#fff
+    style VALIDATE fill:#1a1a2e,stroke:#22c55e,color:#fff
+    style BRAND_CHECK fill:#1a1a2e,stroke:#ef4444,color:#fff

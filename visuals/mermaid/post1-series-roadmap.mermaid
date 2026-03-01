@@ -1,0 +1,51 @@
+flowchart TD
+    P1["Post 1: Series Launch\n8,481 Sessions Overview"]
+    P3["Post 3: iOS Client\n763 Sessions, SwiftUI"]
+    P4["Post 4: 5-Layer Bridge\n4 Failures, 1 Architecture"]
+    P2["Post 2: Multi-Agent Consensus\n3 Agents, Hard Gates"]
+    P5["Post 5: Prompt Engineering\n7 Layers, Defense-in-Depth"]
+    P6["Post 6: Parallel Worktrees\n194 Worktrees, Factory Scale"]
+    P7["Post 7: No Unit Tests\nFunctional Validation Only"]
+    P8["Post 8: Ralph Orchestrator\n10 Rust Crates, 30 Agents"]
+    P9["Post 9: Code Tales\nAudio Stories from Repos"]
+    P10["Post 10: Stitch MCP\n21 Screens, One Session"]
+    P11["Post 11: AI Dev OS\n6 Subsystems, Capstone"]
+
+    P1 -->|"foundation"| P3
+    P1 -->|"foundation"| P2
+    P1 -->|"foundation"| P5
+
+    P3 -->|"streaming bug"| P4
+    P4 -->|"bug found by"| P2
+
+    P5 -->|"agent definitions"| P2
+    P5 -->|"prompt layers"| P8
+
+    P2 -->|"QA gates"| P6
+    P6 -->|"build target"| P9
+
+    P7 -->|"validates"| P3
+    P7 -->|"validates"| P9
+    P7 -->|"validates"| P10
+
+    P8 -->|"orchestrates"| P6
+    P8 -->|"orchestrates"| P9
+
+    P9 -->|"design pipeline"| P10
+
+    P3 --> P11
+    P2 --> P11
+    P5 --> P11
+    P6 --> P11
+    P8 --> P11
+
+    classDef core fill:#1a1a2e,stroke:#e94560,color:#fff,stroke-width:2px
+    classDef infra fill:#16213e,stroke:#0f3460,color:#fff,stroke-width:2px
+    classDef product fill:#0f3460,stroke:#533483,color:#fff,stroke-width:2px
+    classDef capstone fill:#533483,stroke:#e94560,color:#fff,stroke-width:3px
+
+    class P1 core
+    class P2,P5,P7 infra
+    class P3,P4,P6,P8 product
+    class P9,P10 product
+    class P11 capstone

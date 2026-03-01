@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2488.0375000000004 4099.75" width="2488.0375000000004" height="4099.75" style="--bg:#0d1117;--fg:#e6edf3;--line:#3d444d;--accent:#4493f8;--muted:#9198a1;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 30%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="var(--_arrow)" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="var(--_arrow)" />
+  </marker>
+</defs>
+<polyline points="249.0875000000001,76 249.0875000000001,116.00000000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="198.5645308254475,250.17703082544745 198.5645308254475,329.20000000000005 103.11250000000018,329.20000000000005 103.11250000000018,688.1750000000001 40.000000000000085,688.1750000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="284.7787572501936,265.00874274980646 284.7787572501936,329.20000000000005 325.21500000000015,329.20000000000005 325.21500000000015,357.70000000000005" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="293.53625915070376,489.27125915070366 293.53625915070376,549.45 255.3675000000003,549.45 255.3675000000003,688.1750000000001 229.3000000000001,688.1750000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="346.2818221780579,499.88317782194235 346.2818221780579,549.45 363.5250000000001,549.45 363.5250000000001,577.95" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="296.7448645097135,731.6198645097135 296.7448645097135,826.9000000000001 150.28750000000036,826.9000000000001 150.28750000000036,2975.05" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="323.6234866340904,758.4984866340903 323.6234866340904,826.9000000000001 284.8125000000002,826.9000000000001 284.8125000000002,855.4000000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="426.46262708260866,735.4623729173916 426.46262708260866,826.9000000000001 548.1625000000004,826.9000000000001 548.1625000000004,855.4000000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="458.6990987499386,703.2259012500615 458.6990987499386,826.9000000000001 1240.7500000000005,826.9000000000001 1240.7500000000005,855.4000000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1240.7500000000005,891.4000000000001 1240.7500000000005,931.4000000000002" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1145.9381868238968,1085.6381868238964 1145.9381868238968,1208.95 752.4625000000003,1208.95 752.4625000000003,1336.825" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1301.298373761961,1119.9016262380394 1301.298373761961,1208.95 1385.5750000000003,1208.95 1385.5750000000003,1237.45" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1298.213722117534,1384.8387221175337 1298.213722117534,1500.7 960.9750000000003,1500.7 960.9750000000003,1671.4750000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1440.3721641006903,1417.40283589931 1440.3721641006903,1500.7 1513.3125000000005,1500.7 1513.3125000000005,1529.2" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1409.4666754091486,1745.9041754091481 1409.4666754091486,1878.25 1165.9125000000004,1878.25 1165.9125000000004,2027.575" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1561.1642278216445,1801.898272178356 1561.1642278216445,1878.25 1593.6625000000004,1878.25 1593.6625000000004,1906.75" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1512.2725625869266,2103.0100625869263 1512.2725625869266,2212.9 1356.5500000000002,2212.9 1356.5500000000002,2372.9500000000003" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1655.8782140206954,2122.184285979305 1655.8782140206954,2212.9 1729.5500000000004,2212.9 1729.5500000000004,2241.4" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1658.9719804255953,2469.9219804255954 1658.9719804255953,2569 1570.4250000000004,2569 1570.4250000000004,2739.775" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1800.1280195744055,2469.9219804255954 1800.1280195744055,2569 1888.6750000000004,2569 1888.6750000000004,2597.5" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1832.8838578088582,2862.258857808858 1832.8838578088582,2946.55 1787.8750000000005,2946.55 1787.8750000000005,2975.05" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1942.6770350368813,2864.0479649631193 1942.6770350368813,2946.55 1984.6000000000004,2946.55 1984.6000000000004,2975.05" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1984.6000000000004,3011.05 1984.6000000000004,3051.05" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1907.8996389228892,3216.2496389228886 1907.8996389228892,3321.4500000000003 1725.5500000000002,3321.4500000000003 1725.5500000000002,3947.75" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2029.0783870967746,3248.471612903226 2029.0783870967746,3321.4500000000003 2071.5250000000005,3321.4500000000003 2071.5250000000005,3349.9500000000003" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2009.2277112984023,3515.252711298402 2009.2277112984023,3606.05 1899.4000000000003,3606.05 1899.4000000000003,3744.65" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2130.2957246623064,3518.779275337695 2130.2957246623064,3606.05 2223.5,3606.05 2223.5,3634.55" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2170.0817813765184,3837.3317813765184 2170.0817813765184,3919.25 2111.4875,3919.25 2111.4875,3947.75" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2276.918218623482,3837.331781376518 2276.918218623482,3919.25 2335.5125000000003,3919.25 2335.5125000000003,3947.75" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="150.28750000000036,3011.05 150.28750000000036,3172 839.6375000000003,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="284.8125000000002,891.4000000000001 284.8125000000002,3172 839.6375000000003,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="548.1625000000004,891.4000000000001 548.1625000000004,3172 839.6375000000003,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="752.4625000000003,1372.825 752.4625000000003,3172 839.6375000000003,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="960.9750000000003,1707.4750000000001 960.9750000000003,3172 839.6375000000003,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1165.9125000000004,2063.575 1165.9125000000004,3172 1164.7875000000004,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1356.5500000000002,2408.9500000000003 1356.5500000000002,3172 1164.7875000000004,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1570.4250000000004,2775.775 1570.4250000000004,3172 1164.7875000000004,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1787.8750000000005,3011.05 1787.8750000000005,3172 1164.7875000000004,3172" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1725.5500000000002,3983.75 1725.5500000000002,4041.75 1726.1000000000004,4041.75" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1899.4000000000003,3780.65 1899.4000000000003,4041.75 1979.7500000000005,4041.75" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2111.4875,3983.75 2111.4875,4041.75 1979.7500000000005,4041.75" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2335.5125000000003,3983.75 2335.5125000000003,4023.75" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="86.53250000000018" y="425.82500000000005" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="103.11250000000018" y="439.32500000000005" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="311.4950000000001" y="315.70000000000005" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="325.21500000000015" y="329.20000000000005" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="207.3275000000003" y="535.95" width="96.08" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="255.3675000000003" y="549.45" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">&quot;No (deleted)&quot;</text>
+<rect x="346.9450000000001" y="535.95" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="363.5250000000001" y="549.45" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="105.10750000000036" y="1675.9750000000001" width="90.36" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="150.28750000000036" y="1689.4750000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">&quot;.sqlite .db&quot;</text>
+<rect x="239.63250000000022" y="813.4000000000001" width="90.36" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="284.8125000000002" y="826.9000000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">&quot;.env .env.*&quot;</text>
+<rect x="480.10250000000036" y="813.4000000000001" width="136.12" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="548.1625000000004" y="826.9000000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">&quot;.pem .key .p12 .pfx&quot;</text>
+<rect x="1195.5700000000004" y="813.4000000000001" width="90.36" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1240.7500000000005" y="826.9000000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">&quot;Source file&quot;</text>
+<rect x="735.8825000000003" y="1195.45" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="752.4625000000003" y="1208.95" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="1371.8550000000002" y="1195.45" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1385.5750000000003" y="1208.95" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="944.3950000000002" y="1487.2" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="960.9750000000003" y="1500.7" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="1499.5925000000004" y="1487.2" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1513.3125000000005" y="1500.7" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="1149.3325000000004" y="1864.75" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1165.9125000000004" y="1878.25" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="1579.9425000000003" y="1864.75" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1593.6625000000004" y="1878.25" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="1339.9700000000003" y="2199.4" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1356.5500000000002" y="2212.9" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="1715.8300000000004" y="2199.4" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1729.5500000000004" y="2212.9" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="1553.8450000000005" y="2555.5" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1570.4250000000004" y="2569" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="1874.9550000000004" y="2555.5" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1888.6750000000004" y="2569" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="1771.2950000000005" y="2933.05" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1787.8750000000005" y="2946.55" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="1970.8800000000003" y="2933.05" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1984.6000000000004" y="2946.55" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="1708.9700000000003" y="3592.55" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1725.5500000000002" y="3606.05" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="2057.8050000000007" y="3307.9500000000003" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2071.5250000000005" y="3321.4500000000003" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="1882.8200000000004" y="3592.55" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1899.4000000000003" y="3606.05" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="2209.78" y="3592.55" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2223.5" y="3606.05" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="2094.9075000000003" y="3905.75" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2111.4875" y="3919.25" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="2321.7925000000005" y="3905.75" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2335.5125000000003" y="3919.25" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="122.26250000000009" y="40" width="253.65" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="249.0875000000001,116.00000000000001 341.4375000000001,208.35000000000002 249.0875000000001,300.70000000000005 156.73750000000007,208.35000000000002" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="40.000000000000085" y="670.1750000000001" width="189.3" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="325.21500000000015,357.70000000000005 406.84000000000015,439.32500000000005 325.21500000000015,520.95 243.59000000000015,439.32500000000005" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="363.5250000000001,577.95 473.7500000000001,688.1750000000001 363.5250000000001,798.4000000000001 253.30000000000007,688.1750000000001" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="48.48750000000035" y="2975.05" width="203.60000000000002" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="172.28750000000022" y="855.4000000000001" width="225.05" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="421.3375000000004" y="855.4000000000001" width="253.65" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1153.2500000000005" y="855.4000000000001" width="175" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1240.7500000000005,931.4000000000002 1365.2750000000005,1055.9250000000002 1240.7500000000005,1180.4500000000003 1116.2250000000004,1055.9250000000002" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="604.1875000000003" y="1336.825" width="296.55" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1385.5750000000003,1237.45 1502.9500000000003,1354.825 1385.5750000000003,1472.2 1268.2000000000003,1354.825" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="855.6000000000003" y="1671.4750000000001" width="210.75000000000003" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1513.3125000000005,1529.2 1673.5875000000005,1689.4750000000001 1513.3125000000005,1849.7500000000002 1353.0375000000004,1689.4750000000001" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1067.6875000000005" y="2027.575" width="196.45000000000002" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1593.6625000000004,1906.75 1732.4875000000004,2045.575 1593.6625000000004,2184.4 1454.8375000000003,2045.575" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1258.3250000000003" y="2372.9500000000003" width="196.45000000000002" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1729.5500000000004,2241.4 1879.1000000000004,2390.9500000000003 1729.5500000000004,2540.5000000000005 1580.0000000000005,2390.9500000000003" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1436.4500000000003" y="2739.775" width="267.95000000000005" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1888.6750000000004,2597.5 2048.9500000000003,2757.775 1888.6750000000004,2918.05 1728.4000000000003,2757.775" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1693.2250000000004" y="2975.05" width="189.3" height="36" rx="0" ry="0" fill="#ff6666" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1911.4000000000003" y="2975.05" width="146.4" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1984.6000000000004,3051.05 2105.55,3172 1984.6000000000004,3292.95 1863.6500000000003,3172" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1588.0000000000002" y="3947.75" width="275.1" height="36" rx="0" ry="0" fill="#ffcc00" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="2071.5250000000005,3349.9500000000003 2185.3250000000007,3463.7500000000005 2071.5250000000005,3577.5500000000006 1957.7250000000006,3463.7500000000005" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1747.5500000000002" y="3744.65" width="303.70000000000005" height="36" rx="0" ry="0" fill="#ffcc00" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="2223.5,3634.55 2351.6,3762.65 2223.5,3890.75 2095.4,3762.65" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2013.2625000000003" y="3947.75" width="196.45000000000002" height="36" rx="0" ry="0" fill="#66aaff" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2233.7125" y="3947.75" width="203.60000000000002" height="36" rx="0" ry="0" fill="#44bb44" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="839.6375000000003" y="3154" width="325.15000000000003" height="36" rx="0" ry="0" fill="#ff4444" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1726.1000000000004" y="4023.75" width="253.65" height="36" rx="0" ry="0" fill="#ffaa00" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="2222.9875" y="4023.75" width="225.05" height="36" rx="0" ry="0" fill="#44bb44" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<text x="249.0875000000001" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Staged File\nReady for Commit&quot;</text>
+<text x="249.0875000000001" y="208.35000000000002" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Is file\nbinary?&quot;</text>
+<text x="134.6500000000001" y="688.1750000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Skip file\n(no scan)&quot;</text>
+<text x="325.21500000000015" y="439.32500000000005" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;File\nexists?&quot;</text>
+<text x="363.5250000000001" y="688.1750000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Check\nfile extension&quot;</text>
+<text x="150.28750000000036" y="2993.05" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nDatabase file&quot;</text>
+<text x="284.8125000000002" y="873.4000000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nEnvironment file&quot;</text>
+<text x="548.1625000000004" y="873.4000000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nCertificate/key file&quot;</text>
+<text x="1240.7500000000005" y="873.4000000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Scan file\ncontent&quot;</text>
+<text x="1240.7500000000005" y="1055.9250000000002" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Match:\nsk-[a-zA-Z0-9]{&#39;{&#39;</text>
+<text x="752.4625000000003" y="1354.825" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nAPI key (OpenAI/Anthropic)&quot;</text>
+<text x="1385.5750000000003" y="1354.825" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Match:\nAKIA[A-Z0-9]{&#39;{&#39;</text>
+<text x="960.9750000000003" y="1689.4750000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nAWS access key&quot;</text>
+<text x="1513.3125000000005" y="1689.4750000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Match:\n(ghp_|ghu_|ghs_|gho_|ghr_)*&quot;</text>
+<text x="1165.9125000000004" y="2045.575" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nGitHub token&quot;</text>
+<text x="1593.6625000000004" y="2045.575" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Match:\nglpat-[a-zA-Z0-9-]{&#39;{&#39;</text>
+<text x="1356.5500000000002" y="2390.9500000000003" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nGitLab token&quot;</text>
+<text x="1729.5500000000004" y="2390.9500000000003" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Match:\nBearer [a-zA-Z0-9_-.]{&#39;{&#39;</text>
+<text x="1570.4250000000002" y="2757.775" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nHardcoded Bearer token&quot;</text>
+<text x="1888.6750000000004" y="2757.775" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Match:\n-----BEGIN PRIVATE KEY-----&quot;</text>
+<text x="1787.8750000000005" y="2993.05" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;BLOCKED\nPrivate key&quot;</text>
+<text x="1984.6000000000004" y="2993.05" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;Warning Checks&quot;</text>
+<text x="1984.6000000000004" y="3172" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;/Users/ or\n/home/ path?&quot;</text>
+<text x="1725.5500000000002" y="3965.75" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#000">&quot;WARNING\nHardcoded absolute path&quot;</text>
+<text x="2071.5250000000005" y="3463.7500000000005" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;password=\nor passwd=?&quot;</text>
+<text x="1899.4" y="3762.65" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#000">&quot;WARNING\nPossible hardcoded password&quot;</text>
+<text x="2223.5" y="3762.65" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">&quot;TODO/FIXME/\nHACK markers?&quot;</text>
+<text x="2111.4875" y="3965.75" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#000">&quot;INFO\nN markers found&quot;</text>
+<text x="2335.5125000000003" y="3965.75" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;CLEAN\nNo issues found&quot;</text>
+<text x="1002.2125000000003" y="3172" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;COMMIT REJECTED\nRemove flagged content&quot;</text>
+<text x="1852.9250000000004" y="4041.75" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#000">&quot;COMMIT ALLOWED\nWith warnings&quot;</text>
+<text x="2335.5125000000003" y="4041.75" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#fff">&quot;COMMIT ALLOWED\nNo issues&quot;</text>
+</svg>

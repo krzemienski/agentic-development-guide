@@ -1,0 +1,45 @@
+flowchart TD
+    subgraph Upward["Data Flow Up (Runtime Feedback)"]
+        direction BT
+        U7["Layer 7: Memory\n(cross-session knowledge)"]
+        U6["Layer 6: Skills\n(validation workflows)"]
+        U5["Layer 5: Security Hook\n(blocked/warned patterns)"]
+        U4["Layer 4: Auto-Build Hook\n(build pass/fail)"]
+        U3["Layer 3: Rules Files\n(domain constraints)"]
+        U2["Layer 2: Project CLAUDE.md\n(project mandates)"]
+        U1["Layer 1: Global CLAUDE.md\n(universal constitution)"]
+
+        U7 -->|"Pitfalls & lessons\nfeed into rules"| U3
+        U6 -->|"Validation results\nconfirm mandate compliance"| U2
+        U5 -->|"Blocked patterns\nreinforce security rules"| U3
+        U4 -->|"Build failures\nforce immediate fix"| U2
+    end
+
+    subgraph Downward["Data Flow Down (Constraint Propagation)"]
+        direction TB
+        D1["Layer 1: Global CLAUDE.md\n'Never write mocks'"]
+        D2["Layer 2: Project CLAUDE.md\n'One change, one verify'"]
+        D3["Layer 3: Rules Files\n'Port 9999, API prefix /api/v1'"]
+        D4["Layer 4: Auto-Build Hook\n'Build after every edit'"]
+        D5["Layer 5: Security Hook\n'Block sk-*, AKIA*, ghp_*'"]
+        D6["Layer 6: Skills\n'Follow validation workflow'"]
+        D7["Layer 7: Memory\n'Remember: UUIDs must be lowercase'"]
+
+        D1 -->|"Constrains all\nproject behavior"| D2
+        D2 -->|"Narrows scope\nto project context"| D3
+        D3 -->|"Provides constants\nfor build commands"| D4
+        D4 -->|"Ensures code compiles\nbefore commit"| D5
+        D5 -->|"Ensures no secrets\nbefore validation"| D6
+        D6 -->|"Records outcomes\nfor future sessions"| D7
+    end
+
+    subgraph Lifecycle["Session Lifecycle"]
+        direction LR
+        SL["Session Load\n(Layers 1-3 + 7)"]
+        ED["Each Edit\n(Layer 4 fires)"]
+        CM["Each Commit\n(Layer 5 fires)"]
+        VL["Validation\n(Layer 6 invoked)"]
+        EN["Session End\n(Layer 7 updated)"]
+
+        SL --> ED --> CM --> VL --> EN
+    end

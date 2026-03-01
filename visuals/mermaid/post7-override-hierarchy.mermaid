@@ -1,0 +1,41 @@
+flowchart TD
+    subgraph Precedence["Override Hierarchy (Highest to Lowest)"]
+        direction TB
+        H["Hook Exit Code\n(Layer 4-5)\nBINARY: pass or fail\nCannot be overridden"]
+        S["Security Scan\n(Layer 5)\nBLOCK = commit rejected\nNo exceptions"]
+        SK["Skill Workflow\n(Layer 6)\nStep-by-step protocol\nAgent must follow sequence"]
+        PR["Project CLAUDE.md\n(Layer 2)\nProject-specific mandates\nOverrides global defaults"]
+        RU["Rules Files\n(Layer 3)\nDomain knowledge\nSupplements CLAUDE.md"]
+        GL["Global CLAUDE.md\n(Layer 1)\nUniversal constitution\nBase behavioral rules"]
+        ME["Memory\n(Layer 7)\nCross-session knowledge\nAdvisory, not mandatory"]
+    end
+
+    H -->|"Overrides everything:\nfailed build blocks\nall further action"| S
+    S -->|"Overrides agent intent:\nblocked pattern =\nno commit regardless"| SK
+    SK -->|"Overrides ad-hoc approach:\nagent follows prescribed\nworkflow steps"| PR
+    PR -->|"Overrides global defaults:\nproject says port 9999\nnot global default 3000"| RU
+    RU -->|"Supplements project rules:\nadds domain detail\nwithout contradicting"| GL
+    GL -->|"Provides baseline:\nagent behavior when\nno override exists"| ME
+
+    subgraph Conflict["When Layers Conflict"]
+        direction LR
+        C1["Global says: 'Use Opus for reviews'\nProject says: 'Use Sonnet for all tasks'"]
+        C1R["Resolution: Project wins\n(Layer 2 > Layer 1)"]
+        C1 --> C1R
+
+        C2["Rules say: 'Build with npm'\nHook detects: TypeScript file"]
+        C2R["Resolution: Hook runs npm build\n(Layer 4 uses Layer 3 context)"]
+        C2 --> C2R
+
+        C3["Memory says: 'Skip linting'\nSecurity hook: scans anyway"]
+        C3R["Resolution: Hook always runs\n(Layer 5 > Layer 7)"]
+        C3 --> C3R
+    end
+
+    style H fill:#ff4444,color:#fff
+    style S fill:#ff6644,color:#fff
+    style SK fill:#ff8844,color:#fff
+    style PR fill:#ffaa44,color:#000
+    style RU fill:#ffcc44,color:#000
+    style GL fill:#44aa44,color:#fff
+    style ME fill:#4488cc,color:#fff

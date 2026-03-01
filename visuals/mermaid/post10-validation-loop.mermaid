@@ -1,0 +1,73 @@
+flowchart TD
+    START["Start Validation\nnode validation/run-validation.js"] --> SERVER_CHECK{"Dev server\nreachable at\nlocalhost:3000?"}
+    SERVER_CHECK -->|No| FAIL_EARLY["Exit 1:\nCannot reach server\nRun npm run dev first"]
+    SERVER_CHECK -->|Yes| LAUNCH["Launch headless Chromium\npuppeteer.launch()\n--no-sandbox"]
+
+    LAUNCH --> INIT["Load 107 actions\nfrom puppeteer-checks.js\nOptional: --check filter"]
+
+    INIT --> LOOP_START["For each check\n(sequential for deterministic screenshots)"]
+
+    LOOP_START --> NAVIGATE["page.goto(BASE_URL + route)\nwaitUntil: networkidle2\ntimeout: 10000ms"]
+
+    NAVIGATE --> STATUS_CHECK{"HTTP status\n=== expected?"}
+    STATUS_CHECK -->|No| CHECK_FAIL["FAIL: Expected HTTP 200,\ngot {actual status}"]
+    STATUS_CHECK -->|Yes| ACTION_LOOP["Execute remaining actions"]
+
+    ACTION_LOOP --> ACTION{"Action\ntype?"}
+
+    ACTION -->|waitForSelector| WAIT["page.waitForSelector(selector)\ntimeout: 10s\nWaits for DOM element"]
+    ACTION -->|assert| ASSERT["page.$(selector)\nelement.isIntersectingViewport()\nVerify element visible"]
+    ACTION -->|evaluate| EVAL["page.evaluate(fn)\nRun arbitrary JS in browser\ne.g., getComputedStyle check\nor querySelectorAll count"]
+    ACTION -->|screenshot| SCREENSHOT["page.screenshot()\nSave to screenshots/ dir\nFull viewport capture"]
+    ACTION -->|click| CLICK["page.waitForSelector()\npage.click(selector)\nsetTimeout(300ms settle)"]
+    ACTION -->|fill| FILL["page.click(selector, clickCount:3)\npage.type(selector, value)\nSelect-all then type"]
+
+    WAIT --> NEXT_ACTION{"More\nactions?"}
+    ASSERT --> NEXT_ACTION
+    EVAL --> NEXT_ACTION
+    SCREENSHOT --> NEXT_ACTION
+    CLICK --> NEXT_ACTION
+    FILL --> NEXT_ACTION
+
+    NEXT_ACTION -->|Yes| ACTION
+    NEXT_ACTION -->|No| CHECK_PASS["PASS ({duration}ms)"]
+
+    CHECK_PASS --> NEXT_CHECK{"More\nchecks?"}
+    CHECK_FAIL --> NEXT_CHECK
+
+    NEXT_CHECK -->|Yes| LOOP_START
+    NEXT_CHECK -->|No| SUMMARY["Summary Report"]
+
+    SUMMARY --> REPORT["validation-report.json\ntimestamp, baseUrl,\ntotal, passed, failed,\nper-check results"]
+
+    REPORT --> ANALYZE{"Failures\nfound?"}
+    ANALYZE -->|0 failures| DONE["All 107 actions PASS\n21 screens validated\nScreenshots captured"]
+
+    ANALYZE -->|Failures found| CATEGORIZE["Categorize Failures"]
+    CATEGORIZE --> CAT_TOKEN["Token Violation\ne.g., bg !== rgb(0,0,0)\nFix: Check tokens.json\nmapping in preset"]
+    CATEGORIZE --> CAT_SELECTOR["Missing Selector\ne.g., data-testid not found\nFix: Add testid to component"]
+    CATEGORIZE --> CAT_BRAND["Branding Drift\ne.g., title !== Awesome Lists\nFix: Re-state brand in prompt"]
+    CATEGORIZE --> CAT_LAYOUT["Layout Break\ne.g., element not visible\nFix: Regenerate screen\nwith full token spec"]
+
+    CAT_TOKEN --> REGEN["Regenerate affected screen\nwith corrected tokens\nin prompt"]
+    CAT_SELECTOR --> REGEN
+    CAT_BRAND --> REGEN
+    CAT_LAYOUT --> REGEN
+
+    REGEN --> NAVIGATE
+
+    subgraph CHECKS_DIST["Check Distribution (107 actions)"]
+        direction LR
+        PUB["Public: 36\nHome(7), Resources(5),\nSearch(5), About(4),\nCategories(5),\nCatDetail(5),\nResourceDetail(5)"]
+        AUTH["Auth: 14\nLogin(5),\nRegister(5),\nForgot(4)"]
+        USER["User: 18\nProfile(5),\nBookmarks(5),\nFavorites(4),\nHistory(4)"]
+        ADMIN["Admin: 29\nDashboard(25),\nSuggestEdit(4)"]
+        LEGAL["Legal: 8\nPrivacy(4),\nTerms(4)"]
+    end
+
+    style START fill:#1a1a2e,stroke:#e050b0,color:#fff
+    style DONE fill:#111,stroke:#22c55e,color:#22c55e
+    style FAIL_EARLY fill:#111,stroke:#ef4444,color:#ef4444
+    style CHECK_PASS fill:#111,stroke:#22c55e,color:#22c55e
+    style CHECK_FAIL fill:#111,stroke:#ef4444,color:#ef4444
+    style CHECKS_DIST fill:#1a1a1a,stroke:#4dacde,color:#a0a0a0

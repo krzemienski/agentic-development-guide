@@ -1,0 +1,87 @@
+flowchart TD
+    subgraph PRIMITIVE["Primitive Tokens (tokens.json)"]
+        direction TB
+        C_BG["colors.background\n#000000"]
+        C_PRI["colors.primary\n#e050b0"]
+        C_SEC["colors.secondary\n#4dacde"]
+        C_SURF["colors.surface\n#111111"]
+        C_SURFA["colors.surfaceAlt\n#1a1a1a"]
+        C_SURFH["colors.surfaceHover\n#222222"]
+        C_TXT["colors.text\n#ffffff"]
+        C_TXTS["colors.textSecondary\n#a0a0a0"]
+        C_TXTM["colors.textMuted\n#606060"]
+        C_BRD["colors.border\n#2a2a2a"]
+        C_BRDA["colors.borderAccent\n#3a3a3a"]
+        C_SUC["colors.success\n#22c55e"]
+        C_WARN["colors.warning\n#f59e0b"]
+        C_ERR["colors.error\n#ef4444"]
+        C_PGLOW["colors.primaryGlow\nrgba(224,80,176,0.3)"]
+        C_SGLOW["colors.secondaryGlow\nrgba(77,172,222,0.3)"]
+        C_PSUB["colors.primarySubtle\nrgba(224,80,176,0.1)"]
+        C_SSUB["colors.secondarySubtle\nrgba(77,172,222,0.1)"]
+
+        T_FONT["typography.fontFamily\nJetBrains Mono, monospace"]
+        T_FALL["typography.fontFamilyFallback\nCourier New, Courier"]
+        T_SIZES["typography.sizes\nxs: 0.75rem ... 4xl: 2.25rem"]
+        T_WEIGHTS["typography.weights\nnormal: 400 ... bold: 700"]
+
+        BR_ALL["borderRadius.*\n0px (ALL values)"]
+
+        S_CARD["shadows.card\n0 4px 16px rgba(0,0,0,0.6)"]
+        S_PGLOW["shadows.primaryGlow\n0 0 20px rgba(224,80,176,0.4)"]
+
+        SP["spacing\n0: 0px ... 20: 5rem"]
+        TR["transitions\nfast: 150ms ... slower: 500ms"]
+        Z["zIndex\nbase: 0 ... toast: 500"]
+    end
+
+    subgraph SEMANTIC["Semantic Tokens (tailwind-preset.js)"]
+        direction TB
+        SC_BG["bg-background\n= tokens.colors.background"]
+        SC_PRI["bg-primary / text-primary\n= tokens.colors.primary"]
+        SC_SEC["bg-secondary / text-secondary\n= tokens.colors.secondary"]
+        SC_SURF["bg-surface / bg-surface-alt\n= tokens.colors.surface / surfaceAlt"]
+        SC_TXT["text-text / text-text-secondary\n= tokens.colors.text / textSecondary"]
+        SC_BRD["border-border\n= tokens.colors.border"]
+        SC_FONT["font-mono AND font-sans\n= JetBrains Mono (both!)"]
+        SC_RAD["rounded-none / rounded-sm / rounded-lg\n= 0px (all identical)"]
+        SC_SHAD["shadow-primary-glow\n= tokens.shadows.primaryGlow"]
+        SC_GRAD["bg-hero-gradient\n= radial-gradient(primary + secondary)"]
+        SC_GRID["bg-grid-pattern\n= 1px border lines at intervals"]
+    end
+
+    subgraph COMPONENT["Component Tokens (CVA variants)"]
+        direction TB
+        BTN_DEF["Button.default\nbg-primary text-black\nhover: shadow primaryGlow"]
+        BTN_SEC["Button.secondary-outline\nborder-secondary text-secondary\nhover: bg-secondary text-black"]
+        BTN_GHO["Button.ghost\nbg-transparent text-text-secondary\nhover: bg-surface text-text"]
+        CARD_BASE["Card.base\nbg-surface border-border\nrounded-none font-mono"]
+        CARD_HOVER["Card.hoverable\nhover: border-primary\nshadow primaryGlow, -translate-y-px"]
+        INPUT_BASE["Input.base\nbg-surface border-border\nfocus: border-primary + glow ring"]
+        BADGE_PRI["Badge.primary\nbg-primary-subtle border-primary\ntext-primary"]
+        TABS_ACTIVE["TabsTrigger.active\nborder-b-2 border-primary\ntext-text"]
+    end
+
+    C_PRI --> SC_PRI
+    C_SEC --> SC_SEC
+    C_BG --> SC_BG
+    C_SURF --> SC_SURF
+    C_TXT --> SC_TXT
+    C_BRD --> SC_BRD
+    T_FONT --> SC_FONT
+    BR_ALL --> SC_RAD
+    S_PGLOW --> SC_SHAD
+    C_PGLOW --> SC_GRAD
+
+    SC_PRI --> BTN_DEF
+    SC_SEC --> BTN_SEC
+    SC_SURF --> CARD_BASE
+    SC_PRI --> CARD_HOVER
+    SC_BRD --> INPUT_BASE
+    SC_PRI --> INPUT_BASE
+    C_PSUB --> BADGE_PRI
+    SC_PRI --> TABS_ACTIVE
+
+    style PRIMITIVE fill:#000,stroke:#2a2a2a,color:#a0a0a0
+    style SEMANTIC fill:#111,stroke:#e050b0,color:#fff
+    style COMPONENT fill:#1a1a1a,stroke:#4dacde,color:#fff
