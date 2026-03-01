@@ -159,3 +159,15 @@ These are orchestration problems, not AI problems. And that is exactly why Ralph
 ---
 
 *Ralph Orchestrator is open source at [github.com/mikeyobrien/ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator). It is built in Rust, ships via cargo-dist to macOS and Linux, and is available as an npm package at `@ralph-orchestrator/ralph`.*
+
+---
+
+## Companion Repository
+
+**[`ralph-orchestrator-guide`](https://github.com/krzemienski/ralph-orchestrator-guide)** — Getting started guide and example configurations for Ralph Orchestrator
+
+---
+
+*Part 6 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

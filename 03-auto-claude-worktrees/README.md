@@ -193,3 +193,15 @@ The worktree factory is running.
 ---
 
 *Auto-Claude is part of the ILS (Intelligent Local Server) ecosystem, built on Claude Code with orchestration through the oh-my-claudecode framework.*
+
+---
+
+## Companion Repository
+
+**[`auto-claude-worktrees`](https://github.com/krzemienski/auto-claude-worktrees)** — CLI tool for automated parallel AI development using git worktrees
+
+---
+
+*Part 3 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

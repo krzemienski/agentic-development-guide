@@ -175,3 +175,15 @@ The goal is not to replicate OMC. It is to recognize that AI-assisted developmen
 ---
 
 *This system powers the development of ILS, a native iOS/macOS client for Claude Code. The 8,481 sessions referenced span 90 days of continuous development across two applications, three backends, and one orchestration layer that keeps improving itself.*
+
+---
+
+## Companion Repository
+
+**[`ai-dev-operating-system`](https://github.com/krzemienski/ai-dev-operating-system)** — Complete starter kit for building your own AI development operating system
+
+---
+
+*Part 10 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

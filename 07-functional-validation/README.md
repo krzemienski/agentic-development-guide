@@ -259,3 +259,15 @@ Zero mock files. 470 screenshots. 37 gates. Three browser tools. The evidence sp
 ---
 
 *This post is part of a series on AI-assisted development practices. The tools and workflows described are used in production across iOS, macOS, and web projects.*
+
+---
+
+## Companion Repository
+
+**[`functional-validation-framework`](https://github.com/krzemienski/functional-validation-framework)** — Validation framework for AI-assisted development with browser + iOS automation + gate system
+
+---
+
+*Part 7 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

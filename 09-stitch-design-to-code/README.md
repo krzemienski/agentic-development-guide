@@ -188,3 +188,15 @@ Design-to-code is not a future workflow. It happened in a single session, with p
 The remaining challenges are not technical — they are procedural. Prompt discipline. Branding governance. Validation coverage. These are process problems, and process problems have process solutions.
 
 Twenty-one screens. One session. Zero Figma files. The tools are ready. The question is whether the workflows are.
+
+---
+
+## Companion Repository
+
+**[`stitch-design-to-code`](https://github.com/krzemienski/stitch-design-to-code)** — Workflow template for Stitch MCP + AI design-to-code with Puppeteer validation
+
+---
+
+*Part 9 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

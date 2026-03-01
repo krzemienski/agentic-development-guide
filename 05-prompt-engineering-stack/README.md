@@ -230,3 +230,15 @@ The prompt engineering stack turns an AI coding assistant from a code generator 
 The investment is front-loaded — building the stack takes real effort. But once built, it pays dividends on every single AI interaction, across every session, for the lifetime of the project. The AI gets better not because the model improves, but because the constraints around it leave no room for the failures that plague unconstrained AI coding.
 
 That is the prompt engineering stack. Not a single file of instructions, but a layered system of enforcement that makes AI development reliable by design.
+
+---
+
+## Companion Repository
+
+**[`claude-prompt-stack`](https://github.com/krzemienski/claude-prompt-stack)** — Template repository for the full 7-layer defense-in-depth system
+
+---
+
+*Part 5 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

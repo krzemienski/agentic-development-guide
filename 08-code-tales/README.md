@@ -129,3 +129,15 @@ The audio debugging saga is perhaps the most instructive episode. Nine commits t
 If you hand Code Tales a GitHub URL today, you will get back a narrated audio story in under two minutes. That story will be accurate, well-paced, and delivered in a voice that matches the narrative style you chose. Behind that experience is a pipeline built by agents, planned through adversarial deliberation, and validated through 37 gates that accept nothing less than real, functional evidence.
 
 The code tells the story. Code Tales just gives it a voice.
+
+---
+
+## Companion Repository
+
+**[`code-tales`](https://github.com/krzemienski/code-tales)** — Transform GitHub repositories into narrated audio stories with 9 narrative styles
+
+---
+
+*Part 8 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

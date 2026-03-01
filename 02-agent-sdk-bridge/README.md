@@ -224,3 +224,15 @@ I considered keeping a warm Python process alive between requests with a stdin/s
 ---
 
 *ILS is a native iOS/macOS client for Claude Code. The chat streaming bridge described here shipped in the v2 release and has been running in production for three weeks. The project memory file for this feature, including all 22 debugging session notes, is preserved in the repository's `.omc/evidence/` directory.*
+
+---
+
+## Companion Repository
+
+**[`claude-sdk-bridge`](https://github.com/krzemienski/claude-sdk-bridge)** — Reference implementation of the 5-layer bridge pattern with failure case documentation
+
+---
+
+*Part 2 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

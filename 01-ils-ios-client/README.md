@@ -186,3 +186,15 @@ ILS ships as a native iOS and macOS app. The Vapor backend bridges Claude Code's
 It works. And the next time Claude Code streams a response to my phone -- each token arriving as an SSE event that traversed five process boundaries to get there -- I will know exactly which layer to blame when it breaks.
 
 *Nick Krzemienski builds AI-native developer tools. ILS is available for iOS and macOS.*
+
+---
+
+## Companion Repository
+
+**[`claude-ios-streaming-bridge`](https://github.com/krzemienski/claude-ios-streaming-bridge)** — Reusable Swift Package + Python bridge for iOS/macOS Claude Code streaming
+
+---
+
+*Part 1 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*

@@ -12,33 +12,43 @@ Every diagram is generated as Mermaid or SVG. Every social card is self-containe
 
 ### 1. [Building a Native iOS Client for Claude Code](./01-ils-ios-client/)
 763 sessions building a SwiftUI app with a 5-layer streaming bridge, SSE real-time rendering, and the two-character fix that stopped every token from appearing twice.
+**Companion repo:** [`claude-ios-streaming-bridge`](https://github.com/krzemienski/claude-ios-streaming-bridge) — Reusable Swift Package + Python bridge
 
 ### 2. [The 5-Layer Bridge: 4 Failed Attempts, 1 Working Architecture](./02-agent-sdk-bridge/)
 A debugging war story: Direct SDK, ClaudeCodeSDK, JS SDK, and raw CLI all failed before a Python subprocess bridge connected iOS to Claude's API.
+**Companion repo:** [`claude-sdk-bridge`](https://github.com/krzemienski/claude-sdk-bridge) — Reference implementation with documented failure cases
 
 ### 3. [Auto-Claude: Spawning 194 Parallel Git Worktrees](./03-auto-claude-worktrees/)
 Factory-scale AI development — 194 isolated worktrees, 91 specs, 3,066 sessions, and a QA pipeline that caught what agents missed.
+**Companion repo:** [`auto-claude-worktrees`](https://github.com/krzemienski/auto-claude-worktrees) — pip-installable CLI for parallel AI development
 
 ### 4. [How 3 AI Agents Found a Bug I Would Have Shipped](./04-multi-agent-consensus/)
 Multi-agent consensus: Lead, Alpha, and Bravo each run independent reviews. A single agent said "looks correct." Three agents caught the P2 streaming duplication bug.
+**Companion repo:** [`multi-agent-consensus`](https://github.com/krzemienski/multi-agent-consensus) — 3-agent consensus validation framework
 
 ### 5. [The Prompt Engineering Stack: 7 Layers of Defense-in-Depth](./05-prompt-engineering-stack/)
 CLAUDE.md hierarchy, 9 rules files, auto-build hooks, 150+ skills, and project memory — a complete system for enforcing development standards with AI agents.
+**Companion repo:** [`claude-prompt-stack`](https://github.com/krzemienski/claude-prompt-stack) — Template repo for the full 7-layer system
 
 ### 6. [Ralph Orchestrator: A Rust Platform for AI Agent Armies](./06-ralph-orchestrator/)
 10 Rust crates, a Hat-based context system, event-sourced merge queues, Telegram control plane, and a companion iOS app — coordinating 30+ agents simultaneously.
+**Companion repo:** [`ralph-orchestrator-guide`](https://github.com/krzemienski/ralph-orchestrator-guide) — Configs, examples, and getting started guide
 
 ### 7. [I Banned Unit Tests from My AI Workflow](./07-functional-validation/)
 Zero mocks, zero stubs. 470 screenshots, 37+ validation gates, and 3 browser automation tools. Why functional validation catches bugs that unit tests systematically miss.
+**Companion repo:** [`functional-validation-framework`](https://github.com/krzemienski/functional-validation-framework) — Browser + iOS automation + gate system
 
 ### 8. [From GitHub Repos to Audio Stories](./08-code-tales/)
 A platform that clones repositories, generates narrative scripts with Claude, converts them to audio with ElevenLabs, and delivers 9 storytelling styles — built with 636 commits across 90 worktree branches.
+**Companion repo:** [`code-tales`](https://github.com/krzemienski/code-tales) — GitHub repos to narrated audio stories
 
 ### 9. [21 AI-Generated Screens in One Session](./09-stitch-design-to-code/)
 Stitch MCP + Gemini 3 Pro: text prompts to validated React components. A complete web application designed, generated, and validated without Figma.
+**Companion repo:** [`stitch-design-to-code`](https://github.com/krzemienski/stitch-design-to-code) — Stitch MCP workflow template with Puppeteer validation
 
 ### 10. [The AI Development Operating System](./10-ai-dev-operating-system/)
 The meta-system: OMC orchestration (25+ agent types), Ralph persistence loops, ralph-specum spec pipelines, and GSD project management — composing into a development OS.
+**Companion repo:** [`ai-dev-operating-system`](https://github.com/krzemienski/ai-dev-operating-system) — Complete starter kit for your own AI dev OS
 
 ---
 

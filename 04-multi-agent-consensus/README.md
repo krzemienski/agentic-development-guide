@@ -230,4 +230,16 @@ The P2 streaming bug lived in my codebase for three days. One structured consens
 
 ---
 
-*The ILS iOS source is at [github.com/nickkrzemienski/ils-ios](https://github.com/nickkrzemienski/ils-ios). The 10-phase audit plans are in `.planning/phases/`, and the consensus evidence artifacts are referenced in each phase's verification documents.*
+*The ILS iOS source is at [github.com/krzemienski/ils-ios](https://github.com/krzemienski/ils-ios). The 10-phase audit plans are in `.planning/phases/`, and the consensus evidence artifacts are referenced in each phase's verification documents.*
+
+---
+
+## Companion Repository
+
+**[`multi-agent-consensus`](https://github.com/krzemienski/multi-agent-consensus)** — Framework for 3-agent consensus validation with hard gates
+
+---
+
+*Part 4 of 10 in the **Agentic Development** series — [View all posts](https://github.com/krzemienski/agentic-development-guide)*
+
+*Nick Krzemienski — March 2026*
