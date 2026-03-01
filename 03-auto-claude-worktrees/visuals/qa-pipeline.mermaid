@@ -1,0 +1,41 @@
+%%{init: {'theme': 'dark', 'themeVariables': {'primaryColor': '#818cf8', 'primaryTextColor': '#e0e7ff', 'primaryBorderColor': '#6366f1', 'lineColor': '#a5b4fc', 'secondaryColor': '#1e1b4b', 'tertiaryColor': '#312e81'}}}%%
+
+flowchart TD
+    COMP[Agent Completes Task] --> QUEUE[QA Review Queue<br>71 reports generated]
+
+    QUEUE --> QAGENT[QA Agent<br>Fresh context only]
+
+    QAGENT --> SPEC[Load Original Spec<br>Acceptance Criteria]
+    SPEC --> DIFF[Analyze Git Diff<br>Against Spec Requirements]
+
+    DIFF --> CHECK1{Acceptance<br>Criteria Met?}
+
+    CHECK1 -->|All pass| CHECK2{Code Quality<br>Acceptable?}
+    CHECK1 -->|Failures found| REJ[Rejection Report<br>Specific Issues Listed]
+
+    CHECK2 -->|Yes| CHECK3{No Regressions<br>Detected?}
+    CHECK2 -->|Issues found| REJ
+
+    CHECK3 -->|Clean| APPROVE[Approved<br>~78% pass 1]
+    CHECK3 -->|Regressions| REJ
+
+    REJ --> SEVERITY{Severity<br>Assessment}
+
+    SEVERITY -->|Fixable| FIXINST[Fix Instructions<br>Actionable Remediation]
+    SEVERITY -->|Fundamental| RESPEC[Re-specification<br>Required]
+
+    FIXINST --> RETURN[Return to<br>Execution Agent]
+    RETURN --> WORKTREE[Fix in Same<br>Worktree]
+    WORKTREE --> RESUBMIT[Resubmit for QA]
+    RESUBMIT --> QAGENT
+
+    RESPEC --> BACKLOG[Return to<br>Spec Phase]
+
+    APPROVE --> MERGE[Enter Merge Queue]
+
+    style COMP fill:#312e81,stroke:#818cf8,stroke-width:2px
+    style APPROVE fill:#065f46,stroke:#10b981,stroke-width:2px,color:#d1fae5
+    style REJ fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fecaca
+    style RESPEC fill:#78350f,stroke:#f59e0b,stroke-width:2px,color:#fef3c7
+    style QAGENT fill:#1e1b4b,stroke:#c084fc,stroke-width:2px
+    style MERGE fill:#065f46,stroke:#10b981,stroke-width:2px,color:#d1fae5

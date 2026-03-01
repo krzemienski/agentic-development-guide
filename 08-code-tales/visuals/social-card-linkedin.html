@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Code Tales - LinkedIn Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 627px; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+  .card {
+    width: 1200px;
+    height: 627px;
+    background: #08060a;
+    background-image: radial-gradient(ellipse 80% 80% at 50% 100%, rgba(255,140,0,0.06) 0%, transparent 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,165,0,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,165,0,0.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .glow-a {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    border-radius: 50%;
+    background: #ff8c00;
+    filter: blur(150px);
+    opacity: 0.08;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .content { position: relative; z-index: 2; text-align: center; }
+  .label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #ff9500;
+    margin-bottom: 28px;
+  }
+  .title {
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 52px;
+    line-height: 1.5;
+  }
+  .metrics {
+    display: flex;
+    gap: 72px;
+    align-items: flex-end;
+  }
+  .metric { text-align: center; }
+  .metric-value {
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .metric-value.primary {
+    font-size: 72px;
+    background: linear-gradient(180deg, #ffcc66 0%, #ff9500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .metric-value.secondary {
+    font-size: 56px;
+    color: rgba(255,255,255,0.8);
+  }
+  .metric-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  .divider {
+    width: 1px;
+    height: 64px;
+    background: linear-gradient(180deg, transparent, rgba(255,165,0,0.3), transparent);
+    align-self: center;
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 5%, #ff9500 30%, #ffb840 50%, #ff9500 70%, transparent 95%);
+  }
+  .tag {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 1px;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="bg-grid"></div>
+  <div class="glow-a"></div>
+  <div class="content">
+    <div class="label">Code Tales</div>
+    <div class="title">From GitHub Repos to Audio Stories</div>
+    <div class="subtitle">Built by autonomous AI agents. Claude AI scripts. ElevenLabs narration.</div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-value primary">636</div>
+        <div class="metric-label">Commits</div>
+      </div>
+      <div class="divider"></div>
+      <div class="metric">
+        <div class="metric-value secondary">90</div>
+        <div class="metric-label">Branches</div>
+      </div>
+      <div class="divider"></div>
+      <div class="metric">
+        <div class="metric-value secondary">9</div>
+        <div class="metric-label">Styles</div>
+      </div>
+    </div>
+  </div>
+  <div class="tag">AI-Agent Development at Scale</div>
+  <div class="bottom-bar"></div>
+</div>
+</body>
+</html>

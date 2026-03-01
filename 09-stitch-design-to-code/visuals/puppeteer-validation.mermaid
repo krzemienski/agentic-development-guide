@@ -1,0 +1,48 @@
+sequenceDiagram
+    participant Agent as Claude Code Agent
+    participant Pup as Puppeteer
+    participant App as Next.js App
+    participant DOM as DOM / Viewport
+
+    Note over Agent,DOM: Validation loop for each of 21 screens
+
+    Agent->>Pup: Launch browser (1920x1080)
+    activate Pup
+
+    loop For each screen (21 total)
+        Agent->>Pup: Navigate to route
+        Pup->>App: GET /screen-path
+        App-->>Pup: Rendered page
+        Pup->>DOM: Wait for selector (content loaded)
+        DOM-->>Pup: Element visible
+
+        Pup->>DOM: Take full-page screenshot
+        DOM-->>Pup: PNG capture
+
+        Pup->>DOM: Evaluate DOM structure
+        Note right of DOM: Query headings, buttons,<br/>cards, forms, nav items
+
+        DOM-->>Pup: Element counts & text content
+        Pup-->>Agent: Assertion results
+
+        alt All assertions pass
+            Agent->>Agent: Mark screen PASS
+        else Assertion failure
+            Agent->>Agent: Log failure details
+            Agent->>Agent: Fix component code
+            Agent->>Pup: Re-navigate & re-validate
+        end
+
+        opt Interactive elements present
+            Pup->>DOM: Click buttons / fill forms
+            DOM-->>Pup: State change response
+            Pup->>DOM: Screenshot post-interaction
+            DOM-->>Pup: Updated capture
+            Pup-->>Agent: Interaction results
+        end
+    end
+
+    Agent->>Agent: Compile validation report
+    Note over Agent: 107 total actions across 21 screens
+
+    deactivate Pup

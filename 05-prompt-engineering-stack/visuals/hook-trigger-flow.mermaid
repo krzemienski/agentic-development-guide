@@ -1,0 +1,55 @@
+---
+title: Hook Trigger Flow
+---
+flowchart LR
+    E["Edit *.swift file"]
+    H{"PostToolUse<br/>Hook Fires"}
+    D{"Detect Target"}
+
+    E --> H --> D
+
+    D -->|"ILSApp/*.swift"| B1["xcodebuild<br/>-scheme ILSApp"]
+    D -->|"ILSMacApp/*.swift"| B2["xcodebuild<br/>-scheme ILSMacApp"]
+    D -->|"Sources/*.swift"| B3["swift build<br/>(backend)"]
+    D -->|"Other *.swift"| SK["No Build<br/>(skip)"]
+
+    B1 --> R{"Build<br/>Result"}
+    B2 --> R
+    B3 --> R
+
+    R -->|"exit 0"| PASS["BUILD SUCCEEDED<br/>Continue editing"]
+    R -->|"exit 1"| FAIL["BUILD FAILED<br/>Must fix before continuing"]
+    FAIL --> FIX["Fix Errors"] --> E
+
+    GC["git commit"]
+    PC{"PreToolUse<br/>Hook Fires"}
+    SC["Security Scan<br/>Staged Files"]
+
+    GC --> PC --> SC
+
+    SC --> CK1{"sk-* / AKIA*<br/>/ ghp_* found?"}
+    SC --> CK2{".sqlite / .db<br/>staged?"}
+    SC --> CK3{"/Users/ paths<br/>found?"}
+
+    CK1 -->|"Yes"| BLK["BLOCKED<br/>Commit rejected"]
+    CK2 -->|"Yes"| BLK
+    CK3 -->|"Yes"| WARN["WARNING<br/>Commit proceeds"]
+    CK1 -->|"No"| OK["PASS"]
+    CK2 -->|"No"| OK
+    CK3 -->|"No"| OK
+
+    OK --> COMMIT["Commit Created"]
+    WARN --> COMMIT
+
+    style E fill:#d9a32f,stroke:#1a1207,color:#1a1207
+    style GC fill:#d9a32f,stroke:#1a1207,color:#1a1207
+    style H fill:#c4891a,stroke:#1a1207,color:#1a1207
+    style PC fill:#c4891a,stroke:#1a1207,color:#1a1207
+    style PASS fill:#2d6a2e,stroke:#4caf50,color:#fff
+    style FAIL fill:#8b1a1a,stroke:#e53935,color:#fff
+    style BLK fill:#8b1a1a,stroke:#e53935,color:#fff
+    style WARN fill:#7a5c00,stroke:#f5bd41,color:#fff
+    style OK fill:#2d6a2e,stroke:#4caf50,color:#fff
+    style COMMIT fill:#2d6a2e,stroke:#4caf50,color:#fff
+    style FIX fill:#7a5c00,stroke:#f5bd41,color:#fff
+    style SK fill:#333,stroke:#666,color:#999

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Hero Image</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1200px; height: 630px; overflow: hidden; background: #0a0a0f; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif; }
+.canvas { width: 1200px; height: 630px; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.glow-orb-1 { position: absolute; width: 600px; height: 600px; top: -100px; left: -100px; background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, rgba(99,102,241,0.05) 40%, transparent 70%); border-radius: 50%; }
+.glow-orb-2 { position: absolute; width: 500px; height: 500px; bottom: -80px; right: -50px; background: radial-gradient(circle, rgba(34,211,238,0.2) 0%, rgba(34,211,238,0.04) 40%, transparent 70%); border-radius: 50%; }
+.glow-orb-3 { position: absolute; width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, rgba(34,211,238,0.08) 30%, transparent 65%); border-radius: 50%; }
+.grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.06) 1px, transparent 1px); background-size: 60px 60px; }
+.category { font-size: 13px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #22d3ee; margin-bottom: 20px; position: relative; z-index: 2; }
+.title { font-size: 58px; font-weight: 800; line-height: 1.1; text-align: center; max-width: 900px; position: relative; z-index: 2; background: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 40%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.subtitle { font-size: 20px; color: #94a3b8; text-align: center; max-width: 780px; line-height: 1.5; position: relative; z-index: 2; margin-bottom: 40px; }
+.subtitle em { font-style: normal; color: #22d3ee; }
+.meta { display: flex; align-items: center; gap: 16px; position: relative; z-index: 2; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #22d3ee); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: #fff; }
+.author-info { display: flex; flex-direction: column; gap: 2px; }
+.author-name { font-size: 15px; font-weight: 600; color: #e2e8f0; }
+.author-date { font-size: 13px; color: #64748b; }
+.divider { width: 1px; height: 32px; background: #334155; }
+.read-time { font-size: 13px; color: #64748b; }
+.node-cluster { position: absolute; z-index: 1; }
+.node { position: absolute; width: 8px; height: 8px; border-radius: 50%; }
+.node-indigo { background: rgba(99,102,241,0.5); box-shadow: 0 0 12px rgba(99,102,241,0.3); }
+.node-cyan { background: rgba(34,211,238,0.5); box-shadow: 0 0 12px rgba(34,211,238,0.3); }
+.connector { position: absolute; height: 1px; transform-origin: left center; z-index: 1; }
+.connector-indigo { background: linear-gradient(90deg, rgba(99,102,241,0.3), transparent); }
+.connector-cyan { background: linear-gradient(90deg, rgba(34,211,238,0.25), transparent); }
+.corner-accent { position: absolute; z-index: 2; }
+.corner-tl { top: 30px; left: 30px; width: 40px; height: 40px; border-top: 2px solid rgba(99,102,241,0.3); border-left: 2px solid rgba(99,102,241,0.3); }
+.corner-br { bottom: 30px; right: 30px; width: 40px; height: 40px; border-bottom: 2px solid rgba(34,211,238,0.3); border-right: 2px solid rgba(34,211,238,0.3); }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="glow-orb-1"></div>
+  <div class="glow-orb-2"></div>
+  <div class="glow-orb-3"></div>
+  <div class="grid"></div>
+  <div class="corner-accent corner-tl"></div>
+  <div class="corner-accent corner-br"></div>
+
+  <div class="node-cluster">
+    <div class="node node-indigo" style="top:80px;left:150px;"></div>
+    <div class="node node-cyan" style="top:120px;left:220px;"></div>
+    <div class="node node-indigo" style="top:90px;left:300px;"></div>
+    <div class="node node-cyan" style="top:480px;left:900px;"></div>
+    <div class="node node-indigo" style="top:520px;left:980px;"></div>
+    <div class="node node-cyan" style="top:500px;left:1050px;"></div>
+    <div class="connector connector-indigo" style="top:84px;left:158px;width:60px;transform:rotate(28deg);"></div>
+    <div class="connector connector-cyan" style="top:124px;left:228px;width:70px;transform:rotate(-20deg);"></div>
+    <div class="connector connector-indigo" style="top:484px;left:908px;width:65px;transform:rotate(30deg);"></div>
+    <div class="connector connector-cyan" style="top:524px;left:988px;width:58px;transform:rotate(-18deg);"></div>
+  </div>
+
+  <div class="category">Meta-System Architecture</div>
+  <div class="title">The AI Development Operating System</div>
+  <div class="subtitle">OMC + Ralph Loop + Spec Pipelines = <em>8,481 sessions</em> of orchestrated development</div>
+  <div class="meta">
+    <div class="avatar">NK</div>
+    <div class="author-info">
+      <div class="author-name">Nick Krzemienski</div>
+      <div class="author-date">March 2026</div>
+    </div>
+    <div class="divider"></div>
+    <div class="read-time">11 min read</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+---
+title: "Traditional Testing vs Functional Validation"
+---
+flowchart LR
+    subgraph Traditional["Traditional Testing Pipeline"]
+        direction TB
+        T1["Write Code"] --> T2["Write Mocks"]
+        T2 --> T3["Write Unit Tests"]
+        T3 --> T4{"Tests Green?"}
+        T4 -- Yes --> T5["Ship"]
+        T4 -- No --> T3
+        T5 --> T6["Users Find Bugs"]
+        T6 --> T1
+    end
+
+    subgraph Functional["Functional Validation Pipeline"]
+        direction TB
+        F1["Write Code"] --> F2["Build Real System"]
+        F2 --> F3["Run in Simulator\nor Browser"]
+        F3 --> F4["Interact via\nReal UI"]
+        F4 --> F5["Capture Screenshot\nEvidence"]
+        F5 --> F6{"Evidence Matches\nSpec?"}
+        F6 -- Yes --> F7["Gate PASS"]
+        F7 --> F8{"All Gates\nPassed?"}
+        F8 -- Yes --> F9["Ship"]
+        F8 -- No --> F4
+        F6 -- No --> F10["Analyze Defect"]
+        F10 --> F1
+    end
+
+    style Traditional fill:#1a1a2e,stroke:#c44040,stroke-width:2px,color:#f0f0f5
+    style Functional fill:#1a1a2e,stroke:#2ecc71,stroke-width:2px,color:#f0f0f5
+    style T6 fill:#3a1a1a,stroke:#c44040,color:#ff6666
+    style F9 fill:#1a3a1a,stroke:#2ecc71,color:#66ff88
+    style T5 fill:#2a2a1a,stroke:#cccc44,color:#eeee66
+    style F7 fill:#1a3a1a,stroke:#2ecc71,color:#66ff88

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Twitter Social Card</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1200px; height: 628px; overflow: hidden; background: #0a0a0f; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif; }
+.card { width: 1200px; height: 628px; position: relative; display: flex; align-items: center; justify-content: center; }
+.glow1 { position: absolute; width: 700px; height: 700px; top: -200px; right: -100px; background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 65%); border-radius: 50%; }
+.glow2 { position: absolute; width: 500px; height: 500px; bottom: -150px; left: -50px; background: radial-gradient(circle, rgba(34,211,238,0.15) 0%, transparent 65%); border-radius: 50%; }
+.grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px); background-size: 50px 50px; }
+.content { position: relative; z-index: 2; display: flex; flex-direction: row; align-items: center; gap: 80px; padding: 0 100px; }
+.left { flex: 1; }
+.category { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #22d3ee; margin-bottom: 20px; }
+.title { font-size: 44px; font-weight: 800; line-height: 1.15; color: #f1f5f9; margin-bottom: 16px; }
+.subtitle { font-size: 16px; color: #64748b; line-height: 1.5; }
+.right { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.metric { font-size: 120px; font-weight: 900; background: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+.metric-label { font-size: 18px; font-weight: 500; color: #94a3b8; letter-spacing: 1px; }
+.border-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #6366f1, #22d3ee); }
+.corner-tl { position: absolute; top: 24px; left: 24px; width: 30px; height: 30px; border-top: 2px solid rgba(99,102,241,0.25); border-left: 2px solid rgba(99,102,241,0.25); }
+.corner-br { position: absolute; bottom: 24px; right: 24px; width: 30px; height: 30px; border-bottom: 2px solid rgba(34,211,238,0.25); border-right: 2px solid rgba(34,211,238,0.25); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="grid"></div>
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
+  <div class="content">
+    <div class="left">
+      <div class="category">Meta-System Architecture</div>
+      <div class="title">The AI Development Operating System</div>
+      <div class="subtitle">OMC orchestration, Ralph Loop persistence, and spec-driven pipelines</div>
+    </div>
+    <div class="right">
+      <div class="metric">8,481</div>
+      <div class="metric-label">sessions orchestrated</div>
+    </div>
+  </div>
+  <div class="border-accent"></div>
+</div>
+</body>
+</html>

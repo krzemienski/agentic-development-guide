@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a14"/>
+      <stop offset="100%" stop-color="#0f0f1e"/>
+    </linearGradient>
+    <linearGradient id="agentGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ecdc4" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="puppeteerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f39c12" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#f39c12" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="playwrightGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#9b59b6" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="520" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="20" font-weight="700" fill="#f0f0f5">Browser Validation Tools — Feature Comparison</text>
+
+  <!-- Column headers -->
+  <text x="108" y="80" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="600" fill="#666680" letter-spacing="1">FEATURE</text>
+  <text x="370" y="80" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="600" fill="#4ecdc4" letter-spacing="1">AGENT-BROWSER</text>
+  <text x="570" y="80" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="600" fill="#f39c12" letter-spacing="1">PUPPETEER MCP</text>
+  <text x="780" y="80" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="600" fill="#9b59b6" letter-spacing="1">PLAYWRIGHT MCP</text>
+
+  <!-- Divider line -->
+  <line x1="30" y1="92" x2="870" y2="92" stroke="#222240" stroke-width="1"/>
+
+  <!-- Row backgrounds (alternating) -->
+  <rect x="20" y="98" width="860" height="40" rx="4" fill="#ffffff" fill-opacity="0.02"/>
+  <rect x="20" y="178" width="860" height="40" rx="4" fill="#ffffff" fill-opacity="0.02"/>
+  <rect x="20" y="258" width="860" height="40" rx="4" fill="#ffffff" fill-opacity="0.02"/>
+  <rect x="20" y="338" width="860" height="40" rx="4" fill="#ffffff" fill-opacity="0.02"/>
+  <rect x="20" y="418" width="860" height="40" rx="4" fill="#ffffff" fill-opacity="0.02"/>
+
+  <!-- Feature labels -->
+  <text x="40" y="123" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">Screenshot Capture</text>
+  <text x="40" y="163" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">DOM Interaction</text>
+  <text x="40" y="203" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">Form Filling</text>
+  <text x="40" y="243" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">Multi-step Flows</text>
+  <text x="40" y="283" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">Cross-browser</text>
+  <text x="40" y="323" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">Network Interception</text>
+  <text x="40" y="363" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">Mobile Emulation</text>
+  <text x="40" y="403" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">MCP Integration</text>
+  <text x="40" y="443" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">Setup Complexity</text>
+  <text x="40" y="483" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c0c0d0">Available Actions</text>
+
+  <!-- Check marks / X marks / Labels -->
+  <!-- agent-browser column -->
+  <text x="370" y="123" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#4ecdc4">Yes</text>
+  <text x="370" y="163" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#4a4a60">Basic</text>
+  <text x="370" y="203" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#c44040">No</text>
+  <text x="370" y="243" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#c44040">No</text>
+  <text x="370" y="283" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#c44040">No</text>
+  <text x="370" y="323" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#c44040">No</text>
+  <text x="370" y="363" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#c44040">No</text>
+  <text x="370" y="403" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#c44040">No</text>
+  <text x="370" y="443" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#4ecdc4">Low</text>
+  <text x="370" y="483" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#4a4a60">~5</text>
+
+  <!-- puppeteer column -->
+  <text x="570" y="123" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#f39c12">Yes</text>
+  <text x="570" y="163" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#f39c12">Yes</text>
+  <text x="570" y="203" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#f39c12">Yes</text>
+  <text x="570" y="243" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#f39c12">Yes</text>
+  <text x="570" y="283" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#4a4a60">Chromium</text>
+  <text x="570" y="323" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#4a4a60">Basic</text>
+  <text x="570" y="363" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#f39c12">Yes</text>
+  <text x="570" y="403" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#f39c12">Yes</text>
+  <text x="570" y="443" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#f39c12">Medium</text>
+  <text x="570" y="483" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#f39c12">107</text>
+
+  <!-- playwright column -->
+  <text x="780" y="123" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">Yes</text>
+  <text x="780" y="163" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">Yes</text>
+  <text x="780" y="203" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">Yes</text>
+  <text x="780" y="243" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">Yes</text>
+  <text x="780" y="283" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">3 Engines</text>
+  <text x="780" y="323" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">Full</text>
+  <text x="780" y="363" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">Yes</text>
+  <text x="780" y="403" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">Yes</text>
+  <text x="780" y="443" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#c44040">High</text>
+  <text x="780" y="483" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#9b59b6">150+</text>
+
+  <!-- Best-for labels at bottom -->
+  <rect x="280" y="498" width="180" height="4" rx="2" fill="#4ecdc4" fill-opacity="0.4"/>
+  <rect x="480" y="498" width="180" height="4" rx="2" fill="#f39c12" fill-opacity="0.4"/>
+  <rect x="690" y="498" width="180" height="4" rx="2" fill="#9b59b6" fill-opacity="0.4"/>
+</svg>

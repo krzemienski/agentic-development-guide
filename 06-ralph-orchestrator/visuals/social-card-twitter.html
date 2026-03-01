@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ralph Orchestrator - Twitter Card</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0f; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.card {
+  width: 1200px;
+  height: 628px;
+  background: linear-gradient(145deg, #0d0b1a 0%, #1a1035 40%, #241852 70%, #1a1035 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 500px 500px at 75% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.grid {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 50px 60px 70px;
+  position: relative;
+  z-index: 2;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 16px;
+  background: rgba(139, 92, 246, 0.06);
+  color: rgba(167, 139, 250, 0.8);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  width: fit-content;
+}
+.badge .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a78bfa;
+}
+h1 {
+  font-size: 44px;
+  font-weight: 700;
+  color: #f5f3ff;
+  line-height: 1.12;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+h1 span {
+  background: linear-gradient(135deg, #c4b5fd, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.desc {
+  font-size: 16px;
+  color: rgba(196, 181, 253, 0.5);
+  line-height: 1.5;
+  max-width: 420px;
+}
+.right {
+  width: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.metric-panel {
+  text-align: center;
+}
+.metric-number {
+  font-size: 160px;
+  font-weight: 800;
+  background: linear-gradient(180deg, #c4b5fd 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.metric-label {
+  font-size: 20px;
+  color: rgba(167, 139, 250, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+.metric-sub {
+  font-size: 13px;
+  color: rgba(167, 139, 250, 0.3);
+  margin-top: 12px;
+}
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #8b5cf6, #a78bfa, #8b5cf6, transparent);
+}
+.corner-accent {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+.corner-accent.tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+.corner-accent.br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="grid"></div>
+  <div class="corner-accent tl"></div>
+  <div class="corner-accent br"></div>
+  <div class="left">
+    <div class="badge"><span class="dot"></span>Rust Orchestrator</div>
+    <h1><span>Ralph</span><br>Orchestrator</h1>
+    <p class="desc">A Rust platform for coordinating AI coding agent fleets. Hat-based context, merge queues, Telegram control plane.</p>
+  </div>
+  <div class="right">
+    <div class="metric-panel">
+      <div class="metric-number">410</div>
+      <div class="metric-label">Sessions</div>
+      <div class="metric-sub">1.05 GB orchestration data</div>
+    </div>
+  </div>
+  <div class="bottom-bar"></div>
+</div>
+</body>
+</html>

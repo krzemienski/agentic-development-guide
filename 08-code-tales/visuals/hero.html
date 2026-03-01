@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Code Tales Hero</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #0d0a06; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+  .hero {
+    width: 1200px;
+    height: 630px;
+    position: relative;
+    background: radial-gradient(ellipse 120% 80% at 30% 60%, #3d2200 0%, #1a0e00 50%, #0d0a06 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,165,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,165,0,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+  }
+  .glow-orb.a { width: 400px; height: 400px; background: #ff8c00; top: -80px; left: -100px; }
+  .glow-orb.b { width: 300px; height: 300px; background: #ffaa00; bottom: -60px; right: 80px; opacity: 0.2; }
+  .glow-orb.c { width: 200px; height: 200px; background: #cc6600; top: 50%; left: 60%; opacity: 0.15; }
+  .content { position: relative; z-index: 2; text-align: center; padding: 0 80px; }
+  .icon-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .icon-block {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+  }
+  .icon-block.repo { background: rgba(255,140,0,0.15); border: 1px solid rgba(255,140,0,0.3); }
+  .icon-block.audio { background: rgba(255,180,50,0.15); border: 1px solid rgba(255,180,50,0.3); }
+  .arrow {
+    color: rgba(255,165,0,0.5);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -4px;
+  }
+  .title {
+    font-size: 54px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+  .title .highlight {
+    background: linear-gradient(135deg, #ff9500, #ffb840);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    font-size: 22px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    max-width: 750px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+  }
+  .stats {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+  }
+  .stat { text-align: center; }
+  .stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffaa30;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+  .border-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff9500, #ffb840, #ff9500, transparent);
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="grid-overlay"></div>
+  <div class="glow-orb a"></div>
+  <div class="glow-orb b"></div>
+  <div class="glow-orb c"></div>
+  <div class="content">
+    <div class="icon-row">
+      <div class="icon-block repo">&#128193;</div>
+      <span class="arrow">&#10230;</span>
+      <div class="icon-block audio">&#127911;</div>
+    </div>
+    <div class="title">From GitHub Repos to<br><span class="highlight">Audio Stories</span></div>
+    <div class="subtitle">Transforming source code into narrated experiences with Claude AI, ElevenLabs, and 90 autonomous agent worktrees.</div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">636</div>
+        <div class="stat-label">Commits</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">90</div>
+        <div class="stat-label">Branches</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">9</div>
+        <div class="stat-label">Styles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">91</div>
+        <div class="stat-label">Specs</div>
+      </div>
+    </div>
+  </div>
+  <div class="border-line"></div>
+</div>
+</body>
+</html>

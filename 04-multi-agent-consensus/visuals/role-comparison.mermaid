@@ -1,0 +1,48 @@
+flowchart TB
+    subgraph Lead["Lead Agent -- Architecture & Consistency"]
+        direction LR
+        L1["Cross-component<br/>consistency"]
+        L2["Pattern compliance<br/>across codebase"]
+        L3["Fix regression<br/>analysis"]
+        L4["SDK + CLI path<br/>verification"]
+    end
+
+    subgraph Alpha["Alpha Agent -- Code & Logic"]
+        direction LR
+        A1["Line-by-line<br/>logic review"]
+        A2["State machine<br/>correctness"]
+        A3["Accumulation<br/>pattern analysis"]
+        A4["API contract<br/>validation"]
+    end
+
+    subgraph Bravo["Bravo Agent -- Visual & Functional"]
+        direction LR
+        B1["Exercise the<br/>running system"]
+        B2["UI behavior<br/>under real data"]
+        B3["Edge case<br/>discovery"]
+        B4["Regression<br/>testing"]
+    end
+
+    subgraph Gate["Consensus Gate"]
+        direction LR
+        CHECK{"All 3<br/>PASS?"}
+        OPEN["Gate OPEN<br/>Advance phase"]
+        CLOSED["Gate CLOSED<br/>Fix cycle"]
+    end
+
+    Lead -->|Evidence artifact| CHECK
+    Alpha -->|Evidence artifact| CHECK
+    Bravo -->|Evidence artifact| CHECK
+    CHECK -->|Unanimous PASS| OPEN
+    CHECK -->|Any FAIL| CLOSED
+    CLOSED -->|"Re-validate ALL 3<br/>(no stale votes)"| Lead
+    CLOSED -->|"Re-validate ALL 3<br/>(no stale votes)"| Alpha
+    CLOSED -->|"Re-validate ALL 3<br/>(no stale votes)"| Bravo
+
+    style Lead fill:#1e3a5f,stroke:#3b82f6,color:#bfdbfe
+    style Alpha fill:#3b1f0b,stroke:#f97316,color:#fed7aa
+    style Bravo fill:#1a2e05,stroke:#84cc16,color:#d9f99d
+    style Gate fill:#1c1917,stroke:#78716c,color:#d6d3d1
+    style CHECK fill:#422006,stroke:#eab308,color:#fef9c3
+    style OPEN fill:#14532d,stroke:#22c55e,color:#dcfce7
+    style CLOSED fill:#7f1d1d,stroke:#ef4444,color:#fca5a5

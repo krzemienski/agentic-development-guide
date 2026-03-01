@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ralph Orchestrator - LinkedIn Card</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0f; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.card {
+  width: 1200px;
+  height: 627px;
+  background: linear-gradient(160deg, #0d0b1a 0%, #161230 30%, #1e1545 60%, #161230 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 700px 400px at 50% 40%, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.grid {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+.top-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  padding: 50px 80px 20px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 16px;
+  background: rgba(139, 92, 246, 0.06);
+  color: rgba(167, 139, 250, 0.7);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.badge .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a78bfa;
+}
+h1 {
+  font-size: 46px;
+  font-weight: 700;
+  color: #f5f3ff;
+  text-align: center;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+h1 span {
+  background: linear-gradient(135deg, #c4b5fd, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle {
+  font-size: 16px;
+  color: rgba(196, 181, 253, 0.45);
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.5;
+}
+.metrics-section {
+  position: relative;
+  z-index: 2;
+  padding: 0 80px 50px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+}
+.metric-card {
+  flex: 1;
+  max-width: 320px;
+  text-align: center;
+  padding: 32px 24px;
+  position: relative;
+}
+.metric-card::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(139, 92, 246, 0.12);
+}
+.metric-card:last-child::after {
+  display: none;
+}
+.metric-value {
+  font-size: 56px;
+  font-weight: 800;
+  background: linear-gradient(180deg, #ddd6fe 0%, #a78bfa 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.metric-label {
+  font-size: 13px;
+  color: rgba(167, 139, 250, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+.metric-detail {
+  font-size: 11px;
+  color: rgba(167, 139, 250, 0.3);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 5%, #7c3aed 25%, #a78bfa 50%, #7c3aed 75%, transparent 95%);
+}
+.top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="grid"></div>
+  <div class="top-line"></div>
+  <div class="top-section">
+    <div class="badge"><span class="dot"></span>Rust v2.6.0 &middot; 10 Crates</div>
+    <h1><span>Ralph Orchestrator</span></h1>
+    <p class="subtitle">A Rust platform for orchestrating AI coding agent fleets with hat-based context, event-sourced merge queues, and a Telegram control plane.</p>
+  </div>
+  <div class="metrics-section">
+    <div class="metric-card">
+      <div class="metric-value">30</div>
+      <div class="metric-label">Worktrees</div>
+      <div class="metric-detail">Simultaneous parallel agents<br>with git-isolated filesystems</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">41</div>
+      <div class="metric-label">Continuations</div>
+      <div class="metric-detail">Longest sustained context arc<br>with memory-backed handoff</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">1,705</div>
+      <div class="metric-label">Screenshots</div>
+      <div class="metric-detail">RalphMobile iOS companion<br>validated through 5 gates</div>
+    </div>
+  </div>
+  <div class="bottom-bar"></div>
+</div>
+</body>
+</html>

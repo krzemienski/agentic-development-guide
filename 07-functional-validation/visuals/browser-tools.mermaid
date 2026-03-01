@@ -1,0 +1,35 @@
+---
+title: "Browser Validation Tools Compared"
+---
+flowchart TB
+    Need["Need Browser\nValidation"] --> Complexity{"Interaction\nComplexity?"}
+
+    Complexity -- "Single page\nscreenshot" --> AB["agent-browser CLI"]
+    Complexity -- "Multi-step flow\nsingle browser" --> PM["Puppeteer MCP\n107 Actions"]
+    Complexity -- "Cross-browser\ncomplex timing" --> PW["Playwright MCP"]
+
+    AB --> AB1["Launch browser"]
+    AB --> AB2["Navigate to URL"]
+    AB --> AB3["Capture screenshot"]
+    AB --> ABOut["Quick visual\nverification"]
+
+    PM --> PM1["Click elements"]
+    PM --> PM2["Fill forms"]
+    PM --> PM3["Wait for network idle"]
+    PM --> PM4["Extract DOM content"]
+    PM --> PMOut["Multi-step flow\nevidence"]
+
+    PW --> PW1["Chromium + Firefox\n+ WebKit"]
+    PW --> PW2["Mobile viewport\nemulation"]
+    PW --> PW3["Network\ninterception"]
+    PW --> PW4["Precise timing\ncontrol"]
+    PW --> PWOut["Cross-browser\nevidence"]
+
+    style Need fill:#1a1a2e,stroke:#8888a0,color:#f0f0f5
+    style Complexity fill:#2a1a1a,stroke:#d43d3d,color:#f0f0f5
+    style AB fill:#1a2a1a,stroke:#4ecdc4,color:#f0f0f5
+    style PM fill:#1a2a1a,stroke:#f39c12,color:#f0f0f5
+    style PW fill:#1a2a1a,stroke:#9b59b6,color:#f0f0f5
+    style ABOut fill:#0d3d3a,stroke:#4ecdc4,color:#4ecdc4
+    style PMOut fill:#3d2d0d,stroke:#f39c12,color:#f39c12
+    style PWOut fill:#2d1a3d,stroke:#9b59b6,color:#9b59b6

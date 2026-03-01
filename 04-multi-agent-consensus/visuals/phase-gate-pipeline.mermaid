@@ -1,0 +1,102 @@
+flowchart LR
+    subgraph P1["Phase 1"]
+        P1T[Discovery<br/>& Research]
+    end
+    subgraph G1["Gate 1"]
+        G1V{3/3<br/>PASS?}
+    end
+    subgraph P2["Phase 2"]
+        P2T[Navigation<br/>& Layout]
+    end
+    subgraph G2["Gate 2"]
+        G2V{3/3<br/>PASS?}
+    end
+    subgraph P3["Phase 3"]
+        P3T[Core Views<br/>& Components]
+    end
+    subgraph G3["Gate 3"]
+        G3V{3/3<br/>PASS?}
+    end
+    subgraph P4["Phase 4"]
+        P4T[Feature<br/>Implementation]
+    end
+    subgraph G4["Gate 4"]
+        direction TB
+        G4V{3/3<br/>PASS?}
+        G4BUG["P2 BUG CAUGHT<br/>Streaming duplication<br/>in ChatViewModel"]
+    end
+    subgraph P5["Phase 5"]
+        P5T[System Monitor<br/>& Profiles]
+    end
+    subgraph G5["Gate 5"]
+        G5V{3/3<br/>PASS?}
+    end
+    subgraph P6["Phase 6"]
+        P6T[Backend API<br/>Audit]
+    end
+    subgraph G6["Gate 6"]
+        G6V{3/3<br/>PASS?}
+    end
+    subgraph P7["Phase 7"]
+        P7T[Integration &<br/>Convergence]
+    end
+    subgraph G7["Gate 7"]
+        G7V{3/3<br/>PASS?}
+    end
+    subgraph P8["Phase 8"]
+        P8T[Cross-Platform<br/>Validation]
+    end
+    subgraph G8["Gate 8"]
+        G8V{3/3<br/>PASS?}
+    end
+    subgraph P9["Phase 9"]
+        P9T[Functional<br/>Bug Hunt]
+    end
+    subgraph G9["Gate 9"]
+        G9V{3/3<br/>PASS?}
+    end
+    subgraph P10["Phase 10"]
+        P10T[Final Gate<br/>REQ-01 to REQ-15]
+    end
+    subgraph G10["Gate 10"]
+        G10V{3/3<br/>PASS?}
+    end
+    subgraph SHIP["Ship"]
+        DONE[Release<br/>Candidate]
+    end
+
+    P1T --> G1V
+    G1V -->|Yes| P2T
+    G1V -->|No| P1T
+    P2T --> G2V
+    G2V -->|Yes| P3T
+    G2V -->|No| P2T
+    P3T --> G3V
+    G3V -->|Yes| P4T
+    G3V -->|No| P3T
+    P4T --> G4V
+    G4V -->|"Alpha FAIL"| G4BUG
+    G4BUG -->|Fix + re-validate| G4V
+    G4V -->|Yes| P5T
+    P5T --> G5V
+    G5V -->|Yes| P6T
+    G5V -->|No| P5T
+    P6T --> G6V
+    G6V -->|Yes| P7T
+    G6V -->|No| P6T
+    P7T --> G7V
+    G7V -->|Yes| P8T
+    G7V -->|No| P7T
+    P8T --> G8V
+    G8V -->|Yes| P9T
+    G8V -->|No| P8T
+    P9T --> G9V
+    G9V -->|Yes| P10T
+    G9V -->|No| P9T
+    P10T --> G10V
+    G10V -->|Yes| DONE
+    G10V -->|No| P10T
+
+    style G4BUG fill:#7f1d1d,stroke:#ef4444,color:#fca5a5
+    style DONE fill:#14532d,stroke:#22c55e,color:#dcfce7
+    style G4V fill:#713f12,stroke:#eab308,color:#fef9c3

@@ -1,0 +1,140 @@
+graph TB
+    subgraph cli_crate["ralph-cli"]
+        cli_run["run"]
+        cli_plan["plan"]
+        cli_task["task"]
+        cli_loops["loops"]
+        cli_web["web"]
+    end
+
+    subgraph core_crate["ralph-core"]
+        core_eventloop["Event Loop<br>(Tokio async)"]
+        core_hatmgr["Hat Manager"]
+        core_hatregistry["Hat Registry"]
+        core_taskstore["Task Store<br>tasks.jsonl"]
+        core_memstore["Memory Store<br>memories.md"]
+        core_mergequeue["Merge Queue<br>merge-queue.jsonl"]
+        core_worktree["Worktree Manager"]
+        core_loopregistry["Loop Registry"]
+        core_looplock["Loop Lock<br>loop.lock"]
+        core_skillregistry["Skill Registry"]
+        core_eventparser["Event Parser"]
+    end
+
+    subgraph proto_crate["ralph-proto"]
+        proto_eventbus["Event Bus"]
+        proto_hats["Hat / HatId"]
+        proto_topics["Topics"]
+        proto_robot["RobotService"]
+    end
+
+    subgraph adapters_crate["ralph-adapters"]
+        adapt_claude["Claude"]
+        adapt_kiro["Kiro"]
+        adapt_gemini["Gemini"]
+        adapt_codex["Codex"]
+        adapt_mock["Mock"]
+    end
+
+    subgraph telegram_crate["ralph-telegram"]
+        tg_bot["Telegram Bot<br>(teloxide)"]
+        tg_handler["Message Handler"]
+        tg_state["Bot State<br>telegram-state.json"]
+    end
+
+    subgraph tui_crate["ralph-tui"]
+        tui_dash["Ratatui Dashboard"]
+        tui_diag["Diagnostics View"]
+    end
+
+    subgraph mobile_crate["ralph-mobile-server"]
+        mobile_http["HTTP API"]
+        mobile_sse["SSE Stream"]
+    end
+
+    subgraph api_crate["ralph-api"]
+        api_rpc["RPC Definitions"]
+        api_trpc["tRPC Router"]
+    end
+
+    subgraph e2e_crate["ralph-e2e"]
+        e2e_mock["Mock Mode"]
+        e2e_live["Live Mode"]
+    end
+
+    subgraph bench_crate["ralph-bench"]
+        bench_perf["Performance Benchmarks"]
+    end
+
+    subgraph web_dashboard["Web Dashboard"]
+        web_backend["Fastify + tRPC"]
+        web_frontend["React + Vite + Tailwind"]
+    end
+
+    subgraph external_systems["External Systems"]
+        ext_git["Git Worktrees"]
+        ext_disk["Disk State<br>.ralph/"]
+        ext_tgapi["Telegram API"]
+        ext_ios["RalphMobile iOS"]
+    end
+
+    %% CLI to Core
+    cli_run --> core_eventloop
+    cli_plan --> core_eventloop
+    cli_task --> core_taskstore
+    cli_loops --> core_loopregistry
+    cli_web --> web_backend
+
+    %% Core internal wiring
+    core_eventloop --> core_hatmgr
+    core_eventloop --> core_eventparser
+    core_eventloop --> core_skillregistry
+    core_hatmgr --> core_hatregistry
+    core_hatmgr --> proto_eventbus
+    core_hatregistry --> proto_hats
+    proto_eventbus --> proto_topics
+    core_eventloop --> core_memstore
+    core_eventloop --> core_taskstore
+    core_eventloop --> core_looplock
+
+    %% Core to Adapters
+    core_eventloop --> adapt_claude
+    core_eventloop --> adapt_kiro
+    core_eventloop --> adapt_gemini
+    core_eventloop --> adapt_codex
+    core_eventloop -.-> adapt_mock
+
+    %% Core to TUI
+    core_eventloop --> tui_dash
+    tui_dash --> tui_diag
+
+    %% Core to Telegram
+    core_eventloop --> tg_bot
+    tg_bot --> tg_handler
+    tg_handler --> tg_state
+    tg_bot --> proto_robot
+    tg_bot --> ext_tgapi
+
+    %% State persistence
+    core_worktree --> ext_git
+    core_mergequeue --> ext_git
+    core_loopregistry --> core_looplock
+    core_memstore --> ext_disk
+    core_taskstore --> ext_disk
+    core_mergequeue --> ext_disk
+
+    %% Mobile server
+    mobile_http --> core_eventloop
+    mobile_sse --> proto_eventbus
+    ext_ios --> mobile_http
+    ext_ios --> mobile_sse
+
+    %% Web dashboard
+    web_frontend --> web_backend
+    web_backend --> api_rpc
+    api_rpc --> core_eventloop
+
+    %% E2E and Bench
+    e2e_mock -.-> adapt_mock
+    e2e_live -.-> core_eventloop
+    bench_perf -.-> core_eventloop

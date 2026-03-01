@@ -1,0 +1,116 @@
+%%{ init: { 'theme': 'dark', 'themeVariables': { 'primaryColor': '#f59e0b', 'primaryBorderColor': '#d97706', 'primaryTextColor': '#fefce8', 'lineColor': '#78716c', 'secondaryColor': '#1c1410', 'tertiaryColor': '#231a10' } } }%%
+
+flowchart LR
+    subgraph phase1["Phase 1: Architecture"]
+        p1_discovery[Discovery<br/>and Research]
+        p1_nav[Navigation<br/>Layout]
+    end
+
+    subgraph gate1["Gate 1"]
+        g1{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph gate2["Gate 2"]
+        g2{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph phase2["Phase 2: Core Views"]
+        p2_views[Components<br/>and Screens]
+        p2_theme[Theme<br/>System]
+    end
+
+    subgraph gate3["Gate 3"]
+        g3{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph gate4["Gate 4"]
+        g4{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph phase3["Phase 3: Feature Implementation"]
+        p3_chat[Streaming<br/>Chat]
+        p3_system[System<br/>Monitor]
+    end
+
+    subgraph gate5["Gate 5"]
+        g5{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph gate6["Gate 6"]
+        g6{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph phase4["Phase 4: Backend API Audit"]
+        p4_api[API Endpoints<br/>Validation]
+        p4_sse[SSE Pipeline<br/>Review]
+    end
+
+    subgraph gate7["Gate 7"]
+        g7{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph gate8["Gate 8"]
+        g8{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph phase5["Phase 5: Integration"]
+        p5_cross[Cross-Platform<br/>iOS + macOS]
+        p5_bugs[Functional<br/>Bug Hunt]
+    end
+
+    subgraph gate9["Gate 9"]
+        g9{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph phase6["Phase 6: Final Verification"]
+        p6_req[REQ-01 through<br/>REQ-15 Traceability]
+    end
+
+    subgraph gate10["Gate 10"]
+        g10{Lead<br/>Alpha<br/>Bravo}
+    end
+
+    subgraph ship["Release"]
+        done[Release<br/>Candidate]
+    end
+
+    p1_discovery --> p1_nav
+    p1_nav --> g1
+    g1 -->|PASS| g2
+    g2 -->|PASS| p2_views
+    g1 -.->|FAIL| p1_discovery
+    g2 -.->|FAIL| p1_nav
+
+    p2_views --> p2_theme
+    p2_theme --> g3
+    g3 -->|PASS| g4
+    g4 -->|PASS| p3_chat
+    g3 -.->|FAIL| p2_views
+    g4 -.->|FAIL| p2_theme
+
+    p3_chat --> p3_system
+    p3_system --> g5
+    g5 -->|PASS| g6
+    g6 -->|PASS| p4_api
+    g5 -.->|FAIL| p3_chat
+    g6 -.->|FAIL| p3_system
+
+    p4_api --> p4_sse
+    p4_sse --> g7
+    g7 -->|PASS| g8
+    g8 -->|PASS| p5_cross
+    g7 -.->|FAIL| p4_api
+    g8 -.->|FAIL| p4_sse
+
+    p5_cross --> p5_bugs
+    p5_bugs --> g9
+    g9 -->|PASS| p6_req
+    g9 -.->|FAIL| p5_cross
+
+    p6_req --> g10
+    g10 -->|PASS| done
+    g10 -.->|FAIL| p6_req
+
+    style g7 fill:#7f1d1d,stroke:#ef4444,color:#fca5a5
+    style p4_sse fill:#451a03,stroke:#f59e0b,color:#fef3c7
+    style done fill:#14532d,stroke:#22c55e,color:#dcfce7

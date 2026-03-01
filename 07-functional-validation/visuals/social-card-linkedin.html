@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Card — LinkedIn</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 627px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #08080e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .bg-mesh {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(180, 30, 30, 0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 60%, rgba(100, 40, 140, 0.05) 0%, transparent 60%);
+  }
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1000px;
+    padding: 0 60px;
+  }
+  .top-tag {
+    display: inline-block;
+    background: rgba(180, 30, 30, 0.1);
+    border: 1px solid rgba(180, 30, 30, 0.25);
+    border-radius: 20px;
+    padding: 5px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #c44040;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 800;
+    color: #f0f0f5;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    font-size: 17px;
+    color: #777790;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .metrics {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .metric {
+    flex: 0 0 260px;
+    padding: 28px 20px;
+    position: relative;
+  }
+  .metric:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(180, 30, 30, 0.2), transparent);
+  }
+  .metric-value {
+    font-size: 56px;
+    font-weight: 900;
+    color: #d43d3d;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6666780;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    color: #555570;
+  }
+  .metric-detail {
+    font-size: 12px;
+    color: #444458;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    display: flex;
+  }
+  .bottom-bar .seg {
+    flex: 1;
+  }
+  .bottom-bar .seg:nth-child(1) { background: #d43d3d; }
+  .bottom-bar .seg:nth-child(2) { background: #f39c12; }
+  .bottom-bar .seg:nth-child(3) { background: #9b59b6; }
+  .corner-text {
+    position: absolute;
+    bottom: 16px;
+    right: 32px;
+    font-size: 12px;
+    color: #333348;
+    letter-spacing: 0.5px;
+  }
+  .corner-left {
+    position: absolute;
+    bottom: 16px;
+    left: 32px;
+    font-size: 12px;
+    color: #333348;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
+  <div class="content">
+    <div class="top-tag">No Mocks Mandate</div>
+    <h1>Functional Validation Replaced Unit Testing<br>Across 5 Production Projects</h1>
+    <p class="subtitle">Real UIs. Real browsers. Real simulators. Evidence-based completion gates instead of mock-backed test suites.</p>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-value">470</div>
+        <div class="metric-label">Screenshots</div>
+        <div class="metric-detail">Captured in a single<br>validation marathon</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">37+</div>
+        <div class="metric-label">Validation Gates</div>
+        <div class="metric-detail">Numbered checkpoints<br>with pass/fail evidence</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">3</div>
+        <div class="metric-label">Browser Tools</div>
+        <div class="metric-detail">agent-browser, Puppeteer MCP,<br>Playwright MCP</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <div class="seg"></div>
+    <div class="seg"></div>
+    <div class="seg"></div>
+  </div>
+  <div class="corner-left">AI-Assisted Development</div>
+  <div class="corner-text">Functional Validation Series</div>
+</body>
+</html>

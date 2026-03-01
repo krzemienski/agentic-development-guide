@@ -1,0 +1,63 @@
+%%{init: {'theme': 'dark', 'themeVariables': {'primaryColor': '#065f46', 'primaryTextColor': '#d1fae5', 'primaryBorderColor': '#059669', 'lineColor': '#34d399', 'secondaryColor': '#0f2922', 'tertiaryColor': '#064e3b', 'background': '#0f172a', 'mainBkg': '#0f2922', 'nodeBorder': '#059669'}}}%%
+
+flowchart TD
+    subgraph ideation[Phase 1: Ideation]
+        CB[Codebase Analysis] --> TG[Task Generation]
+        TG --> TM[Task Manifest<br>194 tasks]
+    end
+
+    subgraph specgen[Phase 2: Spec Generation]
+        TM --> SF[Spec Filter<br>Priority + Dependencies]
+        SF --> SB1[Batch 1]
+        SF --> SB2[Batch 2]
+        SF --> SBN[Batch N]
+        SB1 --> SR[Spec Repository<br>91 specs ready]
+        SB2 --> SR
+        SBN --> SR
+    end
+
+    subgraph factory[Phase 3: Worktree Factory]
+        SR --> WC[Worktree Creator]
+        WC --> WT1[git worktree add<br>auto/modularization]
+        WC --> WT2[git worktree add<br>auto/reduce_any_types]
+        WC --> WT3[git worktree add<br>auto/test_suite]
+        WC --> WTN[git worktree add<br>auto/task_N]
+        WT1 --> INJ1[Inject Spec + Context]
+        WT2 --> INJ2[Inject Spec + Context]
+        WT3 --> INJ3[Inject Spec + Context]
+        WTN --> INJN[Inject Spec + Context]
+        INJ1 --> AG1[Claude Agent 1<br>62 sessions]
+        INJ2 --> AG2[Claude Agent 2<br>60 sessions]
+        INJ3 --> AG3[Claude Agent 3<br>57 sessions]
+        INJN --> AGN[Claude Agent N]
+    end
+
+    subgraph completion[Completion Queue]
+        AG1 --> CQ[Completed Work]
+        AG2 --> CQ
+        AG3 --> CQ
+        AGN --> CQ
+    end
+
+    subgraph qa[Phase 4: QA Pipeline]
+        CQ --> QA_AGENT[QA Review Agent<br>71 reports]
+        QA_AGENT -->|Approved| MQ[Merge Queue]
+        QA_AGENT -->|Rejected| FIX[Fix Cycle]
+        FIX -.-> CQ
+    end
+
+    subgraph merge[Phase 5: Integration]
+        MQ --> CD[Conflict Detection]
+        CD -->|Clean| MG[Merge to Main]
+        CD -->|Conflict| REEXEC[Re-execute on<br>Updated Base]
+        REEXEC -.-> WC
+        MG --> DONE[Integrated Codebase]
+    end
+
+    style ideation fill:#0f2922,stroke:#059669,stroke-width:2px
+    style specgen fill:#0f2922,stroke:#059669,stroke-width:2px
+    style factory fill:#0f2922,stroke:#10b981,stroke-width:2px
+    style completion fill:#0f2922,stroke:#34d399,stroke-width:2px
+    style qa fill:#0f2922,stroke:#6ee7b7,stroke-width:2px
+    style merge fill:#0f2922,stroke:#a7f3d0,stroke-width:2px
+    style DONE fill:#065f46,stroke:#10b981,stroke-width:2px,color:#d1fae5

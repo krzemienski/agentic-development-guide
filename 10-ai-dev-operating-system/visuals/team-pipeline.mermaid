@@ -1,0 +1,34 @@
+stateDiagram-v2
+    [*] --> team_plan
+
+    team_plan: team-plan\nexplore + planner agents\nCodebase discovery, task sequencing
+
+    team_prd: team-prd\nanalyst agent\nAcceptance criteria, scope definition
+
+    team_exec: team-exec\nexecutor + specialists\nParallel implementation
+
+    team_verify: team-verify\nverifier + reviewers\nEvidence collection, quality gates
+
+    team_fix: team-fix\nexecutor + build-fixer + debugger\nBounded fix loop (max attempts)
+
+    complete: Complete\nAll verification passed
+
+    failed: Failed\nMax fix attempts exceeded
+
+    cancelled: Cancelled\nUser or system cancellation
+
+    team_plan --> team_prd: Planning complete
+    team_prd --> team_exec: Scope explicit
+    team_exec --> team_verify: All tasks terminal
+    team_verify --> complete: Verification passed
+    team_verify --> team_fix: Verification failed
+    team_fix --> team_exec: Fixes applied
+    team_fix --> team_verify: Re-verify directly
+    team_fix --> failed: Max attempts exceeded
+    team_plan --> cancelled: Cancel signal
+    team_exec --> cancelled: Cancel signal
+    team_verify --> cancelled: Cancel signal
+
+    complete --> [*]
+    failed --> [*]
+    cancelled --> [*]

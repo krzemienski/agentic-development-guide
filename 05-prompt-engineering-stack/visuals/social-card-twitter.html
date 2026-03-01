@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Card - Twitter</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 628px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #1a1207;
+    display: flex;
+    position: relative;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(217, 163, 47, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(217, 163, 47, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .bg-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 163, 47, 0.12) 0%, transparent 70%);
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+  }
+
+  .left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 50px 60px 70px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .right-panel {
+    width: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 5px 16px;
+    border: 1px solid rgba(217, 163, 47, 0.4);
+    border-radius: 16px;
+    color: #d9a32f;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    background: rgba(217, 163, 47, 0.08);
+    width: fit-content;
+  }
+
+  h1 {
+    font-size: 44px;
+    font-weight: 700;
+    color: #f5f0e8;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  h1 .highlight {
+    background: linear-gradient(135deg, #f5bd41, #d9a32f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: rgba(245, 240, 232, 0.55);
+    line-height: 1.5;
+    max-width: 480px;
+  }
+
+  .big-number {
+    position: relative;
+  }
+
+  .big-number .number {
+    font-size: 180px;
+    font-weight: 800;
+    background: linear-gradient(180deg, #f5bd41 0%, #d9a32f 40%, rgba(217, 163, 47, 0.3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .big-number .label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #d9a32f;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-top: -10px;
+  }
+
+  .big-number .sublabel {
+    font-size: 13px;
+    color: rgba(245, 240, 232, 0.4);
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 28px;
+    margin-top: 32px;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stat .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f5bd41;
+  }
+
+  .stat .name {
+    font-size: 12px;
+    color: rgba(245, 240, 232, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  .divider {
+    position: absolute;
+    right: 380px;
+    top: 80px;
+    bottom: 80px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(217, 163, 47, 0.2), transparent);
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="divider"></div>
+
+  <div class="left-panel">
+    <div class="badge">Prompt Engineering Stack</div>
+    <h1>The <span class="highlight">Defense-in-Depth</span><br>for AI Coding</h1>
+    <p class="subtitle">CLAUDE.md, rules, hooks, and skills working together to enforce standards automatically</p>
+    <div class="stats-row">
+      <div class="stat">
+        <span class="value">9</span>
+        <span class="name">Rules Files</span>
+      </div>
+      <div class="stat">
+        <span class="value">150+</span>
+        <span class="name">Skills</span>
+      </div>
+      <div class="stat">
+        <span class="value">2</span>
+        <span class="name">Hooks</span>
+      </div>
+      <div class="stat">
+        <span class="value">0</span>
+        <span class="name">Mocks Allowed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="big-number">
+      <div class="number">7</div>
+      <div class="label">Layers</div>
+      <div class="sublabel">of enforcement</div>
+    </div>
+  </div>
+</body>
+</html>

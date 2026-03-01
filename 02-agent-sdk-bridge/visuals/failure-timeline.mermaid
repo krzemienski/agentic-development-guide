@@ -1,0 +1,44 @@
+flowchart TD
+    Start["Goal: Stream Claude responses to iOS app"]
+    Start --> A1
+
+    A1["Attempt 1: Direct JS SDK<br/>@anthropic-ai/sdk"]
+    A1 --> F1{"Auth method?"}
+    F1 -->|"Requires ANTHROPIC_API_KEY"| R1["FAILED: Claude Code uses OAuth<br/>No API key available"]
+    R1 --> A2
+
+    A2["Attempt 2: ClaudeCodeSDK Swift<br/>Combine PassthroughSubject"]
+    A2 --> F2{"Runtime scheduler?"}
+    F2 -->|"SDK uses RunLoop"| R2["FAILED: Vapor NIO does not pump RunLoop<br/>Publisher silently drops events"]
+    R2 --> A3
+
+    A3["Attempt 3: Direct Process + GCD<br/>DispatchQueue stdout reading"]
+    A3 --> F3{"Environment clean?"}
+    F3 -->|"Inherits CLAUDECODE=1"| R3["FAILED: CLI nesting detection<br/>blocks subprocess execution"]
+    R3 --> Fix
+
+    Fix["Fix: Strip CLAUDECODE=1 and<br/>CLAUDE_CODE_* env vars"]
+    Fix --> A3b{"Process works but<br/>parsing is fragile"}
+    A3b --> A4
+
+    A4["Attempt 4: Python SDK Bridge<br/>claude-agent-sdk + NDJSON"]
+    A4 --> F4{"Streaming works?"}
+    F4 -->|"flush=True + async iterator"| Success
+
+    Success["SUCCESS: 5-layer bridge<br/>iOS - Vapor - Python - CLI - API"]
+
+    style Start fill:#1a1a2e,stroke:#444,color:#e0e0e0
+    style A1 fill:#1a1a2e,stroke:#555,color:#e0e0e0
+    style A2 fill:#1a1a2e,stroke:#555,color:#e0e0e0
+    style A3 fill:#1a1a2e,stroke:#555,color:#e0e0e0
+    style A4 fill:#1a1a2e,stroke:#555,color:#e0e0e0
+    style R1 fill:#3b1111,stroke:#dc2626,color:#fca5a5
+    style R2 fill:#3b1111,stroke:#dc2626,color:#fca5a5
+    style R3 fill:#3b1111,stroke:#dc2626,color:#fca5a5
+    style F1 fill:#2a1a1a,stroke:#888,color:#e0e0e0
+    style F2 fill:#2a1a1a,stroke:#888,color:#e0e0e0
+    style F3 fill:#2a1a1a,stroke:#888,color:#e0e0e0
+    style F4 fill:#1a2a1a,stroke:#888,color:#e0e0e0
+    style Fix fill:#1a1a2e,stroke:#f59e0b,color:#fde68a
+    style A3b fill:#2a1a1a,stroke:#888,color:#e0e0e0
+    style Success fill:#0f2a0f,stroke:#22c55e,color:#86efac

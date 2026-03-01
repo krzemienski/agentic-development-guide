@@ -1,0 +1,51 @@
+%%{init: {'theme': 'dark', 'themeVariables': {'primaryColor': '#22d3ee', 'primaryTextColor': '#f1f5f9', 'primaryBorderColor': '#334155', 'lineColor': '#475569', 'secondaryColor': '#6366f1', 'tertiaryColor': '#0f172a'}}}%%
+flowchart TB
+    subgraph ClientLayer["iOS / macOS Client"]
+        A1[SwiftUI Views]
+        A2[ChatViewModel]
+        A3[SSEClient]
+        A4[APIClient]
+    end
+
+    subgraph BackendLayer["Vapor Backend — port 9999"]
+        B1[ChatController]
+        B2[ClaudeExecutorService]
+        B3[SessionController]
+        B4[SystemController]
+    end
+
+    subgraph BridgeLayer["Python Bridge"]
+        C1["sdk-wrapper.py"]
+        C2["claude_agent_sdk.query()"]
+    end
+
+    subgraph CLILayer["Claude CLI"]
+        D1[Claude Code Process]
+    end
+
+    subgraph APILayer["Anthropic Cloud"]
+        E1[Anthropic API]
+    end
+
+    A1 -->|"user sends message"| A2
+    A2 -->|"POST /api/v1/chat/stream"| A4
+    A4 -->|"HTTP request"| B1
+    B1 -->|"spawn Process"| B2
+    B2 -->|"python3 sdk-wrapper.py"| C1
+    C1 -->|"SDK call"| C2
+    C2 -->|"CLI invocation"| D1
+    D1 -->|"HTTPS"| E1
+
+    E1 -->|"streaming response"| D1
+    D1 -->|"NDJSON chunks"| C1
+    C1 -->|"stdout NDJSON lines"| B2
+    B2 -->|"SSE events"| B1
+    B1 -->|"text/event-stream"| A3
+    A3 -->|"parsed ChatMessage"| A2
+    A2 -->|"@Observable update"| A1
+
+    style ClientLayer fill:#0f172a,stroke:#22d3ee,stroke-width:2px
+    style BackendLayer fill:#0f172a,stroke:#6366f1,stroke-width:2px
+    style BridgeLayer fill:#0f172a,stroke:#f59e0b,stroke-width:2px
+    style CLILayer fill:#0f172a,stroke:#10b981,stroke-width:2px
+    style APILayer fill:#0f172a,stroke:#ec4899,stroke-width:2px

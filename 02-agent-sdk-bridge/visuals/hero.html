@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Hero Image - Agent SDK Bridge</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #0a0a0f;
+    color: #e8e8ed;
+  }
+  .container {
+    width: 1200px;
+    height: 630px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px;
+    background:
+      radial-gradient(ellipse 900px 500px at 70% 50%, rgba(220, 38, 38, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 400px at 30% 60%, rgba(220, 38, 38, 0.05) 0%, transparent 70%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0f18 50%, #0a0a0f 100%);
+  }
+  .category {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #dc2626;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .category::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: #dc2626;
+  }
+  .title {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: #f0f0f5;
+    margin-bottom: 20px;
+    max-width: 750px;
+  }
+  .title em {
+    font-style: normal;
+    color: #dc2626;
+  }
+  .subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #8888a0;
+    max-width: 620px;
+  }
+  .layer-stack {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .layer {
+    width: 220px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+  }
+  .layer-1 { background: rgba(220, 38, 38, 0.15); border: 1px solid rgba(220, 38, 38, 0.35); color: #f87171; }
+  .layer-2 { background: rgba(220, 38, 38, 0.12); border: 1px solid rgba(220, 38, 38, 0.28); color: #f87171; }
+  .layer-3 { background: rgba(220, 38, 38, 0.09); border: 1px solid rgba(220, 38, 38, 0.22); color: #fca5a5; }
+  .layer-4 { background: rgba(220, 38, 38, 0.06); border: 1px solid rgba(220, 38, 38, 0.16); color: #fca5a5; }
+  .layer-5 { background: rgba(220, 38, 38, 0.04); border: 1px solid rgba(220, 38, 38, 0.10); color: #fecaca; }
+  .connector {
+    width: 2px;
+    height: 6px;
+    background: rgba(220, 38, 38, 0.25);
+    margin: 0 auto;
+  }
+  .layer-label {
+    position: absolute;
+    left: -32px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(220, 38, 38, 0.5);
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    border-top: 1px solid rgba(220, 38, 38, 0.12);
+    background: rgba(10, 10, 15, 0.8);
+  }
+  .author {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b6b80;
+  }
+  .separator {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #3a3a4a;
+    margin: 0 16px;
+  }
+  .read-time {
+    font-size: 14px;
+    color: #6b6b80;
+  }
+  .x-marks {
+    position: absolute;
+    top: 40px;
+    right: 80px;
+    display: flex;
+    gap: 12px;
+  }
+  .x-mark {
+    font-size: 28px;
+    font-weight: 300;
+    color: rgba(220, 38, 38, 0.25);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="x-marks">
+    <span class="x-mark">&times;</span>
+    <span class="x-mark">&times;</span>
+    <span class="x-mark">&times;</span>
+    <span class="x-mark">&times;</span>
+  </div>
+  <div class="category">Debugging War Story</div>
+  <div class="title">Why I Needed <em>5 Layers</em> to Call an API</div>
+  <div class="subtitle">4 failed attempts, 22 sessions, and the bridge pattern that finally worked</div>
+  <div class="layer-stack">
+    <div class="layer layer-1"><span class="layer-label">1</span>iOS App</div>
+    <div class="connector"></div>
+    <div class="layer layer-2"><span class="layer-label">2</span>Vapor Backend</div>
+    <div class="connector"></div>
+    <div class="layer layer-3"><span class="layer-label">3</span>Python Wrapper</div>
+    <div class="connector"></div>
+    <div class="layer layer-4"><span class="layer-label">4</span>Claude CLI</div>
+    <div class="connector"></div>
+    <div class="layer layer-5"><span class="layer-label">5</span>Anthropic API</div>
+  </div>
+  <div class="bottom-bar">
+    <span class="author">Nick &mdash; Building ILS</span>
+    <span class="separator"></span>
+    <span class="read-time">10 min read</span>
+  </div>
+</div>
+</body>
+</html>

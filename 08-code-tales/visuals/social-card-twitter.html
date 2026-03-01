@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Code Tales - Twitter Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 628px; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+  .card {
+    width: 1200px;
+    height: 628px;
+    background: #0a0806;
+    background-image: radial-gradient(ellipse 100% 100% at 70% 50%, rgba(255,140,0,0.08) 0%, transparent 70%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,165,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,165,0,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .left { position: relative; z-index: 2; max-width: 600px; }
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ff9500;
+    margin-bottom: 20px;
+  }
+  .title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .subtitle {
+    font-size: 19px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+  .right {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .big-number {
+    font-size: 180px;
+    font-weight: 800;
+    background: linear-gradient(180deg, #ffb840 0%, #ff8c00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    letter-spacing: -8px;
+  }
+  .big-label {
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-top: -4px;
+  }
+  .glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: #ff8c00;
+    filter: blur(120px);
+    opacity: 0.12;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff9500, transparent);
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="bg-grid"></div>
+  <div class="glow"></div>
+  <div class="left">
+    <div class="label">Code Tales</div>
+    <div class="title">GitHub Repos.<br>Audio Stories.</div>
+    <div class="subtitle">One codebase, nine narrative styles.<br>From fiction to executive briefing.</div>
+  </div>
+  <div class="right">
+    <div class="big-number">9</div>
+    <div class="big-label">Narrative Styles</div>
+  </div>
+  <div class="bottom-line"></div>
+</div>
+</body>
+</html>

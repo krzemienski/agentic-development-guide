@@ -1,0 +1,13 @@
+flowchart LR
+    A["GitHub URL\n(User Input)"]:::input --> B["Clone Repo\n(Shallow)"]:::process
+    B --> C["Analyze Structure\n(Languages, Files,\nDependencies)"]:::process
+    C --> D["Select Style\n(1 of 9 Narratives)"]:::style
+    D --> E["Claude AI\n(Script Generation)"]:::ai
+    E --> F["ElevenLabs\n(TTS Synthesis)"]:::ai
+    F --> G["Audio Player\n(Stream to Device)"]:::output
+
+    classDef input fill:#1a1a2e,stroke:#ff9500,stroke-width:2px,color:#ff9500,font-weight:bold
+    classDef process fill:#16213e,stroke:#4a90d9,stroke-width:1px,color:#e0e0e0
+    classDef style fill:#1a1a2e,stroke:#e6a817,stroke-width:2px,color:#e6a817,font-weight:bold
+    classDef ai fill:#2d1b4e,stroke:#a855f7,stroke-width:2px,color:#c084fc,font-weight:bold
+    classDef output fill:#1a2e1a,stroke:#22c55e,stroke-width:2px,color:#22c55e,font-weight:bold

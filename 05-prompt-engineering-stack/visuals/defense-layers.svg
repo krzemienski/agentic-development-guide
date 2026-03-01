@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1207"/>
+      <stop offset="100%" stop-color="#0f0b04"/>
+    </linearGradient>
+    <linearGradient id="amber1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5bd41"/>
+      <stop offset="100%" stop-color="#d9a32f"/>
+    </linearGradient>
+    <linearGradient id="amber2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d9a32f"/>
+      <stop offset="100%" stop-color="#c4891a"/>
+    </linearGradient>
+    <linearGradient id="amber3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c4891a"/>
+      <stop offset="100%" stop-color="#a06b10"/>
+    </linearGradient>
+    <linearGradient id="amber4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a06b10"/>
+      <stop offset="100%" stop-color="#7a5c00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif; }
+      .title { font-size: 28px; font-weight: 700; fill: #f5f0e8; }
+      .subtitle { font-size: 14px; fill: rgba(245, 240, 232, 0.5); font-weight: 400; }
+      .layer-label { font-size: 15px; font-weight: 700; }
+      .layer-desc { font-size: 12px; fill: rgba(245, 240, 232, 0.7); }
+      .layer-num { font-size: 13px; font-weight: 700; fill: #1a1207; }
+      .mono { font-family: 'SF Mono', 'Fira Code', Consolas, monospace; font-size: 11px; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="900" fill="url(#bgGrad)"/>
+
+  <!-- Grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(217,163,47,0.04)" stroke-width="1"/>
+  </pattern>
+  <rect width="800" height="900" fill="url(#grid)"/>
+
+  <!-- Title -->
+  <text x="400" y="55" text-anchor="middle" class="title">Defense-in-Depth</text>
+  <text x="400" y="80" text-anchor="middle" class="subtitle">7 layers of enforcement for AI development standards</text>
+
+  <!-- Layer 7 (outermost / bottom of pyramid = widest) -->
+  <polygon points="400,120 720,810 80,810" fill="none" stroke="rgba(217,163,47,0.08)" stroke-width="1"/>
+
+  <!-- Layer 7: Project Memory -->
+  <polygon points="130,730 670,730 690,790 110,790" fill="rgba(122,92,0,0.25)" stroke="rgba(122,92,0,0.6)" stroke-width="1.5" rx="4"/>
+  <circle cx="160" cy="760" r="14" fill="#7a5c00"/>
+  <text x="160" y="764" text-anchor="middle" class="layer-num">7</text>
+  <text x="195" y="754" class="layer-label" fill="#d9a32f">Project Memory</text>
+  <text x="195" y="774" class="layer-desc">MEMORY.md &mdash; cross-session knowledge, lessons learned, validated patterns</text>
+
+  <!-- Layer 6: Skills -->
+  <polygon points="160,640 640,640 660,700 140,700" fill="rgba(160,107,16,0.25)" stroke="rgba(160,107,16,0.6)" stroke-width="1.5"/>
+  <circle cx="190" cy="670" r="14" fill="#a06b10"/>
+  <text x="190" y="674" text-anchor="middle" class="layer-num">6</text>
+  <text x="225" y="664" class="layer-label" fill="#d9a32f">Skills (150+)</text>
+  <text x="225" y="684" class="layer-desc">Composable validation workflows with real UI interaction and screenshot evidence</text>
+
+  <!-- Layer 5: Pre-Commit Hook -->
+  <polygon points="190,550 610,550 630,610 170,610" fill="rgba(196,137,26,0.2)" stroke="rgba(196,137,26,0.5)" stroke-width="1.5"/>
+  <circle cx="220" cy="580" r="14" fill="#c4891a"/>
+  <text x="220" y="584" text-anchor="middle" class="layer-num">5</text>
+  <text x="255" y="574" class="layer-label" fill="#f5bd41">Pre-Commit Security Hook</text>
+  <text x="255" y="594" class="layer-desc">Blocks sk-*, AKIA*, ghp_*, .sqlite from reaching version control</text>
+
+  <!-- Layer 4: Auto-Build Hook -->
+  <polygon points="220,460 580,460 600,520 200,520" fill="rgba(217,163,47,0.2)" stroke="rgba(217,163,47,0.5)" stroke-width="1.5"/>
+  <circle cx="250" cy="490" r="14" fill="#d9a32f"/>
+  <text x="250" y="494" text-anchor="middle" class="layer-num">4</text>
+  <text x="285" y="484" class="layer-label" fill="#f5bd41">Auto-Build Hook</text>
+  <text x="285" y="504" class="layer-desc">PostToolUse on *.swift &mdash; immediate xcodebuild after every edit</text>
+
+  <!-- Layer 3: Rules Files -->
+  <polygon points="250,370 550,370 570,430 230,430" fill="rgba(217,163,47,0.25)" stroke="rgba(217,163,47,0.6)" stroke-width="1.5"/>
+  <circle cx="278" cy="400" r="14" fill="#d9a32f"/>
+  <text x="278" y="404" text-anchor="middle" class="layer-num">3</text>
+  <text x="313" y="394" class="layer-label" fill="#f5f0e8">Rules Files (9)</text>
+  <text x="313" y="414" class="layer-desc">Domain-specific: project, agents, workflow, git, hooks, gates, CI</text>
+
+  <!-- Layer 2: Project CLAUDE.md -->
+  <polygon points="280,280 520,280 540,340 260,340" fill="rgba(245,189,65,0.25)" stroke="rgba(245,189,65,0.6)" stroke-width="1.5"/>
+  <circle cx="308" cy="310" r="14" fill="#f5bd41"/>
+  <text x="308" y="314" text-anchor="middle" class="layer-num">2</text>
+  <text x="343" y="304" class="layer-label" fill="#f5f0e8">Project CLAUDE.md</text>
+  <text x="343" y="324" class="layer-desc">No-mocks mandate, skill invocation rules</text>
+
+  <!-- Layer 1: Global CLAUDE.md (innermost / top of pyramid) -->
+  <polygon points="330,190 470,190 490,250 310,250" fill="rgba(245,189,65,0.35)" stroke="rgba(245,189,65,0.8)" stroke-width="2" filter="url(#glow)"/>
+  <circle cx="355" cy="220" r="14" fill="#f5f0e8"/>
+  <text x="355" y="224" text-anchor="middle" class="layer-num" fill="#1a1207">1</text>
+  <text x="388" y="214" class="layer-label" fill="#f5f0e8">Global CLAUDE.md</text>
+  <text x="388" y="234" class="layer-desc">Orchestration, model routing, delegation</text>
+
+  <!-- Side annotations -->
+  <line x1="720" y1="220" x2="720" y2="790" stroke="rgba(217,163,47,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="740" y="220" class="mono" fill="rgba(217,163,47,0.5)" transform="rotate(90,740,220)">Static Instructions &rarr; Dynamic Enforcement</text>
+
+  <!-- Bottom label -->
+  <text x="400" y="850" text-anchor="middle" class="subtitle">Each layer catches failures that slip through the layers above</text>
+  <text x="400" y="875" text-anchor="middle" class="mono" fill="rgba(217,163,47,0.4)">Independent layers &mdash; no single point of failure</text>
+</svg>

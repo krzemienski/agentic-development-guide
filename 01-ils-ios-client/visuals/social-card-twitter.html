@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Twitter Social Card — ILS iOS Client</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .card {
+    width: 1200px;
+    height: 628px;
+    background: #0a0e1a;
+    position: relative;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Background noise texture via gradient */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(34, 211, 238, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(99, 102, 241, 0.06) 0%, transparent 50%);
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 100px;
+  }
+
+  .label-top {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #22d3ee;
+    margin-bottom: 32px;
+  }
+
+  .title {
+    font-size: 44px;
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1.15;
+    margin-bottom: 48px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .big-number {
+    font-size: 140px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #22d3ee 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .big-label {
+    font-size: 22px;
+    font-weight: 500;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+  }
+
+  /* Corner accent */
+  .corner {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(34, 211, 238, 0.1);
+    z-index: 0;
+  }
+  .corner-tl { top: 30px; left: 30px; border-right: none; border-bottom: none; border-radius: 8px 0 0 0; }
+  .corner-br { bottom: 30px; right: 30px; border-left: none; border-top: none; border-radius: 0 0 8px 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-br"></div>
+  <div class="content">
+    <div class="label-top">iOS + AI Agents</div>
+    <div class="title">Building a Native iOS Client for Claude Code</div>
+    <div class="big-number">763</div>
+    <div class="big-label">sessions to ship one app</div>
+  </div>
+</div>
+</body>
+</html>

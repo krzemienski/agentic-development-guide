@@ -1,0 +1,48 @@
+%%{init: {'theme': 'dark', 'themeVariables': {'actorTextColor': '#f1f5f9', 'actorBorder': '#22d3ee', 'actorBkg': '#0f172a', 'signalColor': '#94a3b8', 'signalTextColor': '#f1f5f9', 'noteBkgColor': '#1e293b', 'noteTextColor': '#e2e8f0', 'noteBorderColor': '#334155', 'activationBorderColor': '#22d3ee', 'activationBkgColor': '#1e293b', 'sequenceNumberColor': '#22d3ee'}}}%%
+sequenceDiagram
+    participant User as iOS ChatView
+    participant VM as ChatViewModel
+    participant API as APIClient
+    participant Vapor as Vapor ChatController
+    participant Exec as ClaudeExecutorService
+    participant Py as sdk-wrapper.py
+    participant CLI as Claude CLI
+    participant Cloud as Anthropic API
+
+    User->>VM: sendMessage("Say hi")
+    VM->>VM: isStreaming = true
+    VM->>API: POST /api/v1/chat/stream
+
+    API->>Vapor: HTTP request with prompt + sessionId
+
+    Note over Vapor,Exec: Process.spawn with env stripping
+
+    Vapor->>Exec: execute(prompt, options)
+    Exec->>Exec: strip CLAUDECODE env vars
+    Exec->>Py: python3 sdk-wrapper.py config.json
+
+    Py->>CLI: claude_agent_sdk.query(prompt)
+    CLI->>Cloud: HTTPS streaming request
+
+    loop For each response chunk
+        Cloud-->>CLI: streaming token
+        CLI-->>Py: partial message event
+        Py-->>Py: filter SKIP_EVENT_TYPES
+        Py-->>Exec: NDJSON line on stdout
+        Exec-->>Vapor: parsed CLIMessage
+        Vapor-->>API: SSE event (data: json)
+        API-->>VM: SSEClient.onEvent
+        VM-->>VM: append to messages[]
+        VM-->>User: SwiftUI re-render
+    end
+
+    Note over Py,Exec: Two-tier timeout: 30s initial, 300s total
+
+    Cloud-->>CLI: stream complete
+    CLI-->>Py: message_stop event
+    Py-->>Exec: final NDJSON + EOF
+    Exec-->>Vapor: stream complete
+    Vapor-->>API: SSE close
+
+    VM->>VM: isStreaming = false
+    VM->>User: final render with token count

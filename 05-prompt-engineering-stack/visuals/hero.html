@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prompt Engineering Stack</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #1a1207;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(217, 163, 47, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(217, 163, 47, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 163, 47, 0.15) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bg-glow-secondary {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 189, 65, 0.08) 0%, transparent 70%);
+    top: 20%;
+    right: 10%;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1000px;
+    padding: 0 60px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 20px;
+    border: 1px solid rgba(217, 163, 47, 0.4);
+    border-radius: 20px;
+    color: #d9a32f;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    background: rgba(217, 163, 47, 0.08);
+  }
+
+  h1 {
+    font-size: 56px;
+    font-weight: 700;
+    color: #f5f0e8;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+
+  h1 .highlight {
+    background: linear-gradient(135deg, #f5bd41, #d9a32f, #c4891a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    color: rgba(245, 240, 232, 0.6);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+
+  .stack-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stack-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(217, 163, 47, 0.1);
+    border: 1px solid rgba(217, 163, 47, 0.25);
+    border-radius: 8px;
+    color: #d9a32f;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  }
+
+  .stack-item .icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .corner-decoration {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-color: rgba(217, 163, 47, 0.15);
+    border-style: solid;
+  }
+  .corner-tl { top: 30px; left: 30px; border-width: 2px 0 0 2px; }
+  .corner-br { bottom: 30px; right: 30px; border-width: 0 2px 2px 0; }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-glow-secondary"></div>
+  <div class="corner-decoration corner-tl"></div>
+  <div class="corner-decoration corner-br"></div>
+
+  <div class="content">
+    <div class="badge">AI Development Infrastructure</div>
+    <h1>The <span class="highlight">Prompt Engineering</span> Stack</h1>
+    <p class="subtitle">CLAUDE.md, Rules, Skills, and Hooks &mdash; 7 layers of defense-in-depth for AI coding standards</p>
+    <div class="stack-row">
+      <div class="stack-item"><span class="icon">&#9638;</span> CLAUDE.md</div>
+      <div class="stack-item"><span class="icon">&#9670;</span> 9 Rules</div>
+      <div class="stack-item"><span class="icon">&#9881;</span> Hooks</div>
+      <div class="stack-item"><span class="icon">&#9733;</span> 150+ Skills</div>
+      <div class="stack-item"><span class="icon">&#9635;</span> Memory</div>
+    </div>
+  </div>
+</body>
+</html>

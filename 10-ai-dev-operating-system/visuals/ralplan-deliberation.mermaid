@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant P as Planner
+    participant C as Critic
+    participant O as Output
+
+    Note over P,C: RALPLAN Deliberation (up to 3 iterations)
+
+    P->>C: Initial plan (tasks, sequencing, risks)
+    Note right of C: Checks task counts<br/>Evaluates feasibility<br/>Verifies completeness
+
+    C->>P: REJECT: 12 tasks undercounted,<br/>missing auth edge cases
+
+    P->>C: Revised plan v2 (expanded tasks, edge cases added)
+    Note right of C: Re-checks counts<br/>Validates revisions<br/>Tests assumptions
+
+    C->>P: REJECT: Pre-mortem missing,<br/>rollback strategy unclear
+
+    P->>C: Revised plan v3 (pre-mortem, rollback plan)
+    Note right of C: Final review<br/>All criteria met<br/>Feasibility confirmed
+
+    C->>O: APPROVE: Plan finalized
+
+    Note over P,O: --deliberate flag adds:<br/>Pre-mortem analysis<br/>Expanded test planning<br/>(unit/integration/e2e/observability)

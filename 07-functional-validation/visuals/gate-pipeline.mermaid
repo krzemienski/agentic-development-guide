@@ -1,0 +1,86 @@
+---
+title: "37-Gate Validation Pipeline"
+---
+flowchart TB
+    Start(["Start Validation"]) --> G1
+
+    subgraph Phase1["Phase 1: Core Navigation"]
+        G1["Gate 1\nApp Launch"] --> G2["Gate 2\nSidebar Renders"]
+        G2 --> G3["Gate 3\nHome Screen"]
+        G3 --> G4["Gate 4\nNavigation Routes"]
+        G4 --> G5["Gate 5\nDeep Links"]
+    end
+
+    subgraph Phase2["Phase 2: Data Display"]
+        G6["Gate 6\nSessions List"] --> G7["Gate 7\nProjects List"]
+        G7 --> G8["Gate 8\nSkills Browser"]
+        G8 --> G9["Gate 9\nMCP Servers"]
+        G9 --> G10["Gate 10\nPlugins Browser"]
+    end
+
+    subgraph Phase3["Phase 3: Interactive Features"]
+        G11["Gate 11\nChat Opens"] --> G12["Gate 12\nMessage Renders"]
+        G12 --> G13["Gate 13\nSSE Streaming"]
+        G13 --> G14["Gate 14\nChat Export"]
+        G14 --> G15["Gate 15\nSession Switch"]
+    end
+
+    subgraph Phase4["Phase 4: System"]
+        G16["Gate 16\nSystem Monitor"] --> G17["Gate 17\nCPU Metrics"]
+        G17 --> G18["Gate 18\nMemory Metrics"]
+        G18 --> G19["Gate 19\nProcess List"]
+        G19 --> G20["Gate 20\nNetwork Stats"]
+    end
+
+    subgraph Phase5["Phase 5: Configuration"]
+        G21["Gate 21\nSettings Screen"] --> G22["Gate 22\nFleet Status"]
+        G22 --> G23["Gate 23\nTheme Editor"]
+        G23 --> G24["Gate 24\nTheme Apply"]
+        G24 --> G25["Gate 25\nHooks Config"]
+    end
+
+    subgraph Phase6["Phase 6: Premium"]
+        G26["Gate 26\nFeature Gates"] --> G27["Gate 27\nPaywall Sheet"]
+        G27 --> G28["Gate 28\nFree Tier Limits"]
+        G28 --> G29["Gate 29\nPremium Unlock"]
+        G29 --> G30["Gate 30\nExport Gate"]
+    end
+
+    subgraph Phase7["Phase 7: Platform + Polish"]
+        G31["Gate 31\nmacOS Build"] --> G32["Gate 32\nmacOS Navigation"]
+        G32 --> G33["Gate 33\nAccessibility Labels"]
+        G33 --> G34["Gate 34\nDynamic Type"]
+        G34 --> G35["Gate 35\nReduce Motion"]
+        G35 --> G36["Gate 36\nError States"]
+        G36 --> G37["Gate 37\nFull Regression"]
+    end
+
+    G5 --> G6
+    G10 --> G11
+    G15 --> G16
+    G20 --> G21
+    G25 --> G26
+    G30 --> G31
+
+    G37 --> Decision{"All 37\nGates PASS?"}
+    Decision -- Yes --> Ship(["Ship"])
+    Decision -- No --> FailGate["Identify Failed Gate"]
+    FailGate --> Fix["Fix Implementation"]
+    Fix --> Rebuild["Rebuild System"]
+    Rebuild --> Rerun["Re-run from\nFailed Gate"]
+    Rerun --> Decision
+
+    style Start fill:#1a1a2e,stroke:#8888a0,color:#f0f0f5
+    style Ship fill:#1a3a1a,stroke:#2ecc71,color:#66ff88
+    style Decision fill:#2a2a1a,stroke:#cccc44,color:#f0f0f5
+    style FailGate fill:#3a1a1a,stroke:#c44040,color:#ff6666
+    style Fix fill:#2a1a1a,stroke:#d43d3d,color:#f0f0f5
+    style Rebuild fill:#2a1a1a,stroke:#d43d3d,color:#f0f0f5
+    style Rerun fill:#2a1a1a,stroke:#d43d3d,color:#f0f0f5
+    style Phase1 fill:#12121e,stroke:#4ecdc4,color:#4ecdc4
+    style Phase2 fill:#12121e,stroke:#f39c12,color:#f39c12
+    style Phase3 fill:#12121e,stroke:#e74c3c,color:#e74c3c
+    style Phase4 fill:#12121e,stroke:#9b59b6,color:#9b59b6
+    style Phase5 fill:#12121e,stroke:#3498db,color:#3498db
+    style Phase6 fill:#12121e,stroke:#e67e22,color:#e67e22
+    style Phase7 fill:#12121e,stroke:#1abc9c,color:#1abc9c

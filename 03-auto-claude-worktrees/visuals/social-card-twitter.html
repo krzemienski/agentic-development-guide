@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Auto-Claude Twitter Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 628px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #0f0a2e;
+    position: relative;
+  }
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .glow {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(99, 102, 241, 0.2) 0%, transparent 65%);
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 0 100px;
+  }
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(199, 210, 254, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .big-number {
+    font-size: 160px;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, #818cf8, #c084fc, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -4px;
+  }
+  .unit {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e0e7ff;
+    margin-top: 12px;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(199, 210, 254, 0.45);
+    margin-top: 16px;
+    line-height: 1.5;
+    max-width: 600px;
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #818cf8, #c084fc, #22d3ee, #818cf8, #6366f1);
+  }
+  .corner {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(199, 210, 254, 0.2);
+    letter-spacing: 1px;
+  }
+  .dots {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    display: flex;
+    gap: 6px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.4);
+  }
+  .dot.active {
+    background: #22d3ee;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow"></div>
+  <div class="dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="content">
+    <div class="label">Auto-Claude</div>
+    <div class="big-number">194</div>
+    <div class="unit">Parallel AI Worktrees</div>
+    <div class="subtitle">Isolated Claude agents building an entire codebase simultaneously. 3,066 sessions. 470 MB of conversation. Zero conflicts.</div>
+  </div>
+  <div class="corner">auto-claude</div>
+  <div class="bottom-bar"></div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ralph Orchestrator Hero</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0f; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.hero {
+  width: 1200px;
+  height: 630px;
+  background: linear-gradient(135deg, #0c0a12 0%, #1a1220 25%, #2a1a10 50%, #1a1220 75%, #0c0a12 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 900px 450px at 35% 25%, rgba(251, 146, 60, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 350px at 65% 75%, rgba(234, 88, 12, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.grid-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(251, 146, 60, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 146, 60, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+/* Crate nodes scattered as background decoration */
+.node-cluster {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+}
+.node {
+  position: absolute;
+  border-radius: 4px;
+  border: 1px solid rgba(251, 146, 60, 0.25);
+  background: rgba(251, 146, 60, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 9px;
+  color: rgba(251, 146, 60, 0.35);
+  letter-spacing: 0.3px;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+.node:nth-child(1)  { top: 8%;  left: 3%;  }
+.node:nth-child(2)  { top: 22%; left: 6%;  }
+.node:nth-child(3)  { top: 78%; left: 4%;  }
+.node:nth-child(4)  { top: 88%; left: 15%; }
+.node:nth-child(5)  { top: 12%; right: 4%; }
+.node:nth-child(6)  { top: 30%; right: 3%; }
+.node:nth-child(7)  { top: 72%; right: 5%; }
+.node:nth-child(8)  { top: 86%; right: 12%; }
+.node:nth-child(9)  { top: 50%; left: 2%;  }
+.node:nth-child(10) { top: 55%; right: 2%; }
+.edge {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(251, 146, 60, 0.15), transparent);
+  transform-origin: left center;
+}
+.edge:nth-child(11) { top: 14%; left: 5%;  width: 60px; transform: rotate(30deg); }
+.edge:nth-child(12) { top: 26%; left: 8%;  width: 50px; transform: rotate(-10deg); }
+.edge:nth-child(13) { top: 82%; left: 6%;  width: 80px; transform: rotate(12deg); }
+.edge:nth-child(14) { top: 16%; right: 6%; width: 55px; transform: rotate(20deg); }
+.edge:nth-child(15) { top: 76%; right: 8%; width: 70px; transform: rotate(-18deg); }
+.edge:nth-child(16) { top: 54%; left: 4%;  width: 45px; transform: rotate(5deg); }
+.edge:nth-child(17) { top: 58%; right: 4%; width: 50px; transform: rotate(-8deg); }
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 100px;
+}
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  border-radius: 20px;
+  background: rgba(251, 146, 60, 0.08);
+  color: rgba(251, 146, 60, 0.9);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.category-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fb923c;
+}
+h1 {
+  font-size: 50px;
+  font-weight: 700;
+  color: #fef3e2;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+h1 .accent {
+  background: linear-gradient(135deg, #fdba74 0%, #fb923c 40%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle {
+  font-size: 19px;
+  color: rgba(253, 186, 116, 0.5);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.stat {
+  text-align: center;
+}
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fb923c;
+  font-variant-numeric: tabular-nums;
+}
+.stat-label {
+  font-size: 11px;
+  color: rgba(251, 146, 60, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(251, 146, 60, 0.15);
+}
+.bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 5%, #ea580c 30%, #fb923c 50%, #ea580c 70%, transparent 95%);
+}
+.top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(251, 146, 60, 0.2), transparent);
+}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="grid-overlay"></div>
+  <div class="top-accent"></div>
+  <div class="node-cluster">
+    <div class="node">ralph-core</div>
+    <div class="node">ralph-cli</div>
+    <div class="node">ralph-telegram</div>
+    <div class="node">ralph-tui</div>
+    <div class="node">ralph-adapters</div>
+    <div class="node">ralph-proto</div>
+    <div class="node">ralph-mobile-server</div>
+    <div class="node">ralph-bench</div>
+    <div class="node">ralph-api</div>
+    <div class="node">ralph-e2e</div>
+    <div class="edge"></div><div class="edge"></div><div class="edge"></div>
+    <div class="edge"></div><div class="edge"></div><div class="edge"></div>
+    <div class="edge"></div>
+  </div>
+  <div class="content">
+    <div class="category-badge"><span class="dot"></span>Rust Engineering</div>
+    <h1>Orchestrating <span class="accent">AI Agent Armies</span><br>with a Rust Platform</h1>
+    <p class="subtitle">10 crates, 410 sessions, and an event-sourced coordination layer for fleets of parallel coding agents.</p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-value">10</div><div class="stat-label">Rust Crates</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-value">410</div><div class="stat-label">Sessions</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-value">1.05 GB</div><div class="stat-label">Interaction Data</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-value">30</div><div class="stat-label">Parallel Agents</div></div>
+    </div>
+  </div>
+  <div class="bottom-line"></div>
+</div>
+</body>
+</html>

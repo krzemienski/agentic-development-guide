@@ -1,0 +1,43 @@
+sequenceDiagram
+    participant iOS as iOS App<br/>EventSource
+    participant Vapor as Vapor Backend<br/>SSE Handler
+    participant Python as sdk-wrapper.py<br/>async iterator
+    participant CLI as Claude CLI<br/>OAuth Session
+    participant API as Anthropic API
+
+    iOS->>Vapor: POST /api/v1/chat/stream<br/>{"prompt": "Say hi"}
+    activate Vapor
+    Vapor->>Python: Process spawn<br/>python3 sdk-wrapper.py "Say hi"
+    activate Python
+    Python->>CLI: query(prompt, include_partial_messages=True)
+    activate CLI
+    CLI->>API: HTTP POST /v1/messages<br/>Authorization: Bearer [oauth_token]
+    activate API
+
+    Note over API: Model generates tokens
+
+    API-->>CLI: {"type":"content_block_delta","delta":{"text":"Hello"}}
+    CLI-->>Python: stdout: partial message JSON
+    Python-->>Vapor: NDJSON: {"type":"message","content":"Hello"}
+    Vapor-->>iOS: SSE: data: {"type":"message","content":"Hello"}
+
+    API-->>CLI: {"type":"content_block_delta","delta":{"text":"! How"}}
+    CLI-->>Python: stdout: partial message JSON
+    Python-->>Vapor: NDJSON: {"type":"message","content":"Hello! How"}
+    Vapor-->>iOS: SSE: data: {"type":"message","content":"Hello! How"}
+
+    API-->>CLI: {"type":"content_block_delta","delta":{"text":" can I help?"}}
+    CLI-->>Python: stdout: partial message JSON
+    Python-->>Vapor: NDJSON: {"type":"message","content":"Hello! How can I help?"}
+    Vapor-->>iOS: SSE: data: {"type":"message","content":"Hello! How can I help?"}
+
+    API-->>CLI: {"type":"message_stop"}
+    deactivate API
+    CLI-->>Python: stdout: final message + cost
+    deactivate CLI
+    Python-->>Vapor: NDJSON: {"type":"done","cost":0.0419}
+    deactivate Python
+    Vapor-->>iOS: SSE: data: {"type":"done","cost":0.0419}
+    deactivate Vapor
+
+    Note over iOS: Display complete message<br/>Show cost: $0.04

@@ -1,0 +1,29 @@
+flowchart LR
+    New["New\nCapture intent"]
+    Requirements["Requirements\nUser stories\nAcceptance criteria\nScope boundaries"]
+    Design["Design\nSchema definitions\nAPI contracts\nComponent hierarchy"]
+    Tasks["Tasks\nNumbered task list\nDependencies\nComplexity estimates"]
+    Implement["Implement\nCode execution\nRalph Loop persistence\nIncremental progress"]
+    Verify["Verify\nBuild evidence\nScreenshot validation\nCompletion proof"]
+
+    PM["product-manager"]
+    AR["architect-reviewer"]
+    TP["task-planner"]
+    EX["executor"]
+    VR["verifier"]
+    RL["Ralph Loop\n41 max continuations"]
+
+    New -->|"define scope"| Requirements
+    Requirements -->|"spec handoff"| Design
+    Design -->|"architecture handoff"| Tasks
+    Tasks -->|"task list handoff"| Implement
+    Implement -->|"completion handoff"| Verify
+
+    PM -.->|"drives"| Requirements
+    AR -.->|"drives"| Design
+    TP -.->|"drives"| Tasks
+    EX -.->|"drives"| Implement
+    VR -.->|"drives"| Verify
+    RL -.->|"sustains"| Implement
+
+    Verify -->|"gaps found"| Tasks

@@ -1,0 +1,43 @@
+flowchart LR
+    subgraph PLANNING["Planning"]
+        A["91 Task Specs\n(Human + AI Authored)"]:::spec
+        B["RALPLAN\nPlanner + Critic\n3 Iterations"]:::plan
+    end
+
+    subgraph BRANCHING["Branch Creation"]
+        C["90 Worktree\nBranches"]:::branch
+    end
+
+    subgraph EXECUTION["Parallel Agent Execution"]
+        D1["Agent 1\nWorktree #1"]:::agent
+        D2["Agent 2\nWorktree #2"]:::agent
+        D3["Agent 3\nWorktree #3"]:::agent
+        DN["Agent N\nWorktree #90"]:::agent
+    end
+
+    subgraph QA["Quality Assurance"]
+        E["37 Validation\nGates"]:::qa
+        F{"Pass?"}:::decision
+    end
+
+    subgraph MERGE["Integration"]
+        G["Merge to Main\n636 Total Commits"]:::merge
+    end
+
+    A --> B
+    B --> C
+    C --> D1 & D2 & D3 & DN
+    D1 & D2 & D3 & DN --> E
+    E --> F
+    F -- Yes --> G
+    F -- No --> H["Diagnostic Report\nRe-queue"]:::requeue
+    H --> C
+
+    classDef spec fill:#1e1b2e,stroke:#a78bfa,stroke-width:2px,color:#c4b5fd
+    classDef plan fill:#1e1b2e,stroke:#8b5cf6,stroke-width:2px,color:#a78bfa,font-weight:bold
+    classDef branch fill:#172230,stroke:#3b82f6,stroke-width:2px,color:#93c5fd
+    classDef agent fill:#0f2a1e,stroke:#22c55e,stroke-width:1.5px,color:#86efac
+    classDef qa fill:#2a1f0f,stroke:#f59e0b,stroke-width:2px,color:#fcd34d
+    classDef decision fill:#2a1f0f,stroke:#f59e0b,stroke-width:2px,color:#fcd34d
+    classDef merge fill:#1a0e2e,stroke:#a855f7,stroke-width:2px,color:#c084fc,font-weight:bold
+    classDef requeue fill:#2a0f0f,stroke:#ef4444,stroke-width:1.5px,color:#fca5a5

@@ -1,0 +1,65 @@
+%%{ init: { 'theme': 'dark', 'themeVariables': { 'primaryColor': '#f59e0b', 'primaryBorderColor': '#d97706', 'primaryTextColor': '#fefce8', 'lineColor': '#78716c', 'secondaryColor': '#1c1410', 'tertiaryColor': '#231a10', 'noteBkgColor': '#292524', 'noteTextColor': '#fef3c7', 'noteBorderColor': '#78716c' } } }%%
+
+sequenceDiagram
+    participant Orch as Orchestrator
+    participant Lead as Lead Agent<br/>(Architecture)
+    participant Alpha as Alpha Agent<br/>(Code + Logic)
+    participant Bravo as Bravo Agent<br/>(Visual + Functional)
+    participant Gate as Consensus Gate
+
+    Note over Orch,Gate: Phase N implementation complete -- gate check begins
+
+    Orch->>Lead: Checkpoint prompt (independent)
+    Orch->>Alpha: Checkpoint prompt (independent)
+    Orch->>Bravo: Checkpoint prompt (independent)
+
+    Note over Lead,Bravo: Zero shared context -- each agent starts fresh
+
+    par Lead validates
+        Lead->>Lead: Cross-component consistency
+        Lead->>Lead: Pattern compliance audit
+        Lead->>Lead: SDK + CLI path check
+    and Alpha validates
+        Alpha->>Alpha: Line-by-line logic review
+        Alpha->>Alpha: State machine analysis
+        Alpha->>Alpha: Accumulation pattern check
+    and Bravo validates
+        Bravo->>Bravo: Exercise running system
+        Bravo->>Bravo: UI behavior under real data
+        Bravo->>Bravo: Edge case verification
+    end
+
+    Lead-->>Gate: VOTE: PASS + evidence artifact
+    Alpha-->>Gate: VOTE: FAIL + evidence artifact
+    Bravo-->>Gate: VOTE: PASS + evidence artifact
+
+    Note over Gate: Unanimous PASS required<br/>Alpha FAIL -- gate stays CLOSED
+
+    Gate->>Orch: BLOCKED -- Alpha found P2 bug<br/>Line 926: += causes text duplication
+
+    Note over Orch,Gate: Fix cycle -- implement fix
+
+    Orch->>Orch: Fix 1: message.text += to =<br/>Fix 2: preserve lastProcessedMessageIndex
+
+    Note over Orch,Gate: Re-validation -- ALL agents re-run (no stale votes)
+
+    Orch->>Lead: Re-validate with fix applied
+    Orch->>Alpha: Re-validate with fix applied
+    Orch->>Bravo: Re-validate with fix applied
+
+    par Lead re-validates
+        Lead->>Lead: Verify fix across both execution paths
+    and Alpha re-validates
+        Alpha->>Alpha: Confirm assignment replaces append
+        Alpha->>Alpha: Confirm index preserved
+    and Bravo re-validates
+        Bravo->>Bravo: Run app -- renders "Four." not "Four.Four."
+    end
+
+    Lead-->>Gate: VOTE: PASS + evidence
+    Alpha-->>Gate: VOTE: PASS + evidence
+    Bravo-->>Gate: VOTE: PASS + evidence
+
+    Note over Gate: 3/3 PASS -- gate OPENS
+
+    Gate->>Orch: GATE OPEN -- advance to Phase N+1

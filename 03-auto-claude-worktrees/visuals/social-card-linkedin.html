@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Auto-Claude LinkedIn Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 627px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #0f0a2e;
+    position: relative;
+  }
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .glow-left {
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
+  }
+  .glow-right {
+    position: absolute;
+    top: 50%;
+    right: -80px;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 60px 80px;
+  }
+  .top-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 100px;
+  }
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22d3ee;
+    box-shadow: 0 0 6px rgba(34, 211, 238, 0.5);
+  }
+  .badge-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(199, 210, 254, 0.8);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .desc {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(199, 210, 254, 0.5);
+    line-height: 1.5;
+    max-width: 550px;
+    margin-bottom: auto;
+  }
+  .stats-row {
+    display: flex;
+    gap: 0;
+    margin-top: auto;
+  }
+  .stat-card {
+    flex: 1;
+    padding: 32px 0;
+    text-align: center;
+    position: relative;
+  }
+  .stat-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(99, 102, 241, 0.2);
+  }
+  .stat-value {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .stat-card:nth-child(1) .stat-value {
+    background: linear-gradient(135deg, #818cf8, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card:nth-child(2) .stat-value {
+    background: linear-gradient(135deg, #a78bfa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card:nth-child(3) .stat-value {
+    background: linear-gradient(135deg, #c084fc, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(199, 210, 254, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+  }
+  .stat-sub {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(199, 210, 254, 0.25);
+    margin-top: 4px;
+  }
+  .bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #818cf8, #c084fc, #22d3ee);
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow-left"></div>
+  <div class="glow-right"></div>
+
+  <div class="content">
+    <div class="top-row">
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <span class="badge-text">Auto-Claude</span>
+      </div>
+    </div>
+    <h1>Spawning 194 Parallel AI Worktrees<br>to Build a Codebase</h1>
+    <p class="desc">Industrial-scale autonomous development with isolated Claude agents, automated spec generation, and a QA pipeline that catches what self-review misses.</p>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value">194</div>
+        <div class="stat-label">Worktrees</div>
+        <div class="stat-sub">Isolated git environments</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">91</div>
+        <div class="stat-label">Specs</div>
+        <div class="stat-sub">Implementation blueprints</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">71</div>
+        <div class="stat-label">QA Reports</div>
+        <div class="stat-sub">Automated quality gates</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-line"></div>
+</body>
+</html>

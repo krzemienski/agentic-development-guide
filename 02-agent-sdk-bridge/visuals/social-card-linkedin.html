@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>LinkedIn Social Card - Agent SDK Bridge</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 627px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #0a0a0f;
+  }
+  .container {
+    width: 1200px;
+    height: 627px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% 55%, rgba(220, 38, 38, 0.06) 0%, transparent 70%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0f18 50%, #0a0a0f 100%);
+  }
+  .category {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #dc2626;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .category::before, .category::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: rgba(220, 38, 38, 0.5);
+  }
+  .stats {
+    display: flex;
+    gap: 80px;
+    margin-bottom: 48px;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-value {
+    font-size: 96px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -4px;
+    margin-bottom: 8px;
+  }
+  .stat-1 .stat-value { color: #dc2626; text-shadow: 0 0 60px rgba(220, 38, 38, 0.25); }
+  .stat-2 .stat-value { color: #f87171; text-shadow: 0 0 60px rgba(248, 113, 113, 0.2); }
+  .stat-3 .stat-value { color: #fca5a5; text-shadow: 0 0 60px rgba(252, 165, 165, 0.15); }
+  .stat-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #6b6b80;
+    letter-spacing: 0.5px;
+  }
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e0e0ed;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: #555568;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: rgba(220, 38, 38, 0.3);
+    margin: 0 auto 48px;
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(220, 38, 38, 0.1);
+    background: rgba(10, 10, 15, 0.8);
+  }
+  .bottom-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="category">Debugging War Story</div>
+  <div class="stats">
+    <div class="stat stat-1">
+      <div class="stat-value">5</div>
+      <div class="stat-label">layers deep</div>
+    </div>
+    <div class="stat stat-2">
+      <div class="stat-value">4</div>
+      <div class="stat-label">failed approaches</div>
+    </div>
+    <div class="stat stat-3">
+      <div class="stat-value">22</div>
+      <div class="stat-label">debug sessions</div>
+    </div>
+  </div>
+  <div class="title">Why I Needed 5 Layers to Call an API</div>
+  <div class="subtitle">RunLoop vs NIO, OAuth vs API keys, nesting detection, and the bridge pattern that finally worked</div>
+  <div class="bottom-bar">
+    <span class="bottom-text">ILS &mdash; Native iOS Client for Claude Code</span>
+  </div>
+</div>
+</body>
+</html>

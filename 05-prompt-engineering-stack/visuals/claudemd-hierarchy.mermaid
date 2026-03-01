@@ -1,0 +1,50 @@
+---
+title: CLAUDE.md Instruction Hierarchy
+---
+flowchart TD
+    G["~/.claude/CLAUDE.md<br/><i>Global Instructions</i>"]
+    P["./CLAUDE.md<br/><i>Project Instructions</i>"]
+    R[".claude/rules/*.md<br/><i>9 Domain Rules</i>"]
+
+    G -->|"overridden by"| P
+    P -->|"augmented by"| R
+
+    G --- G1["Agent Orchestration"]
+    G --- G2["Model Routing<br/>haiku / sonnet / opus"]
+    G --- G3["Delegation Rules"]
+
+    P --- P1["No-Mocks Mandate"]
+    P --- P2["Skill Invocation Mandate"]
+    P --- P3["Planning Rules"]
+
+    R --- R1["project.md"]
+    R --- R2["agents.md"]
+    R --- R3["development-workflow.md"]
+    R --- R4["git-workflow.md"]
+    R --- R5["auto-build-hook.md"]
+    R --- R6["feature-gate.md"]
+    R --- R7["fastlane.md"]
+    R --- R8["performance.md"]
+    R --- R9["coding-style.md"]
+
+    style G fill:#d9a32f,stroke:#1a1207,color:#1a1207,stroke-width:2px
+    style P fill:#c4891a,stroke:#1a1207,color:#1a1207,stroke-width:2px
+    style R fill:#a06b10,stroke:#1a1207,color:#fff,stroke-width:2px
+
+    style G1 fill:#2a1f0a,stroke:#d9a32f,color:#f5f0e8
+    style G2 fill:#2a1f0a,stroke:#d9a32f,color:#f5f0e8
+    style G3 fill:#2a1f0a,stroke:#d9a32f,color:#f5f0e8
+
+    style P1 fill:#2a1f0a,stroke:#c4891a,color:#f5f0e8
+    style P2 fill:#2a1f0a,stroke:#c4891a,color:#f5f0e8
+    style P3 fill:#2a1f0a,stroke:#c4891a,color:#f5f0e8
+
+    style R1 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style R2 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style R3 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style R4 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style R5 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style R6 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style R7 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style R8 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style R9 fill:#1a1207,stroke:#a06b10,color:#d9a32f

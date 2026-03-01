@@ -1,0 +1,41 @@
+flowchart TB
+    subgraph RequestPath["REQUEST PATH"]
+        direction TB
+        iOS["Layer 1: iOS App<br/>SwiftUI ChatView"]
+        Vapor["Layer 2: Vapor Backend<br/>Swift / NIO"]
+        Python["Layer 3: Python Wrapper<br/>sdk-wrapper.py"]
+        CLI["Layer 4: Claude CLI<br/>OAuth Authentication"]
+        API["Layer 5: Anthropic API<br/>Claude Model"]
+
+        iOS -->|"HTTP POST<br/>/api/v1/chat/stream"| Vapor
+        Vapor -->|"Process spawn<br/>sanitized env vars"| Python
+        Python -->|"claude_agent_sdk.query<br/>include_partial_messages"| CLI
+        CLI -->|"OAuth HTTP<br/>session tokens"| API
+    end
+
+    subgraph ResponsePath["RESPONSE PATH"]
+        direction BT
+        API2["Anthropic API<br/>Token stream"]
+        CLI2["Claude CLI<br/>stdout JSON"]
+        Python2["Python Wrapper<br/>json.dumps + flush"]
+        Vapor2["Vapor Backend<br/>Line parser to SSE"]
+        iOS2["iOS App<br/>EventSource client"]
+
+        API2 -->|"HTTP streaming<br/>response chunks"| CLI2
+        CLI2 -->|"stdout pipe<br/>raw JSON"| Python2
+        Python2 -->|"NDJSON lines<br/>one event per line"| Vapor2
+        Vapor2 -->|"SSE events<br/>data: JSON"| iOS2
+    end
+
+    style iOS fill:#1a1a2e,stroke:#6366f1,color:#c7d2fe
+    style Vapor fill:#1a1a2e,stroke:#8b5cf6,color:#ddd6fe
+    style Python fill:#1a1a2e,stroke:#a855f7,color:#e9d5ff
+    style CLI fill:#1a1a2e,stroke:#c084fc,color:#f3e8ff
+    style API fill:#1a1a2e,stroke:#d946ef,color:#fae8ff
+    style iOS2 fill:#1a1a2e,stroke:#6366f1,color:#c7d2fe
+    style Vapor2 fill:#1a1a2e,stroke:#8b5cf6,color:#ddd6fe
+    style Python2 fill:#1a1a2e,stroke:#a855f7,color:#e9d5ff
+    style CLI2 fill:#1a1a2e,stroke:#c084fc,color:#f3e8ff
+    style API2 fill:#1a1a2e,stroke:#d946ef,color:#fae8ff
+    style RequestPath fill:#0d0d1a,stroke:#333,color:#888
+    style ResponsePath fill:#0d0d1a,stroke:#333,color:#888

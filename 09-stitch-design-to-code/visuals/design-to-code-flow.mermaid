@@ -1,0 +1,25 @@
+flowchart LR
+    DS["Design System<br/>#000 / #e050b0 / #4dacde<br/>JetBrains Mono / 0px radius"]
+    PR["Text Prompt<br/>Screen purpose, layout,<br/>elements, interactions"]
+    ST["Stitch MCP +<br/>Gemini 3 Pro<br/>generate_screen_from_text"]
+    SC["Generated Screen<br/>Visual design output<br/>A/B/C variations"]
+    RC["React Conversion<br/>Next.js + shadcn/ui<br/>Tailwind CSS"]
+    PV["Puppeteer Validation<br/>107 actions across<br/>21 screens"]
+    SH["Ship<br/>Validated components<br/>ready for production"]
+
+    DS --> PR
+    PR --> ST
+    ST --> SC
+    SC --> RC
+    RC --> PV
+    PV --> SH
+
+    PV -- "Fail: fix &<br/>re-validate" --> RC
+
+    style DS fill:#111111,stroke:#4dacde,stroke-width:2px,color:#4dacde
+    style PR fill:#111111,stroke:#a0a0a0,stroke-width:1px,color:#ffffff
+    style ST fill:#1a1a1a,stroke:#e050b0,stroke-width:2px,color:#e050b0
+    style SC fill:#111111,stroke:#e050b0,stroke-width:1px,color:#ffffff
+    style RC fill:#111111,stroke:#4dacde,stroke-width:1px,color:#ffffff
+    style PV fill:#1a1a1a,stroke:#4dacde,stroke-width:2px,color:#4dacde
+    style SH fill:#111111,stroke:#e050b0,stroke-width:2px,color:#e050b0

@@ -1,0 +1,48 @@
+---
+title: Skill Composition Chain
+---
+flowchart TD
+    FV["functional-validation<br/><i>Top-level orchestrator</i>"]
+
+    FV --> IVR["ios-validation-runner<br/><i>Runs app in simulator</i>"]
+    FV --> IVG["ios-validation-gate<br/><i>Verifies evidence</i>"]
+
+    IVR --> BOOT["Boot Simulator<br/>UDID: 50523130"]
+    IVR --> BUILD["xcodebuild<br/>-scheme ILSApp"]
+    IVR --> INSTALL["simctl install<br/>app binary"]
+    IVR --> IUA["ios-ui-automation<br/><i>UI interaction</i>"]
+
+    IUA --> NAV["Navigate Screens<br/>sidebar gestures, taps"]
+    IUA --> CAPTURE["Capture Screenshots<br/>evidence collection"]
+    IUA --> INTERACT["Interact with UI<br/>forms, buttons, inputs"]
+
+    IVG --> GVD["gate-validation-discipline<br/><i>Evidence standards</i>"]
+
+    GVD --> CHK1["Screenshot exists<br/>for each claim"]
+    GVD --> CHK2["UI state matches<br/>expected behavior"]
+    GVD --> CHK3["No crashes or<br/>error states"]
+    GVD --> CHK4["Real data visible<br/>not mocks or stubs"]
+
+    IVG --> VERDICT{"All checks<br/>pass?"}
+    VERDICT -->|"Yes"| PASS["VALIDATED<br/>Evidence archived"]
+    VERDICT -->|"No"| RETRY["Fix and<br/>re-validate"]
+    RETRY --> FV
+
+    style FV fill:#d9a32f,stroke:#1a1207,color:#1a1207,stroke-width:3px
+    style IVR fill:#c4891a,stroke:#1a1207,color:#1a1207,stroke-width:2px
+    style IVG fill:#c4891a,stroke:#1a1207,color:#1a1207,stroke-width:2px
+    style IUA fill:#a06b10,stroke:#1a1207,color:#fff,stroke-width:2px
+    style GVD fill:#a06b10,stroke:#1a1207,color:#fff,stroke-width:2px
+
+    style BOOT fill:#2a1f0a,stroke:#d9a32f,color:#f5f0e8
+    style BUILD fill:#2a1f0a,stroke:#d9a32f,color:#f5f0e8
+    style INSTALL fill:#2a1f0a,stroke:#d9a32f,color:#f5f0e8
+    style NAV fill:#2a1f0a,stroke:#a06b10,color:#d9a32f
+    style CAPTURE fill:#2a1f0a,stroke:#a06b10,color:#d9a32f
+    style INTERACT fill:#2a1f0a,stroke:#a06b10,color:#d9a32f
+    style CHK1 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style CHK2 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style CHK3 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style CHK4 fill:#1a1207,stroke:#a06b10,color:#d9a32f
+    style PASS fill:#2d6a2e,stroke:#4caf50,color:#fff
+    style RETRY fill:#7a5c00,stroke:#f5bd41,color:#fff

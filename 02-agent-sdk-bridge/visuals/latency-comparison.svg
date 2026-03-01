@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360">
+  <defs>
+    <linearGradient id="greenBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#16a34a" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="amberBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="redBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#dc2626" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="360" rx="12" fill="#0f0f1a"/>
+
+  <!-- Title -->
+  <text x="40" y="42" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="18" font-weight="700" fill="#e0e0ed">Response Latency Comparison</text>
+  <text x="40" y="64" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif" font-size="13" fill="#6b6b80">Time from request to first token (seconds)</text>
+
+  <!-- Grid lines -->
+  <line x1="260" y1="90" x2="260" y2="290" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="390" y1="90" x2="390" y2="290" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="520" y1="90" x2="520" y2="290" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="650" y1="90" x2="650" y2="290" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="780" y1="90" x2="780" y2="290" stroke="#1a1a2e" stroke-width="1"/>
+
+  <!-- Grid labels -->
+  <text x="260" y="310" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#555" text-anchor="middle">3s</text>
+  <text x="390" y="310" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#555" text-anchor="middle">6s</text>
+  <text x="520" y="310" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#555" text-anchor="middle">9s</text>
+  <text x="650" y="310" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#555" text-anchor="middle">12s</text>
+  <text x="780" y="310" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#555" text-anchor="middle">15s</text>
+
+  <!-- Bar 1: Direct API -->
+  <text x="40" y="130" font-family="-apple-system, system-ui, sans-serif" font-size="14" font-weight="600" fill="#c8c8d8">Direct API</text>
+  <text x="40" y="148" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#6b6b80">(hypothetical)</text>
+  <rect x="130" y="118" width="173" height="36" rx="6" fill="url(#greenBar)"/>
+  <text x="143" y="141" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="700" fill="#fff">~1-3s</text>
+  <!-- Marker: NOT AVAILABLE -->
+  <text x="316" y="141" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="600" fill="#555">NO API KEY</text>
+
+  <!-- Bar 2: Python warm -->
+  <text x="40" y="200" font-family="-apple-system, system-ui, sans-serif" font-size="14" font-weight="600" fill="#c8c8d8">Python Bridge</text>
+  <text x="40" y="218" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#6b6b80">(warm start)</text>
+  <rect x="130" y="188" width="195" height="36" rx="6" fill="url(#amberBar)"/>
+  <text x="143" y="211" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="700" fill="#fff">~2-3s</text>
+
+  <!-- Bar 3: Python cold -->
+  <text x="40" y="270" font-family="-apple-system, system-ui, sans-serif" font-size="14" font-weight="600" fill="#c8c8d8">Python Bridge</text>
+  <text x="40" y="288" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#6b6b80">(cold start)</text>
+  <rect x="130" y="258" width="520" height="36" rx="6" fill="url(#redBar)"/>
+  <text x="143" y="281" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="700" fill="#fff">~12s</text>
+
+  <!-- Footer -->
+  <text x="40" y="345" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#444">Cost per query: ~$0.04 (Claude Sonnet, typical chat message)</text>
+</svg>

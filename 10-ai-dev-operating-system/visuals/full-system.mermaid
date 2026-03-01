@@ -1,0 +1,101 @@
+flowchart TB
+    subgraph OMC["OMC Orchestration Layer"]
+        direction TB
+        Kernel["Kernel: Agent Router + State Manager"]
+        Memory["Memory: Notepad + Project Memory"]
+        Skills["Skills: 150+ Invocable Commands"]
+        Kernel --> Memory
+        Kernel --> Skills
+    end
+
+    subgraph AgentCatalog["Agent Catalog (25+ Types)"]
+        direction TB
+        BuildLane["Build Lane\nexplore | analyst | planner\narchitect | debugger | executor\ndeep-executor | verifier"]
+        ReviewLane["Review Lane\nquality-reviewer\nsecurity-reviewer\ncode-reviewer"]
+        DomainLane["Domain Lane\ntest-engineer | build-fixer\ndesigner | writer | qa-tester\nscientist | document-specialist"]
+        CoordLane["Coordination\ncritic"]
+    end
+
+    subgraph ModelRouting["Model Routing"]
+        direction LR
+        Haiku["Haiku\nQuick lookups\nLightweight scans"]
+        Sonnet["Sonnet\nImplementation\nDebugging"]
+        Opus["Opus\nArchitecture\nDeep analysis"]
+    end
+
+    subgraph RalphLoop["Ralph Loop (Persistence)"]
+        direction TB
+        LoopStart["Iteration N/100"]
+        TrackProgress["Track completed tasks"]
+        PersistState["Write state to disk"]
+        ContinueWork["Continue working"]
+        StopHook["Stop hook: The boulder never stops"]
+        LoopStart --> TrackProgress --> PersistState --> ContinueWork
+        ContinueWork --> StopHook
+        StopHook -->|"context reset"| LoopStart
+    end
+
+    subgraph RalphSpecum["ralph-specum (Spec Pipeline)"]
+        direction LR
+        SpecNew["New"]
+        SpecReqs["Requirements\nproduct-manager"]
+        SpecDesign["Design\narchitect-reviewer"]
+        SpecTasks["Tasks\ntask-planner"]
+        SpecImpl["Implement\nexecutor"]
+        SpecNew --> SpecReqs --> SpecDesign --> SpecTasks --> SpecImpl
+    end
+
+    subgraph RALPLAN["RALPLAN (Deliberation)"]
+        direction TB
+        PlanCreate["Planner creates plan"]
+        CriticReview["Critic reviews"]
+        Revise["Planner revises"]
+        Approve["Plan approved"]
+        PlanCreate --> CriticReview
+        CriticReview -->|"reject"| Revise
+        Revise --> CriticReview
+        CriticReview -->|"approve"| Approve
+    end
+
+    subgraph GSD["GSD (10-Phase Project Mgmt)"]
+        direction LR
+        GSDNew["New Project"]
+        GSDResearch["Research"]
+        GSDPlan["Plan"]
+        GSDExec["Execute"]
+        GSDVerify["Verify"]
+        GSDNew --> GSDResearch --> GSDPlan --> GSDExec --> GSDVerify
+    end
+
+    subgraph TeamPipeline["Team Pipeline (Multi-Agent)"]
+        direction LR
+        TPlan["team-plan"]
+        TPRD["team-prd"]
+        TExec["team-exec"]
+        TVerify["team-verify"]
+        TFix["team-fix"]
+        TPlan --> TPRD --> TExec --> TVerify
+        TVerify -->|"fail"| TFix
+        TFix --> TExec
+    end
+
+    subgraph ContextEcon["Context Economics"]
+        direction TB
+        SemanticIndex["claude-mem\nSemantic Indexing"]
+        TokenSavings["653K to 20K tokens\n97% reduction"]
+        SemanticIndex --> TokenSavings
+    end
+
+    OMC -->|"routes tasks"| AgentCatalog
+    OMC -->|"selects model"| ModelRouting
+    OMC -->|"drives persistence"| RalphLoop
+    OMC -->|"spec workflow"| RalphSpecum
+    OMC -->|"plan quality"| RALPLAN
+    OMC -->|"project phases"| GSD
+    OMC -->|"parallel execution"| TeamPipeline
+    OMC -->|"memory optimization"| ContextEcon
+
+    AgentCatalog -->|"model assignment"| ModelRouting
+    RalphSpecum -->|"implementation phase"| RalphLoop
+    RALPLAN -->|"approved plans"| RalphSpecum
+    GSD -->|"execution phases"| TeamPipeline

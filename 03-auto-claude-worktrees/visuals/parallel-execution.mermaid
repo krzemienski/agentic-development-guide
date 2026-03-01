@@ -1,0 +1,69 @@
+%%{init: {'theme': 'dark', 'themeVariables': {'actorTextColor': '#d1fae5', 'actorBkg': '#065f46', 'actorBorder': '#059669', 'actorLineColor': '#34d399', 'signalColor': '#34d399', 'signalTextColor': '#d1fae5', 'labelBoxBkgColor': '#0f2922', 'labelBoxBorderColor': '#059669', 'labelTextColor': '#d1fae5', 'loopTextColor': '#a7f3d0', 'noteBkgColor': '#064e3b', 'noteTextColor': '#d1fae5', 'noteBorderColor': '#059669', 'activationBkgColor': '#065f46', 'activationBorderColor': '#10b981', 'sequenceNumberColor': '#d1fae5'}}}%%
+
+sequenceDiagram
+    participant O as Orchestrator
+    participant W1 as Worktree 1<br>modularization
+    participant W2 as Worktree 2<br>reduce_any_types
+    participant W3 as Worktree 3<br>test_suite
+    participant WN as Worktree N<br>task_N
+    participant QA as QA Pipeline
+    participant MQ as Merge Queue
+
+    Note over O: Specs ready: 91 tasks
+
+    O->>W1: git worktree add + spawn agent
+    O->>W2: git worktree add + spawn agent
+    O->>W3: git worktree add + spawn agent
+    O->>WN: git worktree add + spawn agent
+
+    par Parallel Execution (all isolated)
+        activate W1
+        W1->>W1: Read spec, implement changes
+        W1->>W1: Commit to auto/modularization
+        Note over W1: 62 sessions
+        deactivate W1
+
+        activate W2
+        W2->>W2: Read spec, implement changes
+        W2->>W2: Commit to auto/reduce_any_types
+        Note over W2: 60 sessions
+        deactivate W2
+
+        activate W3
+        W3->>W3: Read spec, implement changes
+        W3->>W3: Commit to auto/test_suite
+        Note over W3: 57 sessions
+        deactivate W3
+
+        activate WN
+        WN->>WN: Read spec, implement changes
+        WN->>WN: Commit to auto/task_N
+        Note over WN: N sessions
+        deactivate WN
+    end
+
+    W1->>QA: Submit completed work
+    W2->>QA: Submit completed work
+    W3->>QA: Submit completed work
+    WN->>QA: Submit completed work
+
+    activate QA
+    Note over QA: 71 QA reports generated
+
+    QA-->>W2: Rejected: fix bcrypt + lastUsedAt
+    activate W2
+    W2->>W2: Apply fixes in isolated worktree
+    W2->>QA: Resubmit
+    deactivate W2
+    Note over QA: ~95% pass on 2nd attempt
+
+    QA->>MQ: Approved tasks
+    deactivate QA
+
+    activate MQ
+    Note over MQ: Priority-weighted merge order
+    MQ->>MQ: Foundation tasks first
+    MQ->>MQ: Conflict detection
+    MQ->>MQ: Merge to main
+    Note over MQ: 90 branches integrated
+    deactivate MQ

@@ -1,0 +1,39 @@
+---
+title: "iOS Functional Validation via idb Pipeline"
+---
+sequenceDiagram
+    participant Agent as AI Agent
+    participant IDB as idb (iOS Dev Bridge)
+    participant Sim as Simulator<br/>iPhone 16 Pro Max
+    participant Tree as Accessibility Tree
+    participant Evidence as Evidence Store
+
+    Agent->>IDB: idb_describe operation:all
+    IDB->>Sim: Query accessibility hierarchy
+    Sim-->>Tree: Full UI element tree
+    Tree-->>IDB: Elements with coordinates
+    IDB-->>Agent: Button "Settings" centerX:390 centerY:45<br/>Label "System Monitor" centerX:200 centerY:233<br/>ScrollView centerX:220 centerY:500
+
+    Note over Agent: Parse exact coordinates<br/>from accessibility tree
+
+    Agent->>IDB: idb_tap 390 45
+    IDB->>Sim: Synthesize tap at (390, 45)
+    Sim-->>Sim: Navigate to Settings
+
+    Note over Sim: UI state changes.<br/>Screen renders new content.
+
+    Agent->>IDB: idb screenshot /tmp/evidence/settings.png
+    IDB->>Sim: Capture framebuffer
+    Sim-->>IDB: Screenshot data
+    IDB-->>Evidence: /tmp/evidence/settings.png
+
+    Agent->>Evidence: Read screenshot
+    Evidence-->>Agent: Screenshot image
+
+    Note over Agent: Analyze screenshot<br/>against specification
+
+    alt Screenshot matches spec
+        Agent->>Agent: Gate PASS
+    else Screenshot does not match
+        Agent->>Agent: Gate FAIL - return to implementation
+    end

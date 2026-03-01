@@ -1,0 +1,81 @@
+flowchart TB
+    subgraph BuildLane["Build Lane"]
+        direction TB
+        explore["explore\nCodebase discovery"]
+        analyst["analyst\nRequirements clarity"]
+        planner["planner\nTask sequencing"]
+        architect["architect\nSystem design"]
+        debugger["debugger\nRoot cause analysis"]
+        executor["executor\nImplementation"]
+        deep_executor["deep-executor\nComplex autonomous"]
+        verifier["verifier\nCompletion evidence"]
+    end
+
+    subgraph ReviewLane["Review Lane"]
+        direction TB
+        quality_reviewer["quality-reviewer\nLogic, patterns, perf"]
+        security_reviewer["security-reviewer\nVulnerabilities, auth"]
+        code_reviewer["code-reviewer\nComprehensive review"]
+    end
+
+    subgraph DomainLane["Domain Specialists"]
+        direction TB
+        test_engineer["test-engineer\nTest strategy"]
+        build_fixer["build-fixer\nBuild/toolchain"]
+        designer["designer\nUX/UI architecture"]
+        writer["writer\nDocs, migration notes"]
+        qa_tester["qa-tester\nRuntime validation"]
+        scientist["scientist\nData analysis"]
+        document_specialist["document-specialist\nExternal docs lookup"]
+    end
+
+    subgraph Coordination["Coordination"]
+        direction TB
+        critic["critic\nPlan/design challenge"]
+    end
+
+    subgraph HaikuTier["Haiku - Fast and Cheap"]
+        direction LR
+        H1["explore"]
+        H2["writer"]
+    end
+
+    subgraph SonnetTier["Sonnet - Implementation"]
+        direction LR
+        S1["executor"]
+        S2["debugger"]
+        S3["verifier"]
+        S4["quality-reviewer"]
+        S5["security-reviewer"]
+        S6["test-engineer"]
+        S7["build-fixer"]
+        S8["designer"]
+        S9["qa-tester"]
+        S10["scientist"]
+        S11["document-specialist"]
+    end
+
+    subgraph OpusTier["Opus - Deep Reasoning"]
+        direction LR
+        O1["architect"]
+        O2["analyst"]
+        O3["planner"]
+        O4["code-reviewer"]
+        O5["critic"]
+        O6["deep-executor"]
+    end
+
+    Router["OMC Agent Router"]
+
+    Router -->|"lightweight tasks"| HaikuTier
+    Router -->|"standard work"| SonnetTier
+    Router -->|"complex decisions"| OpusTier
+
+    BuildLane -.->|"mapped to"| HaikuTier
+    BuildLane -.->|"mapped to"| SonnetTier
+    BuildLane -.->|"mapped to"| OpusTier
+    ReviewLane -.->|"mapped to"| SonnetTier
+    ReviewLane -.->|"mapped to"| OpusTier
+    DomainLane -.->|"mapped to"| SonnetTier
+    DomainLane -.->|"mapped to"| HaikuTier
+    Coordination -.->|"mapped to"| OpusTier

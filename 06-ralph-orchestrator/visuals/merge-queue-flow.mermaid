@@ -1,0 +1,50 @@
+sequenceDiagram
+    participant WT1 as Worktree Agent 1
+    participant WT2 as Worktree Agent 2
+    participant MQ as Merge Queue<br>merge-queue.jsonl
+    participant PL as Primary Loop
+    participant GIT as Git Repository
+
+    Note over WT1,WT2: Parallel execution in isolated worktrees
+
+    WT1->>WT1: Execute hat iterations
+    WT2->>WT2: Execute hat iterations
+
+    WT1->>MQ: enqueue(loop-id-1, prompt)
+    Note over MQ: Event: Queued { prompt }
+
+    WT2->>WT2: Still working...
+
+    PL->>MQ: next_pending()
+    MQ-->>PL: Entry: loop-id-1
+
+    PL->>MQ: mark_merging(loop-id-1, pid)
+    Note over MQ: Event: Merging { pid }
+
+    PL->>GIT: git merge worktree branch
+    alt No Conflicts
+        GIT-->>PL: Merge successful
+        PL->>MQ: mark_merged(loop-id-1, commit-sha)
+        Note over MQ: Event: Merged { commit }
+        PL->>GIT: remove_worktree(loop-id-1)
+    else Conflicts Detected
+        GIT-->>PL: Merge conflict
+        PL->>PL: Spawn merge-ralph agent
+        PL->>GIT: Resolve conflicts
+        PL->>MQ: mark_merged(loop-id-1, commit-sha)
+        PL->>GIT: remove_worktree(loop-id-1)
+    end
+
+    WT2->>MQ: enqueue(loop-id-2, prompt)
+    Note over MQ: Event: Queued { prompt }
+
+    PL->>MQ: next_pending()
+    MQ-->>PL: Entry: loop-id-2
+
+    PL->>MQ: mark_merging(loop-id-2, pid)
+    PL->>GIT: git merge worktree branch
+    GIT-->>PL: Merge successful
+    PL->>MQ: mark_merged(loop-id-2, commit-sha)
+    PL->>GIT: remove_worktree(loop-id-2)
+
+    Note over MQ: Full event history preserved<br>in append-only JSONL

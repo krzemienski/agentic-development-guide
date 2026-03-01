@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Twitter Social Card - Agent SDK Bridge</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 628px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #0a0a0f;
+  }
+  .container {
+    width: 1200px;
+    height: 628px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse 800px 500px at 50% 50%, rgba(220, 38, 38, 0.06) 0%, transparent 70%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0f18 50%, #0a0a0f 100%);
+  }
+  .content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .metric {
+    font-size: 180px;
+    font-weight: 900;
+    letter-spacing: -8px;
+    color: #dc2626;
+    line-height: 1;
+    margin-bottom: 8px;
+    text-shadow: 0 0 80px rgba(220, 38, 38, 0.3);
+  }
+  .label {
+    font-size: 32px;
+    font-weight: 600;
+    color: #e8e8ed;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .sublabel {
+    font-size: 18px;
+    font-weight: 400;
+    color: #6b6b80;
+    max-width: 550px;
+    line-height: 1.4;
+  }
+  .category {
+    position: absolute;
+    top: 32px;
+    left: 40px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #dc2626;
+  }
+  .bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #dc2626, transparent);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="category">Debugging War Story</div>
+  <div class="content">
+    <div class="metric">4</div>
+    <div class="label">failed attempts before it worked</div>
+    <div class="sublabel">The journey from "just call the API" to a 5-layer bridge because every simpler approach had a fatal flaw</div>
+  </div>
+  <div class="bottom-line"></div>
+</div>
+</body>
+</html>

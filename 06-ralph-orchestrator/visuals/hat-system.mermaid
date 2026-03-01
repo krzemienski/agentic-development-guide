@@ -1,0 +1,80 @@
+graph TB
+    subgraph coordinator["HatlessRalph -- Constant Coordinator"]
+        hatless["HatlessRalph"]
+        objective["Objective"]
+        topology["Hat Topology"]
+        skillindex["Skill Index"]
+        guidance["Robot Guidance<br>(from Telegram)"]
+        hatless --- objective
+        hatless --- topology
+        hatless --- skillindex
+        hatless --- guidance
+    end
+
+    subgraph registry["Hat Registry (YAML Config)"]
+        yaml_config["topology.yaml"]
+        hat_registry["HatRegistry"]
+        yaml_config --> hat_registry
+    end
+
+    subgraph hat_anatomy["Anatomy of a Hat"]
+        hat_name["Name + Description"]
+        hat_subs["Subscribes To<br>trigger events"]
+        hat_pubs["Publishes<br>output events"]
+        hat_inst["Instructions<br>specialized prompt"]
+        hat_recv["Event Receivers<br>downstream hat map"]
+        hat_epg["Event Publishing Guide"]
+        hat_name --- hat_subs
+        hat_name --- hat_pubs
+        hat_name --- hat_inst
+        hat_pubs --- hat_recv
+        hat_recv --- hat_epg
+    end
+
+    subgraph hat_graph["Hat Topology -- Directed Event Graph"]
+        direction LR
+        planner_hat["Planner"]
+        coder_hat["Coder"]
+        reviewer_hat["Reviewer"]
+        deployer_hat["Deployer"]
+        security_hat["Security Reviewer"]
+
+        planner_hat -->|"plan.complete"| coder_hat
+        coder_hat -->|"code.complete"| reviewer_hat
+        reviewer_hat -->|"review.pass"| deployer_hat
+        reviewer_hat -->|"review.fail"| coder_hat
+        coder_hat -->|"code.complete"| security_hat
+        security_hat -->|"security.pass"| deployer_hat
+        security_hat -->|"security.fail"| coder_hat
+    end
+
+    subgraph selection_flow["Hat Selection Flow (per iteration)"]
+        step_events["1. Read Event Bus State"]
+        step_match["2. Match Events to Subscriptions"]
+        step_select["3. Select Best Hat"]
+        step_inject["4. Inject Hat Instructions"]
+        step_execute["5. Agent Execution"]
+        step_emit["6. Emit Output Events"]
+
+        step_events --> step_match
+        step_match --> step_select
+        step_select --> step_inject
+        step_inject --> step_execute
+        step_execute --> step_emit
+    end
+
+    %% Coordinator feeds into registry and topology
+    hatless --> hat_registry
+    topology --> hat_graph
+    hat_registry --> hat_graph
+
+    %% Hat anatomy defines what gets injected
+    hat_anatomy -.->|"hat prompt injected"| step_inject
+    objective -.->|"OBJECTIVE section"| step_inject
+    guidance -.->|"ROBOT GUIDANCE section"| step_inject
+
+    %% Selection reads from event bus
+    hat_graph --> selection_flow
+
+    %% Output events trigger next hat
+    step_emit -->|"triggers next hat via event bus"| step_events

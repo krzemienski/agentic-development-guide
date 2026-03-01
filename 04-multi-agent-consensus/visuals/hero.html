@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How 3 AI Agents Found a Bug I Would Have Shipped</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: #0c0a09;
+  }
+  .card {
+    width: 1200px;
+    height: 630px;
+    background: linear-gradient(150deg, #0c0a09 0%, #1c1410 25%, #231a10 50%, #1c1410 75%, #0c0a09 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  /* Grid pattern */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(245, 158, 11, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  /* Glow orbs */
+  .glow-1 {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.10) 0%, transparent 70%);
+    top: -120px;
+    right: -60px;
+  }
+  .glow-2 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+    bottom: -100px;
+    left: -40px;
+  }
+  .glow-3 {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.05) 0%, transparent 70%);
+    bottom: 60px;
+    right: 200px;
+  }
+  /* Category badge */
+  .category {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 6px;
+    padding: 6px 20px;
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 2;
+  }
+  /* Agent indicators */
+  .agents-row {
+    display: flex;
+    gap: 36px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .agent-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .agent-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .agent-dot.pass {
+    background: #f59e0b;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.5), 0 0 24px rgba(245, 158, 11, 0.25);
+  }
+  .agent-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+  }
+  .agent-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245, 158, 11, 0.55);
+    text-align: center;
+    margin-top: 8px;
+  }
+  /* Title */
+  .title {
+    font-size: 52px;
+    font-weight: 700;
+    color: #fefce8;
+    text-align: center;
+    line-height: 1.15;
+    max-width: 920px;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -1px;
+  }
+  .title .accent {
+    color: #f59e0b;
+  }
+  /* Subtitle */
+  .subtitle {
+    font-size: 19px;
+    color: rgba(254, 252, 232, 0.45);
+    text-align: center;
+    margin-top: 22px;
+    position: relative;
+    z-index: 2;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    max-width: 700px;
+    line-height: 1.5;
+  }
+  /* Bug badge */
+  .bug-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(239, 68, 68, 0.10);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: 8px;
+    padding: 8px 20px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 2;
+  }
+  .bug-badge .severity {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ef4444;
+    letter-spacing: 1px;
+  }
+  .bug-badge .desc {
+    font-size: 13px;
+    color: rgba(252, 165, 165, 0.7);
+    font-weight: 400;
+  }
+  /* Bottom attribution */
+  .attribution {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(245, 158, 11, 0.30);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    z-index: 2;
+  }
+  /* Corner accents */
+  .corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    z-index: 2;
+  }
+  .corner-tl { top: 24px; left: 24px; border-top: 2px solid rgba(245, 158, 11, 0.18); border-left: 2px solid rgba(245, 158, 11, 0.18); }
+  .corner-tr { top: 24px; right: 24px; border-top: 2px solid rgba(245, 158, 11, 0.18); border-right: 2px solid rgba(245, 158, 11, 0.18); }
+  .corner-bl { bottom: 24px; left: 24px; border-bottom: 2px solid rgba(245, 158, 11, 0.18); border-left: 2px solid rgba(245, 158, 11, 0.18); }
+  .corner-br { bottom: 24px; right: 24px; border-bottom: 2px solid rgba(245, 158, 11, 0.18); border-right: 2px solid rgba(245, 158, 11, 0.18); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+  <div class="glow-3"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="category">Code Quality</div>
+
+  <div class="agents-row">
+    <div class="agent-group">
+      <div class="agent-dot pass"></div>
+      <div class="agent-label">Lead</div>
+    </div>
+    <div class="agent-group">
+      <div class="agent-dot pass"></div>
+      <div class="agent-label">Alpha</div>
+    </div>
+    <div class="agent-group">
+      <div class="agent-dot pass"></div>
+      <div class="agent-label">Bravo</div>
+    </div>
+  </div>
+
+  <div class="title">
+    How <span class="accent">3 AI Agents</span> Caught a Bug<br>I Would Have Shipped
+  </div>
+
+  <div class="subtitle">Consensus-driven quality gates across 10 phases &mdash; independent verification, unanimous pass required</div>
+
+  <div class="bug-badge">
+    <span class="severity">P2 BUG</span>
+    <span class="desc">Streaming text duplication &middot; ChatViewModel.swift:926</span>
+  </div>
+
+  <div class="attribution">Nick Krzemienski &middot; March 2026</div>
+</div>
+</body>
+</html>

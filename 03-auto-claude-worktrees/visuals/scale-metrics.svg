@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0284c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0f172a" rx="12"/>
+
+  <!-- Grid lines (subtle) -->
+  <g stroke="rgba(148,163,184,0.06)" stroke-width="1">
+    <line x1="240" y1="60" x2="240" y2="420"/>
+    <line x1="400" y1="60" x2="400" y2="420"/>
+    <line x1="560" y1="60" x2="560" y2="420"/>
+    <line x1="720" y1="60" x2="720" y2="420"/>
+    <line x1="860" y1="60" x2="860" y2="420"/>
+  </g>
+
+  <!-- Title -->
+  <text x="50" y="42" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="22" font-weight="700">Auto-Claude Scale Metrics</text>
+  <text x="630" y="42" fill="rgba(148,163,184,0.4)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="14" font-weight="500">Awesome List Project</text>
+
+  <!-- Separator -->
+  <line x1="50" y1="60" x2="860" y2="60" stroke="rgba(148,163,184,0.12)" stroke-width="1"/>
+
+  <!-- Bar 1: 194 Worktrees -->
+  <g>
+    <!-- Label -->
+    <text x="50" y="138" fill="#d1fae5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="16" font-weight="600">Parallel Worktrees</text>
+    <text x="50" y="158" fill="rgba(148,163,184,0.45)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="13">Isolated git environments with dedicated agents</text>
+
+    <!-- Bar background -->
+    <rect x="50" y="172" width="810" height="40" rx="6" fill="rgba(5,150,105,0.08)"/>
+
+    <!-- Bar fill: 194/3066 proportional, but we make it visually meaningful -->
+    <!-- Using a scale where 3066 = full width (810px), 194 = 51px ... too small -->
+    <!-- Better: each bar is proportional to its own max. 194 worktrees = ~51% width for visual impact -->
+    <rect x="50" y="172" width="420" height="40" rx="6" fill="url(#greenGrad)" filter="url(#glow)"/>
+
+    <!-- Value -->
+    <text x="480" y="198" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="24" font-weight="800">194</text>
+    <text x="530" y="198" fill="rgba(148,163,184,0.5)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="14" font-weight="500">worktrees</text>
+  </g>
+
+  <!-- Bar 2: 3,066 Sessions -->
+  <g>
+    <!-- Label -->
+    <text x="50" y="258" fill="#bae6fd" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="16" font-weight="600">Total Sessions</text>
+    <text x="50" y="278" fill="rgba(148,163,184,0.45)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="13">Claude agent conversations across all worktrees</text>
+
+    <!-- Bar background -->
+    <rect x="50" y="292" width="810" height="40" rx="6" fill="rgba(2,132,199,0.08)"/>
+
+    <!-- Bar fill: 3066 is the largest number, gets full width -->
+    <rect x="50" y="292" width="770" height="40" rx="6" fill="url(#blueGrad)" filter="url(#glow)"/>
+
+    <!-- Value -->
+    <text x="828" y="318" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="24" font-weight="800" text-anchor="end">3,066</text>
+    <text x="828" y="336" fill="rgba(148,163,184,0.5)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="end">sessions</text>
+  </g>
+
+  <!-- Bar 3: 470 MB Data -->
+  <g>
+    <!-- Label -->
+    <text x="50" y="378" fill="#ddd6fe" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="16" font-weight="600">Conversation Data</text>
+    <text x="50" y="398" fill="rgba(148,163,184,0.45)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="13">JSONL session logs across 91 specified tasks</text>
+
+    <!-- Bar background -->
+    <rect x="50" y="412" width="810" height="40" rx="6" fill="rgba(124,58,237,0.08)"/>
+
+    <!-- Bar fill: 470 is mid-range, ~60% width -->
+    <rect x="50" y="412" width="560" height="40" rx="6" fill="url(#purpleGrad)" filter="url(#glow)"/>
+
+    <!-- Value -->
+    <text x="620" y="438" fill="#a78bfa" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="24" font-weight="800">470 MB</text>
+    <text x="712" y="438" fill="rgba(148,163,184,0.5)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="14" font-weight="500">JSONL data</text>
+  </g>
+
+  <!-- Bottom legend -->
+  <g transform="translate(50, 478)">
+    <circle cx="6" cy="-4" r="5" fill="#10b981"/>
+    <text x="18" y="0" fill="rgba(148,163,184,0.5)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="12">Worktrees</text>
+    <circle cx="116" cy="-4" r="5" fill="#38bdf8"/>
+    <text x="128" y="0" fill="rgba(148,163,184,0.5)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="12">Sessions</text>
+    <circle cx="216" cy="-4" r="5" fill="#a78bfa"/>
+    <text x="228" y="0" fill="rgba(148,163,184,0.5)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="12">Data Volume</text>
+    <text x="660" y="0" fill="rgba(148,163,184,0.3)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="end">Auto-Claude Pipeline</text>
+  </g>
+</svg>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Twitter/X Social Card - Stitch Design-to-Code</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 628px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    background: #000000;
+    color: #ffffff;
+    position: relative;
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(77, 172, 222, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77, 172, 222, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .accent-line-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e050b0, #4dacde, #e050b0);
+  }
+
+  .accent-line-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4dacde, #e050b0, #4dacde);
+  }
+
+  .glow-r {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(224, 80, 176, 0.1) 0%, transparent 60%);
+    top: -200px;
+    right: -100px;
+  }
+
+  .glow-l {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(77, 172, 222, 0.08) 0%, transparent 60%);
+    bottom: -150px;
+    left: -100px;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: 100%;
+    padding: 56px 72px;
+    gap: 64px;
+  }
+
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .tag {
+    display: inline-block;
+    background: rgba(224, 80, 176, 0.1);
+    border: 1px solid rgba(224, 80, 176, 0.35);
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e050b0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+
+  .big-number {
+    font-size: 120px;
+    font-weight: 800;
+    line-height: 1;
+    color: #e050b0;
+    margin-bottom: 8px;
+    letter-spacing: -0.04em;
+  }
+
+  .label {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .sublabel {
+    font-size: 15px;
+    color: #a0a0a0;
+    line-height: 1.5;
+  }
+
+  .right {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .metric-card {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    padding: 20px 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .metric-val {
+    font-size: 36px;
+    font-weight: 700;
+    color: #4dacde;
+  }
+
+  .metric-val.pink { color: #e050b0; }
+
+  .metric-desc {
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.4;
+  }
+
+  .tool-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .tool-pill {
+    background: #111111;
+    border: 1px solid #222222;
+    padding: 6px 14px;
+    font-size: 10px;
+    color: #555555;
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="accent-line-top"></div>
+  <div class="accent-line-bottom"></div>
+  <div class="glow-r"></div>
+  <div class="glow-l"></div>
+
+  <div class="content">
+    <div class="left">
+      <div class="tag">Stitch MCP + Gemini 3 Pro</div>
+      <div class="big-number">21</div>
+      <div class="label">Screens from Text</div>
+      <div class="sublabel">AI-generated designs converted to validated<br>Next.js components in one session</div>
+    </div>
+
+    <div class="right">
+      <div class="metric-card">
+        <div class="metric-val">107</div>
+        <div class="metric-desc">Puppeteer validation<br>actions executed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val pink">13.4K</div>
+        <div class="metric-desc">Lines in a single<br>Claude Code session</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">0</div>
+        <div class="metric-desc">Figma files opened<br>or CSS written by hand</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-pill">Next.js</div>
+        <div class="tool-pill">shadcn/ui</div>
+        <div class="tool-pill">Tailwind</div>
+        <div class="tool-pill">Puppeteer</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

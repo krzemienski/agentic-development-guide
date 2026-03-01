@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>LinkedIn Social Card - Stitch Design-to-Code</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 627px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    background: #000000;
+    color: #ffffff;
+    position: relative;
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(224, 80, 176, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(224, 80, 176, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .top-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #e050b0 0%, #4dacde 50%, #e050b0 100%);
+  }
+
+  .bottom-accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4dacde 0%, #e050b0 50%, #4dacde 100%);
+  }
+
+  .glow-center {
+    position: absolute;
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(224, 80, 176, 0.06) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 52px 72px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(224, 80, 176, 0.1);
+    border: 1px solid rgba(224, 80, 176, 0.3);
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e050b0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .badge-indicator {
+    width: 6px;
+    height: 6px;
+    background: #e050b0;
+  }
+
+  .tool-name {
+    font-size: 12px;
+    color: #4dacde;
+    letter-spacing: 0.06em;
+  }
+
+  .center-block {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .metrics-row {
+    display: flex;
+    gap: 64px;
+    align-items: flex-end;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .metric-number {
+    font-size: 96px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .metric-number.pink { color: #e050b0; }
+  .metric-number.cyan { color: #4dacde; }
+  .metric-number.white { color: #ffffff; }
+
+  .metric-label {
+    font-size: 13px;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .divider-v {
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #333333, transparent);
+    align-self: center;
+  }
+
+  .subtitle-area {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .title-line {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+
+  .title-line .pink { color: #e050b0; }
+  .title-line .cyan { color: #4dacde; }
+
+  .desc-line {
+    font-size: 14px;
+    color: #a0a0a0;
+    line-height: 1.5;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #141414;
+  }
+
+  .tech-pills {
+    display: flex;
+    gap: 12px;
+  }
+
+  .pill {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    padding: 5px 14px;
+    font-size: 10px;
+    color: #444444;
+    letter-spacing: 0.06em;
+  }
+
+  .session-note {
+    font-size: 11px;
+    color: #333333;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="top-accent"></div>
+  <div class="bottom-accent"></div>
+  <div class="glow-center"></div>
+
+  <div class="content">
+    <div class="header">
+      <div class="badge">
+        <span class="badge-indicator"></span>
+        Design-to-Code Pipeline
+      </div>
+      <div class="tool-name">Stitch MCP // Gemini 3 Pro // Claude Code</div>
+    </div>
+
+    <div class="center-block">
+      <div class="metrics-row">
+        <div class="metric">
+          <div class="metric-number pink">21</div>
+          <div class="metric-label">Screens<br>Generated</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="metric">
+          <div class="metric-number cyan">107</div>
+          <div class="metric-label">Puppeteer<br>Validations</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="metric">
+          <div class="metric-number white">1</div>
+          <div class="metric-label">Continuous<br>Session</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subtitle-area">
+      <div class="title-line">
+        Text Prompts <span class="pink">&rarr;</span> AI Designs <span class="cyan">&rarr;</span> Validated React Components
+      </div>
+      <div class="desc-line">
+        Full application designed, coded, and validated without opening Figma
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="tech-pills">
+        <div class="pill">Next.js</div>
+        <div class="pill">shadcn/ui</div>
+        <div class="pill">Tailwind CSS</div>
+        <div class="pill">JetBrains Mono</div>
+        <div class="pill">Puppeteer</div>
+      </div>
+      <div class="session-note">13,432 lines // 0 Figma files</div>
+    </div>
+  </div>
+</body>
+</html>

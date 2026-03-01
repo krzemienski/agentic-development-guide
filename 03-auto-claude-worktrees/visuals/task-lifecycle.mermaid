@@ -1,0 +1,50 @@
+%%{init: {'theme': 'dark', 'themeVariables': {'primaryColor': '#818cf8', 'primaryTextColor': '#e0e7ff', 'primaryBorderColor': '#6366f1', 'lineColor': '#a5b4fc', 'secondaryColor': '#1e1b4b', 'tertiaryColor': '#312e81'}}}%%
+
+stateDiagram-v2
+    [*] --> Ideated: Task generated
+
+    Ideated --> Deferred: Blocked by dependency
+    Ideated --> Specified: Spec generated
+
+    Deferred --> Specified: Dependency resolved
+
+    Specified --> Executing: Worktree spawned
+
+    Executing --> QAReview: Agent completes work
+    Executing --> Failed: Timeout or fatal error
+
+    QAReview --> Approved: All criteria met
+    QAReview --> Fixing: Issues identified
+
+    Fixing --> Executing: Fixes applied in worktree
+    Fixing --> Failed: Max retries exceeded
+
+    Approved --> Merging: Enter merge queue
+
+    Merging --> Merged: Clean merge to main
+    Merging --> Reexecuting: Conflict with main
+
+    Reexecuting --> Executing: New worktree from updated base
+
+    Merged --> [*]
+    Failed --> [*]
+
+    note right of Ideated
+        194 tasks generated
+        from codebase analysis
+    end note
+
+    note right of Specified
+        91 specs produced
+        with acceptance criteria
+    end note
+
+    note right of QAReview
+        71 QA reports generated
+        22% rejection rate pass 1
+    end note
+
+    note right of Fixing
+        95% approval rate
+        on second submission
+    end note

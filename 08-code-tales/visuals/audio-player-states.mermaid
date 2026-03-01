@@ -1,0 +1,43 @@
+stateDiagram-v2
+    [*] --> Idle
+
+    Idle --> Loading : selectStory()
+    Loading --> Buffering : streamStarted
+    Loading --> Error : fetchFailed
+
+    Buffering --> Playing : bufferReady
+    Buffering --> Error : streamError
+
+    Playing --> Paused : pause()
+    Playing --> Buffering : bufferUnderrun
+    Playing --> Completed : reachedEnd
+    Playing --> Error : playbackError
+
+    Paused --> Playing : resume()
+    Paused --> Idle : stop()
+    Paused --> Loading : selectStory()
+
+    Completed --> Idle : dismiss()
+    Completed --> Loading : replay()
+    Completed --> Loading : selectStory()
+
+    Error --> Loading : retry()
+    Error --> Idle : dismiss()
+
+    note right of Loading
+        RACE CONDITION ZONE
+        User taps new story while
+        previous story is still loading.
+        Old callback fires after context
+        switch causing wrong audio playback.
+        FIX: AudioPlayerContext serializes
+        all transitions with generation ID.
+        Stale callbacks are rejected.
+    end note
+
+    note right of Buffering
+        Buffer callbacks carry a
+        storyId. Context rejects
+        callbacks where storyId
+        does not match current.
+    end note
