@@ -1,0 +1,16 @@
+flowchart TD
+    CP["Craft Prompt\n(embed design system)"]
+    SM["Stitch MCP\n(generate visual design)"]
+    DO["Design Output\n(review spec compliance)"]
+    RC["React Conversion\n(build components,\nadd data-testid)"]
+    PV["Puppeteer Validation\n(107 actions / 21 screens)"]
+    DEC{"All Checks Pass?"}
+    SH["Ship"]
+
+    CP --> SM
+    SM --> DO
+    DO --> RC
+    RC --> PV
+    PV --> DEC
+    DEC -->|Yes| SH
+    DEC -->|No| CP

@@ -1,0 +1,40 @@
+flowchart TD
+    L1["Layer 1\nGlobal CLAUDE.md\n(Universal rules &amp; agent catalog)"]
+    L2["Layer 2\nProject CLAUDE.md\n(Repo-specific constraints)"]
+    L3["Layer 3\n.claude/rules/*.md\n(Domain rules: git, perf, feature-gate)"]
+    L4["Layer 4\nHooks\n(PostToolUse auto-build, PreCommit scan)"]
+    L5["Layer 5\nSecurity Scan\n(Secrets, hardcoded paths, DB files)"]
+    L6["Layer 6\nSkills\n(ios-validation-runner, functional-validation)"]
+    L7["Layer 7\nSession Memory\n(MEMORY.md + project-memory.json)"]
+
+    L1 --> L2
+    L2 --> L3
+    L3 --> L4
+    L4 --> L5
+    L5 --> L6
+    L6 --> L7
+
+    subgraph SessionStart["Session Start"]
+        direction LR
+        SS["Loads Layers 1-3"]
+    end
+
+    subgraph DuringEdit["During Editing"]
+        direction LR
+        DE["Triggers Layer 4\n(auto-build hook)"]
+    end
+
+    subgraph AtCommit["At Commit"]
+        direction LR
+        AC["Triggers Layer 5\n(security scan)"]
+    end
+
+    subgraph Validation["Validation"]
+        direction LR
+        VA["Invokes Layers 6-7\n(skills + memory)"]
+    end
+
+    SessionStart -.-> L1
+    DuringEdit -.-> L4
+    AtCommit -.-> L5
+    Validation -.-> L6
