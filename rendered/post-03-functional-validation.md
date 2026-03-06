@@ -1,10 +1,11 @@
 ---
 title: "I Banned Unit Tests From My AI Workflow"
 subtitle: "A functional validation framework that forces real systems to prove they work"
-author: Nick Baumann
-date: 2026-03-01
+author: "Nick Krzemienski"
+date: "2025-03-01"
 series_number: 3
-github_repo: https://github.com/nickbaumann98/functional-validation-framework
+series_total: 11
+github_repo: https://github.com/krzemienski/functional-validation-framework
 tags:
   - AgenticDevelopment
   - FunctionalValidation
@@ -1156,7 +1157,7 @@ Across the ILS project (the native iOS client for Claude Code that this series c
 
 - 470+ screenshots as validation evidence
 - 37+ validation gates across 10 development phases
-- 3 browser automation tools integrated (Playwright, idb, simctl)
+- 3 browser automation tools integrated (Playwright, idb, simctl). While we evaluated Puppeteer MCP and agent-browser during the research phase, the framework ships with Playwright as the default browser automation engine due to its superior async support and cross-browser coverage.
 - 4 bug categories systematically caught that unit tests miss
 - 0 unit tests written. Zero. Not one.
 
@@ -1594,8 +1595,29 @@ Start with one gate today. You will never go back to mocking.
 
 The companion repo has the full framework. Clone it, run `fvf init`, and try it on your own project. I think you'll be surprised how many bugs your test suite has been hiding.
 
-[functional-validation-framework on GitHub](https://github.com/nickbaumann98/functional-validation-framework)
+[functional-validation-framework on GitHub](https://github.com/krzemienski/functional-validation-framework)
 
 ---
 
 *Part 3 of 11 in the [Agentic Development](https://github.com/krzemienski/agentic-development-guide) series.*
+
+---
+
+## Series Navigation
+
+**Previous:** [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md) | **Next:** [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+
+**Full Series:** [8,481 AI Coding Sessions: The Complete Guide](https://github.com/krzemienski/agentic-development-guide)
+
+1. [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md)
+2. [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+3. [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+4. [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+5. [5 Layers to Call an API](./post-05-sdk-bridge.md)
+6. [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+7. [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md)
+8. [Ralph Orchestrator](./post-08-ralph-orchestrator.md)
+9. [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+10. [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+11. [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+

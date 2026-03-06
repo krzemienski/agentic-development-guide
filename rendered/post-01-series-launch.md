@@ -1,9 +1,10 @@
 ---
 title: "8,481 AI Coding Sessions. 90 Days. Here Is What I Learned."
-subtitle: "Introducing the Agentic Development series: 10 deeply technical posts on coordinating AI agents at factory scale"
+subtitle: "Introducing the Agentic Development series: 11 deeply technical posts on coordinating AI agents at factory scale"
 author: "Nick Krzemienski"
-date: "2025"
+date: "2025-03-01"
 series_number: 1
+series_total: 11
 github_repo: "https://github.com/krzemienski/agentic-development-guide"
 tags:
   - AgenticDevelopment
@@ -98,6 +99,22 @@ If you are new to AI-assisted development, start with **Topic 1** (this post) fo
 If you are already using AI coding tools and want to scale up, start with **Topic 2** (Consensus), then **Topic 5** (Prompt Stack), then **Topic 6** (Worktrees). These three posts cover the quality, context, and parallelism infrastructure that separates "using AI to write code" from "operating an AI development system."
 
 If you are an infrastructure engineer or tooling developer, go straight to **Topic 8** (Ralph) and **Topic 11** (AI Dev OS). Everything else is context. These two posts contain the architectural decisions, the trade-offs, and the patterns that inform the next generation of AI development tooling.
+
+### Post-to-Topic Mapping
+
+| Post | Topic | Title |
+|------|-------|-------|
+| 01 | -- | Series Launch & Overview |
+| 02 | 1 | Multi-Agent Consensus |
+| 03 | 2 | Functional Validation |
+| 04 | 3 | iOS Streaming Bridge |
+| 05 | 4 | The SDK Bridge |
+| 06 | 5 | 194 Parallel Worktrees |
+| 07 | 6 | Prompt Engineering Stack |
+| 08 | 7 | Ralph Orchestrator |
+| 09 | 8 | Code Tales |
+| 10 | 9 | Stitch Design-to-Code |
+| 11 | 10 | AI Dev Operating System |
 
 ```mermaid
 flowchart TD
@@ -223,7 +240,7 @@ The hat system deserves its own post (and nearly got one). The key insight is th
 
 ### Topic 7: I Banned Unit Tests From My AI Workflow
 
-Zero mocks. Zero stubs. Zero test doubles. When an AI agent writes both the implementation AND the unit tests, a passing test suite is not independent evidence of correctness. The agent validates its own assumptions in a closed loop. The replacement: functional validation. Build the real system, run it, screenshot it, verify against the spec. The numbers after 90 days: 470 evidence screenshots captured, 37+ validation gates across multiple projects, 3 browser automation tools evaluated (Puppeteer MCP, Playwright MCP, agent-browser). Four bug categories caught that unit tests systematically miss: visual rendering bugs, integration boundary failures, state management bugs that only appear on second interaction, and platform-specific issues. The companion repo (`functional-validation-framework`) ships a Click CLI where `fvf init --type api` generates a real 5-gate YAML configuration with Playwright, httpx, and screenshot capture built in.
+Zero mocks. Zero stubs. Zero test doubles. When an AI agent writes both the implementation AND the unit tests, a passing test suite is not independent evidence of correctness. The agent validates its own assumptions in a closed loop. The replacement: functional validation. Build the real system, run it, screenshot it, verify against the spec. The numbers after 90 days: 470 evidence screenshots captured, 37+ validation gates across multiple projects, 3 browser automation tools integrated (Playwright, idb, simctl). Four bug categories caught that unit tests systematically miss: visual rendering bugs, integration boundary failures, state management bugs that only appear on second interaction, and platform-specific issues. The companion repo (`functional-validation-framework`) ships a Click CLI where `fvf init --type api` generates a real 5-gate YAML configuration with httpx-based API validation built in. For browser automation, use `fvf init --type browser` which adds Playwright support.
 
 This is the most controversial post in the series, and deliberately so. The argument is not that unit tests are bad. The argument is that when an AI agent writes both the code and the tests, the tests are not an independent signal. They validate the agent's model of the problem, which is exactly the thing that might be wrong. Functional validation -- building the real system, running it under real conditions, and capturing evidence of its behavior -- provides the independent signal that AI-generated tests cannot.
 
@@ -351,3 +368,24 @@ What patterns are you discovering as you scale AI coding tools beyond single-ses
 ---
 
 *Part 1 of 11 in the [Agentic Development](https://github.com/krzemienski/agentic-development-guide) series.*
+
+---
+
+## Series Navigation
+
+**Next:** [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+
+**Full Series:** [8,481 AI Coding Sessions: The Complete Guide](https://github.com/krzemienski/agentic-development-guide)
+
+1. [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md)
+2. [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+3. [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+4. [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+5. [5 Layers to Call an API](./post-05-sdk-bridge.md)
+6. [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+7. [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md)
+8. [Ralph Orchestrator](./post-08-ralph-orchestrator.md)
+9. [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+10. [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+11. [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+

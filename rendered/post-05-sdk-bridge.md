@@ -1,9 +1,10 @@
 ---
 title: "5 Layers to Call an API"
 subtitle: "Agentic Development: 10 Lessons from 8,481 AI Coding Sessions (Part 5)"
-author: Nick Krzemienski
-date: 2025-06-05
+author: "Nick Krzemienski"
+date: "2025-03-01"
 series_number: 5
+series_total: 11
 github_repo: https://github.com/krzemienski/claude-sdk-bridge
 tags:
   - AgenticDevelopment
@@ -457,7 +458,7 @@ Each layer exists because the layer above cannot talk to the layer below without
 
 - **Layer 2 to 3** exists because Swift cannot use the Swift SDK (RunLoop/NIO mismatch, Attempt 2) and cannot call the Anthropic API directly (OAuth, not API keys, Attempt 1). The Vapor backend must delegate to something that can authenticate through Claude Code's OAuth chain. That something is a Python script.
 
-- **Layer 3 is Python** because the `claude-agent-sdk` pip package wraps the Claude CLI natively and inherits OAuth authentication from `~/.claude/`. Python is pre-installed on macOS. The bridge is ~50 lines. The async iterator interface (`async for message in query(...)`) is clean.
+- **Layer 3 is Python** because the `claude-agent-sdk` pip package wraps the Claude CLI natively and inherits OAuth authentication from `~/.claude/`. Python is pre-installed on macOS. The bridge is ~236 lines. The async iterator interface (`async for message in query(...)`) is clean.
 
 - **Layer 4 is the Claude CLI** because it is the only consumer-accessible interface that handles the OAuth token chain. The CLI manages token refresh, session persistence, and the credential store. No other tool exposes these capabilities.
 
@@ -834,7 +835,7 @@ This experience crystallized a decision framework for integration architecture. 
 - One system is under your control and can be modified
 - The performance penalty of the bridge is unacceptable for the use case
 
-In our case, bridging was correct. The gap was at the authentication and runtime paradigm layers. The bridge is stateless -- each request is independent. Both systems (Vapor and Claude CLI) are actively maintained by separate teams. The bridge code is 50 lines of Python and 210 lines of Swift. A rewrite would mean forking either Vapor's concurrency model or the Claude CLI's authentication flow, both of which are moving targets.
+In our case, bridging was correct. The gap was at the authentication and runtime paradigm layers. The bridge is stateless -- each request is independent. Both systems (Vapor and Claude CLI) are actively maintained by separate teams. The bridge code is ~236 lines of Python and ~212 lines of Swift. A rewrite would mean forking either Vapor's concurrency model or the Claude CLI's authentication flow, both of which are moving targets.
 
 There is a third option that is sometimes appropriate: **wait for the gap to close.** If the upstream SDK adds NIO-compatible streaming in a future version, the bridge becomes unnecessary. But waiting has a cost too -- the product does not ship until the gap closes, and you have no control over the timeline. The bridge lets you ship today while remaining easy to remove later. The 260 lines of bridge code are the cost of not waiting.
 
@@ -875,7 +876,7 @@ Hindsight reveals several decisions I would change if I were starting this integ
 
 **Start with environment inspection, not architecture exploration.** The single highest-impact debugging technique in this entire odyssey was printing the environment variables. If I had done that on day one -- before writing a single line of integration code -- I would have discovered the `CLAUDECODE=1` nesting detection immediately and saved ten hours. The lesson: when integrating with any tool that uses subprocess spawning, your first action should be `env | sort` in the target context. Environment variables are ambient authority. They affect behavior without appearing in any source code. Inspect them first.
 
-**Build a diagnostic mode before building the feature.** The most expensive failures were silent. If I had built a minimal diagnostic script first -- one that just spawns the Claude CLI, captures stdout and stderr, prints the exit code, and dumps the environment -- I would have isolated each failure in minutes instead of hours. A diagnostic mode that exercises each layer independently is worth building before the production bridge. The companion repo now includes `diagnostics/check_bridge.py` for exactly this purpose.
+**Build a diagnostic mode before building the feature.** The most expensive failures were silent. If I had built a minimal diagnostic script first -- one that just spawns the Claude CLI, captures stdout and stderr, prints the exit code, and dumps the environment -- I would have isolated each failure in minutes instead of hours. A diagnostic mode that exercises each layer independently is worth building before the production bridge. Building a minimal diagnostic script for exactly this purpose is worth the upfront investment.
 
 **Test in the production context from the start.** Attempt 4 worked in a terminal and failed in Claude Code. I tested in the terminal first because it was convenient. If I had tested inside Claude Code from the beginning, the nesting detection bug would have surfaced immediately. The general principle: test in the context where the code will actually run. "It works on my machine" is not just a meme -- it is a description of environment-dependent bugs that only manifest in the deployment context.
 
@@ -1005,7 +1006,7 @@ After thirty hours of debugging across four failed attempts, I developed a syste
 
 **Step 1: Map the data path.** Before writing any integration code, draw the complete path from data source to data consumer. List every process boundary, every serialization format, and every authentication mechanism. For the SDK bridge, this map has six boundaries. Each boundary is a potential failure point and a potential logging point.
 
-**Step 2: Build boundary probes.** For each boundary on the map, write a minimal script that tests that boundary in isolation. Can Layer 2 talk to Layer 3? Write a script that sends one message through the boundary and prints the result. The companion repo's `diagnostics/` directory contains probes for each boundary:
+**Step 2: Build boundary probes.** For each boundary on the map, write a minimal script that tests that boundary in isolation. Can Layer 2 talk to Layer 3? Write a script that sends one message through the boundary and prints the result. Here are the probes for each boundary:
 
 ```bash
 # Probe 1: Can we reach the Vapor backend?
@@ -1048,7 +1049,7 @@ Five layers works because each layer does exactly one translation:
 4. OAuth-authenticated CLI call
 5. HTTP to Anthropic's servers
 
-No layer tries to be clever. No layer combines responsibilities. The `bridge.py` file is ~50 lines. The `executor.swift` is ~210 lines. The total bridge code is smaller than any of the failed attempts because each layer has a single, clear job.
+No layer tries to be clever. No layer combines responsibilities. The `bridge.py` file is ~236 lines. The `executor.swift` is ~212 lines. The total bridge code is smaller than any of the failed attempts because each layer has a single, clear job.
 
 Six serialization boundaries exist in the full round trip. Each one is a potential source of bugs. The text duplication P2 bug -- where every response appeared twice -- was caused by using `+=` on accumulated text instead of `=` at boundary 5. Two characters. Three hours of debugging. But the serialization boundary made it easy to isolate once I knew where to look.
 
@@ -1097,5 +1098,26 @@ Companion repo: [github.com/krzemienski/claude-sdk-bridge](https://github.com/kr
 ---
 
 *Part 5 of 11 in the [Agentic Development](https://github.com/krzemienski/agentic-development-guide) series.*
+
+---
+
+## Series Navigation
+
+**Previous:** [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md) | **Next:** [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+
+**Full Series:** [8,481 AI Coding Sessions: The Complete Guide](https://github.com/krzemienski/agentic-development-guide)
+
+1. [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md)
+2. [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+3. [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+4. [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+5. [5 Layers to Call an API](./post-05-sdk-bridge.md)
+6. [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+7. [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md)
+8. [Ralph Orchestrator](./post-08-ralph-orchestrator.md)
+9. [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+10. [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+11. [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+
 
 `#AgenticDevelopment` `#ClaudeCode` `#iOSDevelopment` `#SoftwareArchitecture` `#AIEngineering`

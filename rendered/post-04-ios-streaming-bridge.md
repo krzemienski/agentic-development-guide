@@ -1,10 +1,11 @@
 ---
-title: "The 5-Layer SSE Bridge: Building a Native iOS Client for Claude Code"
+title: "5-Layer SSE Bridge: iOS Streaming for Claude Code"
 subtitle: "Ten hops per token, each one a place where the stream can break"
-author: Nick Baumann
-date: 2026-03-01
+author: "Nick Krzemienski"
+date: "2025-03-01"
 series_number: 4
-github_repo: https://github.com/nickbaumann98/claude-ios-streaming-bridge
+series_total: 11
+github_repo: https://github.com/krzemienski/claude-ios-streaming-bridge
 tags:
   - AgenticDevelopment
   - SwiftUI
@@ -15,7 +16,7 @@ tags:
 
 ![Hero](../visuals/html/series-hero.html)
 
-## The 5-Layer SSE Bridge: Building a Native iOS Client for Claude Code
+## 5-Layer SSE Bridge: iOS Streaming for Claude Code
 
 *Agentic Development: 10 Lessons from 8,481 AI Coding Sessions*
 
@@ -1666,7 +1667,7 @@ To integrate into your own project:
 ```swift
 // Package.swift dependency
 dependencies: [
-    .package(url: "https://github.com/nickbaumann98/claude-ios-streaming-bridge", from: "1.0.0"),
+    .package(url: "https://github.com/krzemienski/claude-ios-streaming-bridge", from: "1.0.0"),
 ],
 targets: [
     .target(
@@ -1753,8 +1754,29 @@ client.startStream(request: ChatStreamRequest(prompt: "Hello, Claude"))
 // Observe client.messages in your SwiftUI view
 ```
 
-[claude-ios-streaming-bridge on GitHub](https://github.com/nickbaumann98/claude-ios-streaming-bridge)
+[claude-ios-streaming-bridge on GitHub](https://github.com/krzemienski/claude-ios-streaming-bridge)
 
 ---
 
 *Part 4 of 11 in the [Agentic Development](https://github.com/krzemienski/agentic-development-guide) series.*
+
+---
+
+## Series Navigation
+
+**Previous:** [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md) | **Next:** [5 Layers to Call an API](./post-05-sdk-bridge.md)
+
+**Full Series:** [8,481 AI Coding Sessions: The Complete Guide](https://github.com/krzemienski/agentic-development-guide)
+
+1. [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md)
+2. [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+3. [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+4. [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+5. [5 Layers to Call an API](./post-05-sdk-bridge.md)
+6. [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+7. [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md)
+8. [Ralph Orchestrator](./post-08-ralph-orchestrator.md)
+9. [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+10. [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+11. [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+

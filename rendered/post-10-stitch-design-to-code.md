@@ -1,9 +1,10 @@
 ---
 title: "21 AI-Generated Screens, Zero Figma Files"
 subtitle: "How a brutalist-cyberpunk design system, structured prompts, and 107 Puppeteer checks replaced the entire design pipeline"
-author: Nick Krzemienski
-date: 2024-01-10
+author: "Nick Krzemienski"
+date: "2025-03-01"
 series_number: 10
+series_total: 11
 github_repo: https://github.com/krzemienski/stitch-design-to-code
 tags: [AgenticDevelopment, StitchMCP, DesignToCode, ReactComponents, PuppeteerValidation]
 ---
@@ -1072,3 +1073,24 @@ Companion repo: [github.com/krzemienski/stitch-design-to-code](https://github.co
 ---
 
 *Part 10 of 11 in the [Agentic Development](https://github.com/krzemienski/agentic-development-guide) series.*
+
+---
+
+## Series Navigation
+
+**Previous:** [From GitHub Repos to Audio Stories](./post-09-code-tales.md) | **Next:** [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+
+**Full Series:** [8,481 AI Coding Sessions: The Complete Guide](https://github.com/krzemienski/agentic-development-guide)
+
+1. [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md)
+2. [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+3. [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+4. [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+5. [5 Layers to Call an API](./post-05-sdk-bridge.md)
+6. [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+7. [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md)
+8. [Ralph Orchestrator](./post-08-ralph-orchestrator.md)
+9. [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+10. [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+11. [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+

@@ -1,19 +1,20 @@
 ---
-title: "Ralph Orchestrator — A Rust Platform for AI Agent Fleets"
+title: "Ralph Orchestrator — A Python Platform for AI Agent Fleets"
 subtitle: "Agentic Development: 10 Lessons from 8,481 AI Coding Sessions (Post 8 of 11)"
-author: Nick Krzemienski
-date: 2025-07-21
+author: "Nick Krzemienski"
+date: "2025-03-01"
 series_number: 8
+series_total: 11
 github_repo: https://github.com/krzemienski/ralph-orchestrator-guide
 tags:
   - AgenticDevelopment
   - RalphOrchestrator
   - AIAgents
-  - Rust
+  - Python
   - MultiAgent
 ---
 
-## Ralph Orchestrator — A Rust Platform for AI Agent Fleets
+## Ralph Orchestrator — A Python Platform for AI Agent Fleets
 
 *Agentic Development: 10 Lessons from 8,481 AI Coding Sessions (Post 8 of 11)*
 
@@ -1239,7 +1240,7 @@ When multiple worktrees complete tasks simultaneously, the merge queue serialize
 {"timestamp": "2025-07-14T22:46:08Z", "worktree": "loop-43", "task": "task-005", "status": "merged", "commit": "e4f5g6h"}
 ```
 
-The lock file (`.ralph/loop.lock`) ensures only one merge happens at a time. Without this, two simultaneous merges into the same branch could corrupt the git index. The lock is advisory -- it uses `fcntl.flock()` on POSIX systems -- but sufficient for single-machine coordination.
+The lock file (`.ralph/loop.lock`) ensures only one merge happens at a time. Without this, two simultaneous merges into the same branch could corrupt the git index. The lock is advisory -- it uses file-based locking on POSIX systems -- but sufficient for single-machine coordination.
 
 When a conflict occurs, the retry mechanism pulls the latest main branch into the worktree, replays the worktree's changes, and attempts the merge again. Most conflicts from parallel AI agents are in auto-generated files (imports, route registrations, configuration entries) that resolve cleanly on retry because the merge tool can see that both sides are adding new entries to the same list.
 
@@ -1770,8 +1771,29 @@ The most valuable output of 410 sessions is not the code the agents wrote. It is
 
 Companion repo with TOML configs, Python scripts, and documentation: [github.com/krzemienski/ralph-orchestrator-guide](https://github.com/krzemienski/ralph-orchestrator-guide)
 
-`#AgenticDevelopment` `#RalphOrchestrator` `#AIAgents` `#Rust` `#MultiAgent`
+`#AgenticDevelopment` `#RalphOrchestrator` `#AIAgents` `#Python` `#MultiAgent`
 
 ---
 
 *Part 8 of 11 in the [Agentic Development](https://github.com/krzemienski/agentic-development-guide) series.*
+
+---
+
+## Series Navigation
+
+**Previous:** [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md) | **Next:** [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+
+**Full Series:** [8,481 AI Coding Sessions: The Complete Guide](https://github.com/krzemienski/agentic-development-guide)
+
+1. [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md)
+2. [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+3. [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+4. [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+5. [5 Layers to Call an API](./post-05-sdk-bridge.md)
+6. [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+7. [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md)
+8. [Ralph Orchestrator](./post-08-ralph-orchestrator.md)
+9. [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+10. [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+11. [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+

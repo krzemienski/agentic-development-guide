@@ -1,9 +1,10 @@
 ---
-title: "A Single AI Agent Said 'Looks Correct.' Three Agents Found the P2 Bug."
+title: "3 AI Agents Found the Bug 1 Agent Missed"
 subtitle: "How multi-agent consensus with hard unanimity gates catches the bugs that single-agent review systematically misses"
 author: "Nick Krzemienski"
-date: "2025"
+date: "2025-03-01"
 series_number: 2
+series_total: 11
 github_repo: "https://github.com/krzemienski/agentic-development-guide"
 tags:
   - CodeQuality
@@ -15,7 +16,7 @@ tags:
 
 ![Hero](../visuals/html/series-hero.html)
 
-## A Single AI Agent Said "Looks Correct." Three Agents Found the P2 Bug.
+## 3 AI Agents Found the Bug 1 Agent Missed
 
 A single AI agent reviewed my streaming code and said "looks correct."
 
@@ -256,7 +257,7 @@ authoritative updates. The bug exists at their INTERSECTION. Look for these inte
 
 Alpha is the detail-oriented auditor. It reads implementation line by line. Its system prompt includes what I call "THE += vs = PRINCIPLE" -- a direct reference to the exact bug class that started this whole framework, embedded as institutional knowledge.
 
-This is the key insight: the system prompt is not just instructions. It is a compressed lesson from a real production bug. When Alpha encounters a new codebase with a streaming handler, it does not just check whether each line looks correct. It specifically looks for interactions between update mechanisms -- because the prompt tells it that is where the most dangerous bugs live.
+What makes this work: the system prompt is not just instructions. It is a compressed lesson from a real production bug. When Alpha encounters a new codebase with a streaming handler, it does not just check whether each line looks correct. It specifically looks for interactions between update mechanisms -- because the prompt tells it that is where the most dangerous bugs live.
 
 Alpha caught both root causes in the ILS streaming bug on the first pass because it was specifically prompted to look at how data flow mechanisms interact -- not just whether individual lines were correct.
 
@@ -623,7 +624,7 @@ The multi-agent consensus pattern maps directly to established practices in huma
 
 **Formal inspection** (Fagan inspection) is the closest human analog to multi-agent consensus. Three to five reviewers independently read the code before a meeting. Each reviewer uses a checklist calibrated to specific defect categories. Findings are collected and reconciled. The research consistently shows formal inspection catching 60-90% of defects -- dramatically more than single reviewer or pair programming.
 
-The key insight from the formal inspection literature is the same one that drives multi-agent consensus: **independence plus structure beats more of the same perspective.** Two reviewers with independent checklists outperform four reviewers who all focus on the same concerns.
+The critical lesson from the formal inspection literature is the same one that drives multi-agent consensus: **independence plus structure beats more of the same perspective.** Two reviewers with independent checklists outperform four reviewers who all focus on the same concerns.
 
 The three-agent triad is a streamlined formal inspection. Lead brings the architectural checklist. Alpha brings the logic checklist. Bravo brings the behavioral checklist. They do not see each other's findings before voting. The unanimity gate is the reconciliation meeting, compressed to a boolean.
 
@@ -959,3 +960,24 @@ Technical writeup with system diagrams: [github.com/krzemienski/agentic-developm
 ---
 
 *Part 2 of 11 in the [Agentic Development](https://github.com/krzemienski/agentic-development-guide) series.*
+
+---
+
+## Series Navigation
+
+**Previous:** [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md) | **Next:** [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+
+**Full Series:** [8,481 AI Coding Sessions: The Complete Guide](https://github.com/krzemienski/agentic-development-guide)
+
+1. [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md)
+2. [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+3. [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+4. [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+5. [5 Layers to Call an API](./post-05-sdk-bridge.md)
+6. [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+7. [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md)
+8. [Ralph Orchestrator](./post-08-ralph-orchestrator.md)
+9. [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+10. [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+11. [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+

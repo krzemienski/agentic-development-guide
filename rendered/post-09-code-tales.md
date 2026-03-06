@@ -1,9 +1,10 @@
 ---
 title: "From GitHub Repos to Audio Stories"
 subtitle: "Building a four-stage pipeline that turns any codebase into a narrated audio experience"
-author: Nick Krzemienski
-date: 2024-01-09
+author: "Nick Krzemienski"
+date: "2025-03-01"
 series_number: 9
+series_total: 11
 github_repo: https://github.com/krzemienski/code-tales
 tags: [AgenticDevelopment, ClaudeAI, ElevenLabs, TextToSpeech, DeveloperTools]
 ---
@@ -1197,7 +1198,7 @@ The specificity is the point. Claude does not have to guess how many files there
 
 ---
 
-### What I Learned
+## What This Means for Developer Content
 
 The most counterintuitive lesson: the analysis stage matters more than the narration stage. Give Claude mediocre data and you get mediocre narration regardless of how good the style prompt is. Give Claude precise, quantified analysis -- "47.3% Python, 12 dependencies including FastAPI and Pydantic, REST API + CLI Tool patterns detected, 23,000 lines across 145 files" -- and the narration practically writes itself.
 
@@ -1226,3 +1227,24 @@ Companion repo: [github.com/krzemienski/code-tales](https://github.com/krzemiens
 ---
 
 *Part 9 of 11 in the [Agentic Development](https://github.com/krzemienski/agentic-development-guide) series.*
+
+---
+
+## Series Navigation
+
+**Previous:** [Ralph Orchestrator](./post-08-ralph-orchestrator.md) | **Next:** [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+
+**Full Series:** [8,481 AI Coding Sessions: The Complete Guide](https://github.com/krzemienski/agentic-development-guide)
+
+1. [8,481 AI Coding Sessions: Series Launch](./post-01-series-launch.md)
+2. [Three Agents Found the P2 Bug](./post-02-multi-agent-consensus.md)
+3. [I Banned Unit Tests From My AI Workflow](./post-03-functional-validation.md)
+4. [The 5-Layer SSE Bridge](./post-04-ios-streaming-bridge.md)
+5. [5 Layers to Call an API](./post-05-sdk-bridge.md)
+6. [194 Parallel AI Worktrees](./post-06-parallel-worktrees.md)
+7. [The 7-Layer Prompt Engineering Stack](./post-07-prompt-engineering-stack.md)
+8. [Ralph Orchestrator](./post-08-ralph-orchestrator.md)
+9. [From GitHub Repos to Audio Stories](./post-09-code-tales.md)
+10. [21 AI-Generated Screens, Zero Figma Files](./post-10-stitch-design-to-code.md)
+11. [The AI Development Operating System](./post-11-ai-dev-operating-system.md)
+
